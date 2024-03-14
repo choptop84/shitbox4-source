@@ -7,3 +7,11 @@ export let moneyMaxChance: number = 20;
 
 export function addMoney() {
     realMoney += Math.round(Math.random() * moneyMaxChance); }
+
+export function removeMoney(moneyToRemove = 5) {
+    if (realMoney - moneyToRemove > 0) {
+    realMoney -= moneyToRemove; } else {
+    alert("You don't have enough shitcoins bitch!");
+    }
+}
+    

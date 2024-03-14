@@ -37,6 +37,7 @@ import {SongRecoveryPrompt} from "./SongRecoveryPrompt";
 import {RecordingSetupPrompt} from "./RecordingSetupPrompt";
 import {Change} from "./Change";
 import {ChangeTempo, ChangeChorus, ChangeEchoDelay, ChangeEchoSustain, ChangeReverb, ChangeVolume, ChangePan, ChangePatternSelection, ChangeSupersawDynamism, ChangeSupersawSpread, ChangeSupersawShape, ChangePulseWidth, ChangeFeedbackAmplitude, ChangeOperatorAmplitude, ChangeOperatorFrequency, ChangeDrumsetEnvelope, ChangePasteInstrument, ChangePreset, pickRandomPresetValue, ChangeRandomGeneratedInstrument, ChangeScale, ChangeDetectKey, ChangeKey, ChangeRhythm, ChangeFeedbackType, ChangeAlgorithm, ChangeCustomizeInstrument, ChangeChipWave, ChangeNoiseWave, ChangeTransition, ChangeToggleEffects, ChangeVibrato, ChangeUnison, ChangeChord, ChangeSong, ChangePitchShift, ChangeDetune, ChangeDistortion, ChangeStringSustain, ChangeBitcrusherFreq, ChangeBitcrusherQuantization, ChangeAddEnvelope, ChangeAddChannelInstrument, ChangeRemoveChannelInstrument} from "./changes";
+import {removeMoney, realMoney} from "./MoneyData";
 
 const {a, button, div, input, select, span, optgroup, option} = HTML;
 
@@ -1380,12 +1381,17 @@ export class SongEditor {
 				if (event.ctrlKey || event.metaKey) {
 					this._openPrompt("export");
 					event.preventDefault();
-				} else {
-					if (this._doc.prefs.enableChannelMuting) {
+				} else if (this._doc.prefs.enableChannelMuting) {
+						if (realMoney - 20 > 0) {
 						this._doc.selection.soloChannels(event.shiftKey);
 						event.preventDefault();
+						removeMoney(20);
+						}
+						else {
+							alert("You don't have enough shitcoins bitch!");
+						}
 					}
-				}
+					console.log(realMoney);
 				break;
 			case 79: // o
 				if (canPlayNotes) break;

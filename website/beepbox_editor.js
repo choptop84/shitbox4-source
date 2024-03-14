@@ -13358,6 +13358,14 @@ var beepbox = (function (exports) {
     function addMoney() {
         realMoney += Math.round(Math.random() * moneyMaxChance);
     }
+    function removeMoney(moneyToRemove = 5) {
+        if (realMoney - moneyToRemove > 0) {
+            realMoney -= moneyToRemove;
+        }
+        else {
+            alert("You don't have enough shitcoins bitch!");
+        }
+    }
 
     function makeEmptyReplacementElement(node) {
         const clone = node.cloneNode(false);
@@ -20188,12 +20196,17 @@ You should be redirected to the song at:<br /><br />
                             this._openPrompt("export");
                             event.preventDefault();
                         }
-                        else {
-                            if (this._doc.prefs.enableChannelMuting) {
+                        else if (this._doc.prefs.enableChannelMuting) {
+                            if (realMoney - 20 > 0) {
                                 this._doc.selection.soloChannels(event.shiftKey);
                                 event.preventDefault();
+                                removeMoney(20);
+                            }
+                            else {
+                                alert("You don't have enough shitcoins bitch!");
                             }
                         }
+                        console.log(realMoney);
                         break;
                     case 79:
                         if (canPlayNotes)
