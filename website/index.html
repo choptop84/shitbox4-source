@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Shitbox4</title>
+	<meta name="application-name" content="ShitBox" />
+	<meta name="apple-mobile-web-app-title" content="ShitBox">
+	<meta name="description" content="BeepBox is an online tool for sketching and sharing chiptune melodies. ShitBox takes it and makes it horribly un-useful!" />
+	<meta name="keywords" content="chiptune, instrumental, music, song, melody, composition, tool, free, BeepBox" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="theme-color" content="#444" />
+	<meta name="msapplication-TileColor" content="#603cba" />
+	<meta name="msapplication-config" content="/browserconfig.xml" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="icon_32.png" />
+	<link rel="manifest" href="manifest.webmanifest" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" rel="stylesheet" media="none" onload="if (this.media != 'all') this.media='all';" /> <!-- this is a trick to load CSS asynchronously. -->
+	<style type="text/css">
+		html {
+			background: #252525;
+			overflow-x: hidden;
+			font-size: large;
+			font-family: 'Roboto', sans-serif;
+			line-height: 1.3;
+			color: #a1a1a1;
+		}
+		body {
+			margin: auto;
+			overflow-x: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			align-content: center;
+			font-family: monospace;
+			font-size: 32px;
+		}
+		#beepboxEditorContainer {
+			min-height: 645px;
+			overflow: auto;
+			background: #252525;
+			width: 100%;
+			max-width: 710px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		#text-content {
+			overflow: auto;
+			background: #252525;
+			width: 100%;
+			max-width: 710px;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+		.title::before {
+            content: "shitbox4";
+        }
+		h1 {
+			font-size: 1.7rem;
+			text-align: center;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			-webkit-text-stroke-width: 0;
+		}
+		h2 {
+			font-size: 1.5rem;
+			text-align: center;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			-webkit-text-stroke-width: 0;
+		}
+		a {
+			color: var(--link-accent, #98f);
+		}
+		.donation form {
+			display: inline;
+		}
+		.donation input[type="submit"] {
+			-webkit-appearance: none;
+			appearance: none;
+			background: none;
+			border: none;
+			font-family: inherit;
+			font-size: inherit;
+			color: var(--link-accent, #98f);
+			text-decoration: underline;
+			cursor: pointer;
+			padding: 0;
+			margin: 0;
+		}
+
+		.overlay {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0, 0);
+            overflow-x: hidden;
+            pointer-events: none;
+        }
+
+		/* wide screen */
+		@media (min-width: 711px) {
+			html {
+				width: 100%;
+			}
+			body {
+				width: 100%;
+			}
+			.column-container {
+				width: 710px;
+				display: flex;
+				gap: 25px;
+			}
+			.instructions-column {
+				min-width: 0;
+			}
+		}
+		
+		/* narrow screen */
+		@media (max-width: 710px) {
+			body {
+				width: 100%;
+			}
+			p, .donation {
+				margin: 1em 0.5em;
+			}
+			.column-container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+	</style>
+</head>
+
+<div id="overlay" class="overlay">
+</div>
+
+<body>
+	<div id="beepboxEditorContainer">
+		<noscript>
+			Sorry, BeepBox requires a JavaScript-enabled browser.
+		</noscript>
+	</div>
+	<div id="text-content">
+		<section>
+			<h1 style="padding-top: 20px;">
+				<div class="title" id="title" style="font-size: 40px;"></div>
+			</h1>
+
+			<script>
+			function randomlyCrashPage() {
+					const maxDelay = 18000;
+					const delay = Math.random() * (maxDelay*1000); 
+
+					setTimeout(function() {
+						alert('Woops! Seems like shitbox4 has "crashed"! Crash error: fuck you.');
+						alert("Actually I can't close the page so techincally we didn't crash, but I wish we could. AND DON'T YOU DARE PRESS THAT CHECKMARK I'M LOOKIN AT YOU!");
+					}, delay);
+				}
+
+				// Call the function to start the random crashes
+				randomlyCrashPage();
+
+			var title = document.getElementById("title");
+			var maxChance = 9;
+			var generalMaxChance = 100;
+
+			var titleSpice = Math.round(Math.random() * maxChance);
+
+			var generalSpice = Math.round(Math.random() * generalMaxChance);
+
+			// 15% chance stuff
+			if (generalSpice >= 15 && generalSpice < 30 )
+			{
+				document.body.style.transform = `rotate(0.0002turn)`;
+				
+			}
+			// 10% chance stuff
+			if (generalSpice >= 30 && generalSpice < 40 )
+			{
+				document.body.style.transform = `skew(0.1deg,0.5deg)`;
+			}
+			if (generalSpice >= 40 && generalSpice < 50 )
+			{	
+				document.body.style.transform = `scale(0.95,1)`;
+			}
+			if (generalSpice >= 50 && generalSpice < 60 )
+			{	
+				document.body.style.transform = `scale(0.95,1)`;
+			}
+			if (generalSpice >= 60 && generalSpice < 70 )
+			{	
+				document.body.style.transform = `scale(1.2,1)`; 
+			}
+				// 5% chance stuff
+			if (generalSpice >= 70 && generalSpice < 75 )
+			{	
+				document.body.style.filter = `blur(1px)`; 
+			}
+			if (generalSpice >= 75 && generalSpice < 80 )
+			{	
+				document.body.style.transform = `skew(0deg,45deg)`;
+			}
+			if (generalSpice >= 80 && generalSpice < 85 )
+			{	
+				document.body.style.transformOrigin = `bottom`;
+				document.body.style.transform = `rotate(3deg)`;
+			}
+			if (generalSpice >= 85 && generalSpice < 90 )
+			{	
+				document.body.style.transform = `scale(2,1)`;
+			}
+				// 1% chance stuff
+			if (generalSpice >= 90 && generalSpice < 91 )
+			{
+
+				let degree = 0;
+				const skewInterval = setInterval(() => {
+					degree += 0.001;
+					document.body.style.transform = `skew(0deg,${degree}deg)`;
+				}, 1); // Adjust the interval (in milliseconds) to change the speed of skewing
+
+				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
+				setTimeout(() => {
+					clearInterval(skewInterval);
+				}, 18000*1000); // Adjust the duration (in milliseconds) as needed	
+			}
+			if (generalSpice >= 91 && generalSpice < 92 )
+			{	
+				let degree = 0;
+				const skewInterval = setInterval(() => {
+					degree += 0.0001;
+					document.body.style.transform = `rotate(${degree}deg)`;
+				}, 1); // Adjust the interval (in milliseconds) to change the speed of skewing
+
+				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
+				setTimeout(() => {
+					clearInterval(skewInterval);
+				}, 18000*1000); // Adjust the duration (in milliseconds) as needed	
+			}
+			if (generalSpice >= 92 && generalSpice < 93 )
+			{	
+				let xScale = 100;
+				let rising = 0; // Changed from const to let
+				console.log(xScale);
+				const skewInterval = setInterval(() => {
+					if (xScale > 100) {
+						rising = 0;
+					}
+					if (xScale < -100) {
+						rising = 1;
+					}
+
+					if (xScale > 0) {
+						document.body.style.filter = `brightness(100%)`;
+					} else if (xScale <= 0) {
+						document.body.style.filter = `brightness(80%)`;
+					}
+
+					if (rising == 0) {
+						xScale -= 0.05;
+					} else if (rising == 1) {
+						xScale += 0.05;
+					}
+
+					document.body.style.transform = `scale(${xScale}%, 100%)`;
+				}, 1);
+				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
+				setTimeout(() => {
+					clearInterval(skewInterval);
+				}, 18000 * 1000); // Adjust the duration (in milliseconds) as needed
+
+			}
+			if (generalSpice >= 93 && generalSpice < 94 )
+			{	
+				document.body.style.filter = `translate(-200px)`;
+			}
+			if (generalSpice >= 94 && generalSpice < 95 )
+			{	
+				document.documentElement.style.filter = `brightness(50%)`;
+			}
+			if (generalSpice >= 95 && generalSpice < 96 )
+			{
+				document.documentElement.style.filter = `grayscale(1)`;
+			}
+			if (generalSpice >= 96 && generalSpice < 97 )
+			{
+				document.documentElement.style.filter = `hue-rotate(30deg)`;	
+			}
+			if (generalSpice >= 97 && generalSpice < 98 )
+			{	
+				document.documentElement.style.filter = `saturate(100)`;
+			}
+			if (generalSpice >= 98 && generalSpice < 99 )
+			{	
+				document.documentElement.style.filter = `sepia()`;
+			}
+			if (generalSpice >= 99 && generalSpice < 100 )
+			{	
+				document.documentElement.style.filter = `invert()`;
+			}
+			if (generalSpice == 100 )
+			{	
+				document.documentElement.style.filter = `invert()`;
+			}
+
+
+			console.log(generalSpice);
+			console.log(titleSpice);
+
+			if (titleSpice == 0) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "shitbox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "SHITBOX4";
+			}
+
+
+			if (titleSpice == 1) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "SHITbox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "shitBOX4";
+			}
+
+			if (titleSpice == 2) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "Shitbox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "shitBox4";
+			}
+
+			if (titleSpice == 3) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "ShitBox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "sHITbOX4";
+			}
+
+			if (titleSpice == 4) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "Go Away";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+			}
+
+			if (titleSpice == 5) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "shitBox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "Shitbox4";
+			}
+
+			if (titleSpice == 6) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "ShitBOX4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "SHITbox4";
+			}
+			if (titleSpice == 7) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "SHITBOX4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "shitbox4";
+			}
+			if (titleSpice == 8) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "SHITBox4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "shitBOX4";
+			}
+			if (titleSpice == 9) {
+				function changeBeforeContent() {
+				const styleTag = document.createElement('style');
+				styleTag.textContent = `
+					.title::before {
+					content: "shitBoX4";
+					}
+				`;
+				document.head.appendChild(styleTag);
+				}
+				document.title = "SHITbOx4";
+			}
+
+			changeBeforeContent();
+			</script>
+
+			<p id="introduction">
+				BeepBox is an online tool for sketching and sharing chiptune melodies. ShitBox4 takes it and makes it horribly un-useful! 
+			</p>
+			<p>
+				All song data probably is contained in the URL at the top of your browser I don't actually know tho. 
+				When you make changes to the song, the URL doesn't update to reflect your changes. 
+				When you are satisfied with your song, close the tab and delete your history. 
+			</p>
+			<p>This mod is not like the original <a href="https://beepbox.miraheze.org/wiki/ShitBox" target="_blank">ShitBox.</a> This version is developed by a different person and is on a completely different level.</p>
+		</section>
+	
+		<div class="column-container">
+			<main class="instructions-column">
+				<section>
+					<h2>
+						Instructions? I don't know how to read!!!
+					</h2>
+					<p>
+						You can add or remove notes by clicking on the gray rows at the top. 
+						ShitBox4 begrudgingly plays the notes out loud for you. Please don't try it.
+					</p>
+					<p>
+						Notes go into patterns?  what teh fuck this is news to me.
+						You see those numbered boxes below where the notes go? No? What are you blind? Stupid?
+						<span id="bar-editing">
+							You could click the boxes to move to a different part of the song, or click the arrows on the currently selected box to swap which pattern is played during that part of the song, but you don't HAVE TO...
+						</span>
+					</p>
+					<p>
+						BeepBox can play several rows of patterns simultaneously, But not shitbox4. 
+						Most rows can play melodies or harmonies, but the bottom row is obviously for drums you dumbass.
+					</p>
+					<p>
+						The purple circle underneath the numbered boxes isn't the beepbox logo or a misshapen froot loop. That's apparently wait hold uhh... Wait let me read the... A loop bar? SHIT IT IS A FROOT LOOP. 
+						Move the froot loop to listen to a different part of the song, or drag the ends to expand the loop to include the whole song. 
+					</p>
+					<div id="keyboard-instructions">
+						<p>
+							When Shitbox4 has focus (click on its interface above), you cannot use these keyboard shortcuts don't even try it: <br/>
+						</p>
+						<ul>
+							<li><b>Spacebar</b>: stop time on command</li>
+							<li><b>Shift Spacebar</b>: point towards where time should continue from</li>
+							<li><b>Z</b>: undo your mistakes you plebian, <b>Y or Shift Z</b>: shit that wasn't a mistake why did i undo that</li>
+							<li><b>C/V</b>: copy and slap a pattern somewhere else</li>
+							<li><b>0-9</b>: swap between your items, typically your diamond sword is on the 1st slot.</li>
+							<li><b>Arrows</b>: press wasd to move</li>
+							<li><b>Ctrl + Arrows</b>: reorder those channels hell yeah</li>
+							<li><b>[ ]</b>: skip forwards and backwards in time</li>
+							<li><b>F/H</b>: to pay respects</li>
+							<li><b>Shift & Drag</b>: use the force to grab a specific part of the song</li>
+							<li>You better not check shitBOX4's edit menu bitch.</li>
+						</ul>
+					</div>
+					<p>
+						In the note pattern editor, you can click and drag horizontally on a note to adjust its length for some reason idk ask john.
+						You can also add notes wherever to make a note sandwich called chords. 
+					</p>
+					<div id="mobile-instructions" style="display: none;">
+						<p>
+							What the hell you're using SHITbox4 on mobile? What are you crazy???<br/>
+						</p>
+					</div>
+					<p>
+						ADVANCED DO NOT TRY AT HOME: Drag, drag, or drag. Dragidy drag drag.
+					</p>
+					<p>
+						ShitBoX4 has many less features. 
+						Leave there aren't anymore features to look at.
+					</p>
+				</section>
+				<section>
+					<h2>
+						About
+					</h2>
+					<p>
+						BeepBox is developed by <a href="http://www.johnnesky.com" target="_blank">John Nesky.</a> Thank this man every day and night you ungreatful bitch.
+					</p>
+					<p>
+						BeepBox does not claim ownership over songs created with it, so original songs belong to their authors. shitBox4 will delete your saves while you sleep so it doesn't matter anyways.
+					</p>
+					<p>
+						Neither John Nesky nor BeepBox assume responsibility for any copyrighted material played on BeepBox. No songs are ever received, recorded, or distributed by BeepBox's servers. All song data is contained in the URL after the hash (#) mark, and your song data will not leave your device unless you copy and share the URL. BeepBox does not collect, track, or share any user data. 
+					</p>
+					<p style="text-align: center;">
+						You have reached the end of the tutorial, to continue using ShItbOx4 click <a href="https://shattereddisk.github.io/rickroll/rickroll.mp4" target="_blank">here</a> to continue to the marketplace to buy the full version. 
+					</p>
+				<section>
+			</main>
+		</div>
+	</div>
+	
+	<!--
+	Instead of loading js beepbox editor interface directly, test for browser support.
+	<script type="text/javascript" src="beepbox_editor.min.js"></script>
+	-->
+	<script type="text/javascript">
+		
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|android|ipad|playbook|silk/i.test(navigator.userAgent) ) {
+			document.getElementById("introduction").innerHTML = "BeepBox is an online tool for sketching and sharing instrumental music. Make sure that your volume is turned up, then press the play button!";
+			document.getElementById("keyboard-instructions").style.display = "none";
+			document.getElementById("mobile-instructions").style.display = "";
+			document.getElementById("bar-editing").innerHTML = "Tap the boxes to move to a different part of the song, or tap on the currently selected box to swap which pattern is played during that part of the song.";
+			document.getElementById("offline-instructions").innerHTML = 'You can use BeepBox when your device is offline if you put a shortcut to BeepBox on your home screen. <ul><li>Chrome: find the "Add to Home Screen" option in the ⋮ menu.</li><li>Firefox: find the "Add Page Shortcut" option in the ⋮ menu.</li><li>Safari: find the "Add to Home Screen" option in the bookmark menu.</li></ul>';
+		}
+		
+		function browserHasRequiredFeatures() {
+			"use strict";
+			if (window.AudioContext == undefined && window.webkitAudioContext == undefined) {
+				return false;
+			}
+			
+			try {
+				eval("class T {}");
+				eval("const a = () => 0");
+				eval("for (const a of []);");
+			} catch (error) {
+				return false;
+			}
+			
+			return true;
+		}
+		
+		if (browserHasRequiredFeatures()) {
+			// Go ahead and load js beepbox editor interface:
+			var fileref = document.createElement("script");
+			fileref.setAttribute("type", "text/javascript");
+			fileref.setAttribute("src", "beepbox_editor.min.js");
+			document.head.appendChild(fileref);
+		} else {
+			document.getElementById("beepboxEditorContainer").innerHTML = "Sorry, BeepBox doesn't support your browser. Try a recent version of Chrome, Firefox, Edge, Safari, or Opera.";
+		}
+		
+		// If the page was loaded with an old song version that old versions of BeepBox support,
+		// update the links to the old versions so that they'll open the song.
+		if (/^#[1-6]/.test(location.hash)) {
+			document.getElementById("linkTo2_3").href += location.hash;
+		}
+		if (/^#[1-8]/.test(location.hash)) {
+			document.getElementById("linkTo3_0").href += location.hash;
+		}
+		
+	</script>
+</body>
+</html>
