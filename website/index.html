@@ -670,7 +670,10 @@
 
 	<script>
 
-		var hasShop = window.localStorage.getItem('hasShop' || false);
+			if (window.localStorage.getItem('hasShop') != null) {
+		var hasShop = window.localStorage.getItem('hasShop'); } else {
+		var hasShop = false;
+		}
 
 		var timesClicked = 0;
 
