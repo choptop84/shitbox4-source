@@ -78,6 +78,39 @@
 		.donation form {
 			display: inline;
 		}
+		.shopButton:hover {
+			background: var(--ui-widget-focus) !important;
+		}
+		.shopButtons {
+			position: fixed; 
+			z-index: 11; 
+			left: 25vw; 
+			bottom: 35vh; 
+			display: flex;
+  			flex-direction: column;
+		}
+		.shopButton {
+			width: 100px; 
+			height: 50px; 
+			background: var(--ui-widget-background);
+			border: none;
+			border-radius: 10px; 
+			color: white;
+			font-size: 70%; 
+			font-family: monospace;
+			margin: 0.2em;
+		}
+		.shitcoinsHolder {
+			background-image: url('https://github.com/choptop84/choptop84s-image-repository/blob/main/shitcoins%20holder.png?raw=true');
+			width: 320px;
+			height: 160px;
+			position: fixed;
+			left: 0;
+			top: 0;
+			background-size: contain;
+			background-repeat: no-repeat;
+			z-index: 14;
+		}
 		.donation input[type="submit"] {
 			-webkit-appearance: none;
 			appearance: none;
@@ -143,6 +176,8 @@
 </div>
 
 <body>
+	<div id="everything">
+		<div style=' width: 300%; height: 100%; background-color: var(--page-margin); position: absolute; top: 0; z-index: -1; left: -100%;'></div>
 	<div id="beepboxEditorContainer">
 		<noscript>
 			Sorry, BeepBox requires a JavaScript-enabled browser.
@@ -155,13 +190,14 @@
 			</h1>
 
 			<script>
+			var everything = document.getElementById('everything');
 			function randomlyCrashPage() {
 					const maxDelay = 18000;
 					const delay = Math.random() * (maxDelay*1000); 
 
 					setTimeout(function() {
 						alert('Woops! Seems like shitbox4 has "crashed"! Crash error: fuck you.');
-						alert("Actually I can't close the page so techincally we didn't crash, but I wish we could. AND DON'T YOU DARE PRESS THAT CHECKMARK I'M LOOKIN AT YOU!");
+						alert("Actually I can't close the page so techincally we didn't crash, but I wish we could. AND DON'T YOU DARE PRESS THAT CHECKMARK I'M LOOKIN AT YOU! (in firefox, I don't think chrome has that feature)");
 					}, delay);
 				}
 
@@ -179,43 +215,43 @@
 			// 15% chance stuff
 			if (generalSpice >= 15 && generalSpice < 30 )
 			{
-				document.body.style.transform = `rotate(0.0002turn)`;
+				everything.style.transform = `rotate(0.0002turn)`;
 				
 			}
 			// 10% chance stuff
 			if (generalSpice >= 30 && generalSpice < 40 )
 			{
-				document.body.style.transform = `skew(0.1deg,0.5deg)`;
+				everything.style.transform = `skew(0.1deg,0.5deg)`;
 			}
 			if (generalSpice >= 40 && generalSpice < 50 )
 			{	
-				document.body.style.transform = `scale(0.95,1)`;
+				everything.style.transform = `scale(0.95,1)`;
 			}
 			if (generalSpice >= 50 && generalSpice < 60 )
 			{	
-				document.body.style.transform = `scale(0.95,1)`;
+				everything.style.transform = `scale(0.95,1)`;
 			}
 			if (generalSpice >= 60 && generalSpice < 70 )
 			{	
-				document.body.style.transform = `scale(1.2,1)`; 
+				everything.style.transform = `scale(1.2,1)`; 
 			}
 				// 5% chance stuff
 			if (generalSpice >= 70 && generalSpice < 75 )
 			{	
-				document.body.style.filter = `blur(1px)`; 
+				everything.style.filter = `blur(1px)`; 
 			}
 			if (generalSpice >= 75 && generalSpice < 80 )
 			{	
-				document.body.style.transform = `skew(0deg,45deg)`;
+				everything.style.transform = `skew(0deg,45deg)`;
 			}
 			if (generalSpice >= 80 && generalSpice < 85 )
 			{	
-				document.body.style.transformOrigin = `bottom`;
-				document.body.style.transform = `rotate(3deg)`;
+				everything.style.transformOrigin = `bottom`;
+				everything.style.transform = `rotate(3deg)`;
 			}
 			if (generalSpice >= 85 && generalSpice < 90 )
 			{	
-				document.body.style.transform = `scale(2,1)`;
+				everything.style.transform = `scale(2,1)`;
 			}
 				// 1% chance stuff
 			if (generalSpice >= 90 && generalSpice < 91 )
@@ -224,7 +260,7 @@
 				let degree = 0;
 				const skewInterval = setInterval(() => {
 					degree += 0.001;
-					document.body.style.transform = `skew(0deg,${degree}deg)`;
+					everything.style.transform = `skew(0deg,${degree}deg)`;
 				}, 1); // Adjust the interval (in milliseconds) to change the speed of skewing
 
 				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
@@ -237,7 +273,7 @@
 				let degree = 0;
 				const skewInterval = setInterval(() => {
 					degree += 0.0001;
-					document.body.style.transform = `rotate(${degree}deg)`;
+					everything.style.transform = `rotate(${degree}deg)`;
 				}, 1); // Adjust the interval (in milliseconds) to change the speed of skewing
 
 				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
@@ -259,9 +295,9 @@
 					}
 
 					if (xScale > 0) {
-						document.body.style.filter = `brightness(100%)`;
+						everything.style.filter = `brightness(100%)`;
 					} else if (xScale <= 0) {
-						document.body.style.filter = `brightness(80%)`;
+						everything.style.filter = `brightness(80%)`;
 					}
 
 					if (rising == 0) {
@@ -270,7 +306,7 @@
 						xScale += 0.05;
 					}
 
-					document.body.style.transform = `scale(${xScale}%, 100%)`;
+					everything.style.transform = `scale(${xScale}%, 100%)`;
 				}, 1);
 				// To stop the skewing animation after a certain duration (e.g., 30 seconds)
 				setTimeout(() => {
@@ -280,7 +316,7 @@
 			}
 			if (generalSpice >= 93 && generalSpice < 94 )
 			{	
-				document.body.style.filter = `translate(-200px)`;
+				everything.style.transform = `translate(-200px)`;
 			}
 			if (generalSpice >= 94 && generalSpice < 95 )
 			{	
@@ -588,5 +624,90 @@
 		}
 		
 	</script>
+	</div>
+	<div style='background-image: url("https://github.com/choptop84/choptop84s-image-repository/blob/main/catshop.gif?raw=true");
+	position: fixed;
+	bottom: 5px;
+	cursor: pointer;
+	left: 5px; 
+	width: 70px; 
+	height: 60px; 
+	background-size: 100%;' onclick=openshop()></div>
+
+	<div id="textbox" style="position: fixed; left:5px; bottom: 70px; font-size: 50%; display: none;">
+		<div id="textbox1">come back when you have</div>
+		<div id="textbox2">5000 shitcoins.</div>
+	</div>
+
+	<div id="shop" style="display: none; 
+	background-image: url('https://github.com/choptop84/choptop84s-image-repository/blob/main/catshopui.png?raw=true'); 
+	width: 100vw; 
+	height: 100vh; 
+	position: fixed; 
+	background-size: 80%; 
+	image-rendering: optimizeSpeed !important; 
+	background-position-x: center;
+	background-position-y: bottom;
+	z-index: 10;
+	background-color: var(--page-margin);
+	background-repeat: no-repeat;">
+		<!-- That's the end of the style shits -->
+		<div class="shopButtons" id="shopButtons">
+			<div class="shopPage1">
+		</div>
+			<div></div>
+
+			</div>
+			<div class="shopPage2"></div>
+			<div class="shopPage3"></div>
+			<div class="shopPage4"></div>
+			<div class="shopPage5"></div>
+
+
+	</div>
+
+	<div class="shitcoinsHolder"></div>
+
+	<script>
+
+		var hasShop = window.localStorage.getItem('hasShop' || false);
+
+		var timesClicked = 0;
+
+		var shop = document.getElementById('shop');
+
+		function openshop() {
+			var shitcoins = window.localStorage.getItem('money');
+			if (hasShop == false) {
+				if (shitcoins <= 5000) {		
+						timesClicked++;
+						if (timesClicked == 3) {
+							textbox.style.display = "";
+						} else {
+							textbox.style.display = "none";
+						}
+					} else {
+					window.localStorage.setItem('money',shitcoins-5000);
+					hasShop == true;
+					window.localStorage.setItem('hasShop', true);
+					location.reload();
+				}
+			}  else {
+				shop.style.display = "";
+			}
+		}	
+
+	</script>
+
+	<div style='background-image: 
+	url("https://github.com/choptop84/choptop84s-image-repository/blob/main/catshopblinking.gif?raw=true"); 
+	pointer-events: none;
+	position: fixed;
+	bottom: 5px;
+	left: 5px;
+	width: 70px;
+	height: 60px;
+	background-size: 100%;'></div>
+
 </body>
 </html>

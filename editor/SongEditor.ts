@@ -37,7 +37,7 @@ import {SongRecoveryPrompt} from "./SongRecoveryPrompt";
 import {RecordingSetupPrompt} from "./RecordingSetupPrompt";
 import {Change} from "./Change";
 import {ChangeTempo, ChangeChorus, ChangeEchoDelay, ChangeEchoSustain, ChangeReverb, ChangeVolume, ChangePan, ChangePatternSelection, ChangeSupersawDynamism, ChangeSupersawSpread, ChangeSupersawShape, ChangePulseWidth, ChangeFeedbackAmplitude, ChangeOperatorAmplitude, ChangeOperatorFrequency, ChangeDrumsetEnvelope, ChangePasteInstrument, ChangePreset, pickRandomPresetValue, ChangeRandomGeneratedInstrument, ChangeScale, ChangeDetectKey, ChangeKey, ChangeRhythm, ChangeFeedbackType, ChangeAlgorithm, ChangeCustomizeInstrument, ChangeChipWave, ChangeNoiseWave, ChangeTransition, ChangeToggleEffects, ChangeVibrato, ChangeUnison, ChangeChord, ChangeSong, ChangePitchShift, ChangeDetune, ChangeDistortion, ChangeStringSustain, ChangeBitcrusherFreq, ChangeBitcrusherQuantization, ChangeAddEnvelope, ChangeAddChannelInstrument, ChangeRemoveChannelInstrument} from "./changes";
-import {removeMoney, realMoney} from "./MoneyData";
+import {removeMoney, realMoney, gems, moneyShits, gemShits} from "./MoneyData";
 
 const {a, button, div, input, select, span, optgroup, option} = HTML;
 
@@ -126,7 +126,7 @@ class Slider {
 
 export class SongEditor {
 	public prompt: Prompt | null = null;
-	
+
 	private readonly _keyboardLayout: KeyboardLayout = new KeyboardLayout(this._doc);
 	private readonly _patternEditorPrev: PatternEditor = new PatternEditor(this._doc, false, -1);
 	private readonly _patternEditor: PatternEditor = new PatternEditor(this._doc, true, 0);
@@ -701,7 +701,10 @@ export class SongEditor {
 		this._barScrollBar.render();
 		this._muteEditor.render();
 		this._trackEditor.render();
-		
+
+		moneyShits.innerText = "shitcoins: "+realMoney;
+		gemShits.innerText = "gems: "+gems;
+
 		this._trackAndMuteContainer.scrollLeft = this._doc.barScrollPos * this._doc.getBarWidth();
 		this._trackAndMuteContainer.scrollTop = this._doc.channelScrollPos * ChannelRow.patternHeight;
 		
