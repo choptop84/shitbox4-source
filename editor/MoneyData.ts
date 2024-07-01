@@ -320,7 +320,7 @@ if (boughtStuff.includes("normalHappy")) {
 }
 
 let normalSadButton: HTMLDivElement = div({style:"display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;"},
-    button({class:"shopButton", id:"normalSadOption", onclick: ()=>buyThing("NormalSad", 500, normalSadButton)},"Normal :("), div({style:"font-size: 16px"},"500 shitcoins")
+    button({class:"shopButton", id:"normalSadOption", onclick: ()=>buyThing("normalSad", 500, normalSadButton)},"Normal :("), div({style:"font-size: 16px"},"500 shitcoins")
 );
 if (boughtStuff.includes("NormalSad")) {
     normalSadButton.style.display = "none";
@@ -487,9 +487,6 @@ let gachaDiv: HTMLDivElement = div({class:"gachaDiv", id:"gachaDiv", style:"disp
         div({style:"display:flex; flex-direction: column; align-items: center; margin: 0.5em;"},
         button({class:"shopButton", id:"gachaButton", onclick: ()=>rollOneGacha()},"Roll 1x"), div({style:"font-size: 16px"},"50 Gems")
         ),
-        div({style:"display:flex; flex-direction: column; align-items: center; margin: 0.5em;"},
-        button({class:"shopButton", id:"gachaButton", onclick: ()=>rollMultipleGacha(5)},"Roll 5x"), div({style:"font-size: 16px"},"250 Gems")
-        ),
     ),
     div({class:"result", id:"gachaResult", style:"display: flex;"}, `You haven't rolled yet`, div({class:"result", id:"gachaRarity"}, "!")),
     button({class:"shopButton", id:"closeButton", onclick: ()=>closeThing("gacha")},"close"),
@@ -582,18 +579,6 @@ function rollOneGacha() {
         alert("damn you're broke");
     }
     
-}
-
-function rollMultipleGacha(num: number) {
-    if (gems >= 50*num) {
-        for (let i = num; i > 0; num--) {
-            rollGacha();
-        }
-        removeGems(50*num);
-        gemShits.innerHTML = "gems: "+gems;
-    } else {
-        alert("damn you're broke");
-    }
 }
 
 function openThing(thing:string) {

@@ -2959,7 +2959,7 @@ var beepbox = (function (exports) {
     if (boughtStuff.includes("normalHappy")) {
         normalHappyButton.style.display = "none";
     }
-    let normalSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "normalSadOption", onclick: () => buyThing("NormalSad", 500, normalSadButton) }, "Normal :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    let normalSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "normalSadOption", onclick: () => buyThing("normalSad", 500, normalSadButton) }, "Normal :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
     if (boughtStuff.includes("NormalSad")) {
         normalSadButton.style.display = "none";
     }
@@ -3039,7 +3039,7 @@ var beepbox = (function (exports) {
         && boughtStuff.includes("expert")) {
         scaleStuffs.style.display = "none";
     }
-    let gachaDiv = div$d({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$d({ style: "" }, "Roll for awesome rewards:"), div$d({ style: "display: flex; " }, div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$d({ style: "font-size: 16px" }, "50 Gems")), div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollMultipleGacha(5) }, "Roll 5x"), div$d({ style: "font-size: 16px" }, "250 Gems"))), div$d({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$d({ class: "result", id: "gachaRarity" }, "!")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
+    let gachaDiv = div$d({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$d({ style: "" }, "Roll for awesome rewards:"), div$d({ style: "display: flex; " }, div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$d({ style: "font-size: 16px" }, "50 Gems"))), div$d({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$d({ class: "result", id: "gachaRarity" }, "!")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
     function rollGacha() {
         let chanceThingy = Math.floor(Math.random() * 100);
         let whatYouGot = "";
@@ -3122,18 +3122,6 @@ var beepbox = (function (exports) {
         if (gems >= 50) {
             rollGacha();
             removeGems(50);
-            gemShits.innerHTML = "gems: " + gems;
-        }
-        else {
-            alert("damn you're broke");
-        }
-    }
-    function rollMultipleGacha(num) {
-        if (gems >= 50 * num) {
-            for (let i = num; i > 0; num--) {
-                rollGacha();
-            }
-            removeGems(50 * num);
             gemShits.innerHTML = "gems: " + gems;
         }
         else {
@@ -20498,23 +20486,6 @@ You should be redirected to the song at:<br /><br />
                             const thingOption = this._scaleSelect.querySelector('[label="Edit"]');
                             thingOption.disabled = true;
                             thingOption.setAttribute("hidden", "");
-                        }
-                        const _themePrompt = new ThemePrompt(this._doc);
-                        if (boughtStuff.includes("shitbox2")) {
-                            const thingOption = _themePrompt._themeSelect.querySelector('[value="shitbox2"]');
-                            thingOption.disabled = false;
-                        }
-                        else {
-                            const thingOption = _themePrompt._themeSelect.querySelector('[value="shitbox2"]');
-                            thingOption.disabled = true;
-                        }
-                        if (boughtStuff.includes("realm")) {
-                            const thingOption = _themePrompt._themeSelect.querySelector('[value="realm"]');
-                            thingOption.disabled = false;
-                        }
-                        else {
-                            const thingOption = _themePrompt._themeSelect.querySelector('[value="realm"]');
-                            thingOption.disabled = true;
                         }
                         const htmlEmbedOption = this._fileMenu.querySelector("[value=copyEmbed]");
                         htmlEmbedOption.disabled = true;

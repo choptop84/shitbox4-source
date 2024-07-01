@@ -1059,22 +1059,7 @@ export class SongEditor {
 					thingOption.setAttribute("hidden","");
 				}
 				//#endregion
-				const _themePrompt = new ThemePrompt(this._doc);
-				if (boughtStuff.includes("shitbox2")) {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="shitbox2"]');
-					thingOption.disabled = false;
-				} else {
-					
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="shitbox2"]');
-					thingOption.disabled = true;
-				} 
-				if (boughtStuff.includes("realm")) {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="realm"]');
-					thingOption.disabled = false;
-				} else {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="realm"]');
-					thingOption.disabled = true;
-				} 
+
 
 				const htmlEmbedOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=copyEmbed]");
 				htmlEmbedOption.disabled = true;
