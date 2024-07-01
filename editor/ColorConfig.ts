@@ -13,7 +13,7 @@ export interface ChannelColors extends BeepBoxOption {
 
 export class ColorConfig {
 	public static readonly themes: {[name: string]: string} = {
-		"dark classic": `
+		"shitbox4 classic": `
 		:root {
 			--page-margin: #252525;
 			--editor-background: #252525;
@@ -33,25 +33,6 @@ export class ColorConfig {
 			--fifth-note: #468;
 			--white-piano-key: #bbb;
 			--black-piano-key: #444;
-			--white-piano-key-text: #131200;
-			--black-piano-key-text: #fff;
-				--use-color-formula: false;
-				--track-editor-bg-pitch: #444;
-				--track-editor-bg-pitch-dim: #444;
-				--track-editor-bg-noise: #444;
-				--track-editor-bg-noise-dim: #444;
-				--track-editor-bg-mod: #234;
-				--track-editor-bg-mod-dim: #123;
-				--multiplicative-mod-slider: #456;
-				--overwriting-mod-slider: #654;
-				--indicator-primary: #74f;
-				--indicator-secondary: #444;
-				--select2-opt-group: #585858;
-				--input-box-outline: #333;
-				--mute-button-normal: #ffa033;
-				--mute-button-mod: #9a6bff;
-				--pitch-channel-limit: 6;
-				--noise-channel-limit: 3;
 			--pitch1-secondary-channel: #0099A1;
 			--pitch1-primary-channel:   #25F3FF;
 			--pitch1-secondary-note:    #00BDC7;
@@ -112,25 +93,6 @@ export class ColorConfig {
 			--noise5-primary-channel:   #A2BB77;
 			--noise5-secondary-note:    #91AA66;
 			--noise5-primary-note:      #C5E2B2;
-	  --mod1-secondary-channel:   #339955;
-				--mod1-primary-channel:     #77fc55;
-				--mod1-secondary-note:      #77ff8a;
-				--mod1-primary-note:        #cdffee;
-				--mod2-secondary-channel:   #993355;
-				--mod2-primary-channel:     #f04960;
-				--mod2-secondary-note:      #f057a0;
-				--mod2-primary-note:        #ffb8de;
-				--mod3-secondary-channel:   #553399;
-				--mod3-primary-channel:     #8855fc;
-				--mod3-secondary-note:      #aa64ff;
-				--mod3-primary-note:	    #f8ddff;
-				--mod4-secondary-channel:   #a86436;
-				--mod4-primary-channel:     #c8a825;
-				--mod4-secondary-note:      #e8ba46;
-				--mod4-primary-note:        #fff6d3;
-				--mod-label-primary:        #999;
-				--mod-label-secondary-text: #333;
-				--mod-label-primary-text:   black;
 				--disabled-note-primary:    #999;
 				--disabled-note-secondary:  #666;
 			}
@@ -183,93 +145,257 @@ export class ColorConfig {
 				color: #C8C8C8;
 				}
 		`,
-		"light classic": `
-			:root {
-				-webkit-text-stroke-width: 0.5px;
-				--page-margin: #685d88;
-				--editor-background: white;
-				--hover-preview: black;
-				--playhead: rgba(0,0,0,0.5);
-				--primary-text: black;
-				--secondary-text: #777;
-				--inverted-text: white;
-				--text-selection: rgba(200,170,255,0.99);
-				--box-selection-fill: rgba(0,0,0,0.1);
-				--loop-accent: #98f;
-				--link-accent: #74f;
-				--ui-widget-background: #ececec;
-				--ui-widget-focus: #eee;
-				--pitch-background: #ececec;
-				--tonic: #f0d6b6;
-				--fifth-note: #bbddf0;
-				--white-piano-key: #eee;
-				--black-piano-key: #666;
-				--pitch1-secondary-channel: #6CD9ED;
-				--pitch1-primary-channel:   #00A0BD;
-				--pitch1-secondary-note:    #34C2DC;
-				--pitch1-primary-note:      #00758A;
-				--pitch2-secondary-channel: #E3C941;
-				--pitch2-primary-channel:   #B49700;
-				--pitch2-secondary-note:    #D1B628;
-				--pitch2-primary-note:      #836E00;
-				--pitch3-secondary-channel: #FF9D61;
-				--pitch3-primary-channel:   #E14E00;
-				--pitch3-secondary-note:    #F67D3C;
-				--pitch3-primary-note:      #B64000;
-				--pitch4-secondary-channel: #4BE24B;
-				--pitch4-primary-channel:   #00A800;
-				--pitch4-secondary-note:    #2DC82D;
-				--pitch4-primary-note:      #008000;
-				--pitch5-secondary-channel: #FF90FF;
-				--pitch5-primary-channel:   #E12EDF;
-				--pitch5-secondary-note:    #EC6EEC;
-				--pitch5-primary-note:      #A600A5;
-				--pitch6-secondary-channel: #B5B5FE;
-				--pitch6-primary-channel:   #6969FD;
-				--pitch6-secondary-note:    #9393FE;
-				--pitch6-primary-note:      #4A4AD7;
-				--pitch7-secondary-channel: #C2D848;
-				--pitch7-primary-channel:   #8EA800;
-				--pitch7-secondary-note:    #B0C82D;
-				--pitch7-primary-note:      #6C8000;
-				--pitch8-secondary-channel: #FF90A4;
-				--pitch8-primary-channel:   #E12E4D;
-				--pitch8-secondary-note:    #EC6E85;
-				--pitch8-primary-note:      #A6001D;
-				--pitch9-secondary-channel: #41E3B5;
-				--pitch9-primary-channel:   #00B481;
-				--pitch9-secondary-note:    #28D1A1;
-				--pitch9-primary-note:      #00835E;
-				--pitch10-secondary-channel:#CA77FF;
-				--pitch10-primary-channel:  #9609FF;
-				--pitch10-secondary-note:   #B54FFF;
-				--pitch10-primary-note:     #8400E3;
-				--noise1-secondary-channel: #C1C1C1;
-				--noise1-primary-channel:   #898989;
-				--noise1-secondary-note:    #ADADAD;
-				--noise1-primary-note:      #6C6C6C;
-				--noise2-secondary-channel: #E8BB8C;
-				--noise2-primary-channel:   #BD7D3A;
-				--noise2-secondary-note:    #D1A374;
-				--noise2-primary-note:      #836342;
-				--noise3-secondary-channel: #9BC4EB;
-				--noise3-primary-channel:   #4481BE;
-				--noise3-secondary-note:    #7CA7D3;
-				--noise3-primary-note:      #476685;
-				--noise4-secondary-channel: #C5A5E0;
-				--noise4-primary-channel:   #8553AE;
-				--noise4-secondary-note:    #B290CC;
-				--noise4-primary-note:      #684F7D;
-				--noise5-secondary-channel: #B8CE93;
-				--noise5-primary-channel:   #87A74F;
-				--noise5-secondary-note:    #ABC183;
-				--noise5-primary-note:      #68784C;
+		"shitbox2": `
+		:root {
+			--page-margin: maroon;
+					--editor-background: black;
+					--hover-preview: white;
+					--playhead: firebrick;
+					--primary-text: silver;
+					--secondary-text: #999;
+					--inverted-text: black;
+				--text-selection: rgba(139,69,19,0.99);
+					--box-selection-fill: rgba(220,20,60,0.2);
+					--loop-accent: #841;
+					--link-accent: #841;
+					--ui-widget-background: #800;
+					--ui-widget-focus: #a00;
+					--pitch-background: #700;
+					--tonic: #522;
+					--fifth-note: #f75;
+					--third-note: #9d3535;
+					--white-piano-key: #bbb;
+					--black-piano-key: #444;
+				--pitch1-secondary-channel: #7e4a35;
+					--pitch1-primary-channel:   #c27251;
+					--pitch1-secondary-note:    #7e4a35;
+					--pitch1-primary-note:      #f09571;
+					--pitch2-secondary-channel: #998a5c;
+					--pitch2-primary-channel:   #d9c27c;
+					--pitch2-secondary-note:    #998a5c;
+					--pitch2-primary-note:      #fae196;
+					--pitch3-secondary-channel: #9c927c;
+					--pitch3-primary-channel:   #dbceb0;
+					--pitch3-secondary-note:    #9c927c;
+					--pitch3-primary-note:      #eddebb;
+					--pitch4-secondary-channel: #838060;
+					--pitch4-primary-channel:   #ccc795;
+					--pitch4-secondary-note:    #838060;
+					--pitch4-primary-note:      #f2ecb1;
+					--pitch5-secondary-channel: #8b6f47;
+					--pitch5-primary-channel:   #d1a76b;
+					--pitch5-secondary-note:    #8b6f47;
+					--pitch5-primary-note:      #ffcc82;
+					--pitch6-secondary-channel: #a96e5b;
+					--pitch6-primary-channel:   #e3967d;
+					--pitch6-secondary-note:    #a96e5b;
+					--pitch6-primary-note:      #ffa68a;
+						--pitch7-secondary-channel: #7e4a35;
+					--pitch7-primary-channel:   #c27251;
+					--pitch7-secondary-note:    #7e4a35;
+					--pitch7-primary-note:      #f09571;
+					--pitch8-secondary-channel: #998a5c;
+					--pitch8-primary-channel:   #d9c27c;
+					--pitch8-secondary-note:    #998a5c;
+					--pitch8-primary-note:      #fae196;
+					--pitch9-secondary-channel: #9c927c;
+					--pitch9-primary-channel:   #dbceb0;
+					--pitch9-secondary-note:    #9c927c;
+					--pitch9-primary-note:      #eddebb;
+					--pitch10-secondary-channel: #838060;
+					--pitch10-primary-channel:   #ccc795;
+					--pitch10-secondary-note:    #838060;
+					--pitch10-primary-note:      #f2ecb1;
+					--noise1-secondary-channel: #6f6f6f;
+					--noise1-primary-channel:   #aaaaaa;
+					--noise1-secondary-note:    #a7a7a7;
+					--noise1-primary-note:      #e0e0e0;
+					--noise2-secondary-channel: #996633;
+					--noise2-primary-channel:   #ddaa77;
+					--noise2-secondary-note:    #cc9966;
+					--noise2-primary-note:      #f0d0bb;
+					--noise3-secondary-channel: #4a6d8f;
+					--noise3-primary-channel:   #77aadd;
+					--noise3-secondary-note:    #6f9fcf;
+					--noise3-primary-note:      #bbd7ff;
+					--noise4-secondary-channel: #6f6f6f;
+					--noise4-primary-channel:   #aaaaaa;
+					--noise4-secondary-note:    #a7a7a7;
+					--noise4-primary-note:      #e0e0e0;
+					--noise5-secondary-channel: #996633;
+					--noise5-primary-channel:   #ddaa77;
+					--noise5-secondary-note:    #cc9966;
+					--noise5-primary-note:      #f0d0bb;
+				}
+
+			.beepboxEditor input[type="range"]::-moz-range-thumb {
+				width: 8px !important;
+			  }
+
+			button.playButton,
+			button.pauseButton,
+			button.recordButton {
+				width: 80px;
 			}
-			
-			.beepboxEditor button, .beepboxEditor select {
-				box-shadow: inset 0 0 0 1px var(--secondary-text);
+			button.prevBarButton {
+				width: 40px;
+				left:-5px;
 			}
+			button.nextBarButton {
+				width: 40px;
+			}
+
+			.beepboxEditor {
+				line-height: 1.25;
+			}
+
+			#text-content {
+				font-size: 32px;
+				line-height: 40px;
+			}
+
+			#text-content > section > h1 {
+				color: #C8C8C8;
+				}
 		`,
+		"realm": `
+		:root {
+			--page-margin: #252525;
+			--editor-background: #252525;
+			--hover-preview: white;
+			--playhead: white;
+			--primary-text: #6e6e6e;
+			--secondary-text: #999;
+			--inverted-text: black;
+			--text-selection: rgba(119,68,255,0.99);
+			--box-selection-fill: rgba(255,255,255,0.2);
+			--loop-accent: #673daf;
+			--link-accent: #945800;
+			--ui-widget-background: #444;
+			--ui-widget-focus: #565656;
+			--pitch-background:  #673daf;
+			--tonic: #673daf;
+			--fifth-note: #673daf;
+			--octave-scrollbar: #673daf;
+			--white-piano-key: #bbb;
+			--black-piano-key: #444;
+			 --pitch1-secondary-channel: #0099a1;
+			 --pitch1-primary-channel:   #25f3ff;
+			 --pitch1-secondary-note:    #0099a1;
+			 --pitch1-primary-note:      #25f3ff;
+			 --pitch2-secondary-channel: #439143;
+			 --pitch2-primary-channel:   #44ff44;
+			 --pitch2-secondary-note:    #439143;
+			 --pitch2-primary-note:      #44ff44;
+			 --pitch3-secondary-channel: #a1a100;
+			 --pitch3-primary-channel:   #ffff25;
+			 --pitch3-secondary-note:    #a1a100;
+			 --pitch3-primary-note:      #ffff25;
+			 --pitch4-secondary-channel: #c75000;
+			 --pitch4-primary-channel:   #ff9752;
+			 --pitch4-secondary-note:    #c75000;
+			 --pitch4-primary-note:      #ff9752;
+			 --pitch5-secondary-channel: #d020d0;
+			 --pitch5-primary-channel:   #FF90FF;
+			 --pitch5-secondary-note:    #d020d0;
+			 --pitch5-primary-note:      #ff90ff;
+			 --pitch6-secondary-channel: #552377;
+			 --pitch6-primary-channel:   #9f31ea;
+			 --pitch6-secondary-note:    #552377;
+			 --pitch6-primary-note:      #9f31ea;
+			 --pitch7-secondary-channel: #221b89;
+			 --pitch7-primary-channel:   #2b6aff;
+			 --pitch7-secondary-note:    #221b89;
+			 --pitch7-primary-note:      #2b6aff;
+			 --pitch8-secondary-channel: #00995f;
+			 --pitch8-primary-channel:   #00ff9f;
+			 --pitch8-secondary-note:    #00995f;
+			 --pitch8-primary-note:      #00ff9f;
+			 --pitch9-secondary-channel: #d6b03e;
+			 --pitch9-primary-channel:   #ffbf00;
+			 --pitch9-secondary-note:    #d6b03e;
+			 --pitch9-primary-note:      #ffbf00;
+			 --pitch10-secondary-channel:#b25915;
+			 --pitch10-primary-channel:  #d85d00;
+			 --pitch10-secondary-note:   #b25915;
+			 --pitch10-primary-note:     #d85d00;
+			 --pitch11-secondary-channel:#891a60;
+			 --pitch11-primary-channel:  #ff00a1;
+			 --pitch11-secondary-note:   #891a60;
+			 --pitch11-primary-note:     #ff00a1;
+			 --pitch12-secondary-channel:#965cbc;
+			 --pitch12-primary-channel:  #c26afc;
+			 --pitch12-secondary-note:   #965cbc;
+			 --pitch12-primary-note:     #c26afc;
+			 --noise1-secondary-channel: #991010;
+			 --noise1-primary-channel:   #ff1616;
+			 --noise1-secondary-note:    #991010;
+			 --noise1-primary-note:      #ff1616;
+			 --noise2-secondary-channel: #aaaaaa;
+			 --noise2-primary-channel:   #ffffff;
+			 --noise2-secondary-note:    #aaaaaa;
+			 --noise2-primary-note:      #ffffff;
+			 --noise3-secondary-channel: #5869BD;
+			 --noise3-primary-channel:   #768dfc;
+			 --noise3-secondary-note:    #5869BD;
+			 --noise3-primary-note:      #768dfc;
+			 --noise4-secondary-channel: #7c9b42;
+			 --noise4-primary-channel:   #a5ff00;
+			 --noise4-secondary-note:    #7c9b42;
+			 --noise4-primary-note:      #a5ff00;
+			 --noise5-secondary-channel: #7c9b42;
+			 --noise5-primary-channel:   #A2BB77;
+			 --noise5-secondary-note:    #91AA66;
+			 --noise5-primary-note:      #C5E2B2;
+			}
+
+			.beepboxEditor input[type="range"]::-moz-range-thumb {
+				width: 8px !important;
+			  }
+
+			button.playButton {
+				width: 80px;
+			}
+			button.prevBarButton {
+				width: 40px;
+				left:-5px;
+			}
+			button.nextBarButton {
+				width: 40px;
+			}
+
+			span input, 
+			div.harmonics svg,
+			div.spectrum svg,
+			div.filterEditor svg,
+			div.fadeInOut svg,
+			div.loopEditor svg,
+			svg#firstImage 
+			{
+				background: black !important;
+			}
+
+			.beepboxEditor {
+				line-height: 1.25;
+			}
+
+			 #octaveScrollBarContainer {
+			 background-color: black;
+			 }
+
+			#text-content {
+				font-size: 32px;
+				line-height: 40px;
+			}
+
+			#text-content > section > h1 {
+				color: #C8C8C8;
+				}
+
+			html {
+				font: monospace !important;
+				}
+				`,
 	};
 	
 	public static readonly pageMargin: string = "var(--page-margin)";

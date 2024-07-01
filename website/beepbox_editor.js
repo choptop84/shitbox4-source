@@ -775,7 +775,7 @@ var beepbox = (function (exports) {
         }
     }
     ColorConfig.themes = {
-        "dark classic": `
+        "shitbox4 classic": `
 		:root {
 			--page-margin: #252525;
 			--editor-background: #252525;
@@ -795,25 +795,6 @@ var beepbox = (function (exports) {
 			--fifth-note: #468;
 			--white-piano-key: #bbb;
 			--black-piano-key: #444;
-			--white-piano-key-text: #131200;
-			--black-piano-key-text: #fff;
-				--use-color-formula: false;
-				--track-editor-bg-pitch: #444;
-				--track-editor-bg-pitch-dim: #444;
-				--track-editor-bg-noise: #444;
-				--track-editor-bg-noise-dim: #444;
-				--track-editor-bg-mod: #234;
-				--track-editor-bg-mod-dim: #123;
-				--multiplicative-mod-slider: #456;
-				--overwriting-mod-slider: #654;
-				--indicator-primary: #74f;
-				--indicator-secondary: #444;
-				--select2-opt-group: #585858;
-				--input-box-outline: #333;
-				--mute-button-normal: #ffa033;
-				--mute-button-mod: #9a6bff;
-				--pitch-channel-limit: 6;
-				--noise-channel-limit: 3;
 			--pitch1-secondary-channel: #0099A1;
 			--pitch1-primary-channel:   #25F3FF;
 			--pitch1-secondary-note:    #00BDC7;
@@ -874,25 +855,6 @@ var beepbox = (function (exports) {
 			--noise5-primary-channel:   #A2BB77;
 			--noise5-secondary-note:    #91AA66;
 			--noise5-primary-note:      #C5E2B2;
-	  --mod1-secondary-channel:   #339955;
-				--mod1-primary-channel:     #77fc55;
-				--mod1-secondary-note:      #77ff8a;
-				--mod1-primary-note:        #cdffee;
-				--mod2-secondary-channel:   #993355;
-				--mod2-primary-channel:     #f04960;
-				--mod2-secondary-note:      #f057a0;
-				--mod2-primary-note:        #ffb8de;
-				--mod3-secondary-channel:   #553399;
-				--mod3-primary-channel:     #8855fc;
-				--mod3-secondary-note:      #aa64ff;
-				--mod3-primary-note:	    #f8ddff;
-				--mod4-secondary-channel:   #a86436;
-				--mod4-primary-channel:     #c8a825;
-				--mod4-secondary-note:      #e8ba46;
-				--mod4-primary-note:        #fff6d3;
-				--mod-label-primary:        #999;
-				--mod-label-secondary-text: #333;
-				--mod-label-primary-text:   black;
 				--disabled-note-primary:    #999;
 				--disabled-note-secondary:  #666;
 			}
@@ -945,93 +907,257 @@ var beepbox = (function (exports) {
 				color: #C8C8C8;
 				}
 		`,
-        "light classic": `
-			:root {
-				-webkit-text-stroke-width: 0.5px;
-				--page-margin: #685d88;
-				--editor-background: white;
-				--hover-preview: black;
-				--playhead: rgba(0,0,0,0.5);
-				--primary-text: black;
-				--secondary-text: #777;
-				--inverted-text: white;
-				--text-selection: rgba(200,170,255,0.99);
-				--box-selection-fill: rgba(0,0,0,0.1);
-				--loop-accent: #98f;
-				--link-accent: #74f;
-				--ui-widget-background: #ececec;
-				--ui-widget-focus: #eee;
-				--pitch-background: #ececec;
-				--tonic: #f0d6b6;
-				--fifth-note: #bbddf0;
-				--white-piano-key: #eee;
-				--black-piano-key: #666;
-				--pitch1-secondary-channel: #6CD9ED;
-				--pitch1-primary-channel:   #00A0BD;
-				--pitch1-secondary-note:    #34C2DC;
-				--pitch1-primary-note:      #00758A;
-				--pitch2-secondary-channel: #E3C941;
-				--pitch2-primary-channel:   #B49700;
-				--pitch2-secondary-note:    #D1B628;
-				--pitch2-primary-note:      #836E00;
-				--pitch3-secondary-channel: #FF9D61;
-				--pitch3-primary-channel:   #E14E00;
-				--pitch3-secondary-note:    #F67D3C;
-				--pitch3-primary-note:      #B64000;
-				--pitch4-secondary-channel: #4BE24B;
-				--pitch4-primary-channel:   #00A800;
-				--pitch4-secondary-note:    #2DC82D;
-				--pitch4-primary-note:      #008000;
-				--pitch5-secondary-channel: #FF90FF;
-				--pitch5-primary-channel:   #E12EDF;
-				--pitch5-secondary-note:    #EC6EEC;
-				--pitch5-primary-note:      #A600A5;
-				--pitch6-secondary-channel: #B5B5FE;
-				--pitch6-primary-channel:   #6969FD;
-				--pitch6-secondary-note:    #9393FE;
-				--pitch6-primary-note:      #4A4AD7;
-				--pitch7-secondary-channel: #C2D848;
-				--pitch7-primary-channel:   #8EA800;
-				--pitch7-secondary-note:    #B0C82D;
-				--pitch7-primary-note:      #6C8000;
-				--pitch8-secondary-channel: #FF90A4;
-				--pitch8-primary-channel:   #E12E4D;
-				--pitch8-secondary-note:    #EC6E85;
-				--pitch8-primary-note:      #A6001D;
-				--pitch9-secondary-channel: #41E3B5;
-				--pitch9-primary-channel:   #00B481;
-				--pitch9-secondary-note:    #28D1A1;
-				--pitch9-primary-note:      #00835E;
-				--pitch10-secondary-channel:#CA77FF;
-				--pitch10-primary-channel:  #9609FF;
-				--pitch10-secondary-note:   #B54FFF;
-				--pitch10-primary-note:     #8400E3;
-				--noise1-secondary-channel: #C1C1C1;
-				--noise1-primary-channel:   #898989;
-				--noise1-secondary-note:    #ADADAD;
-				--noise1-primary-note:      #6C6C6C;
-				--noise2-secondary-channel: #E8BB8C;
-				--noise2-primary-channel:   #BD7D3A;
-				--noise2-secondary-note:    #D1A374;
-				--noise2-primary-note:      #836342;
-				--noise3-secondary-channel: #9BC4EB;
-				--noise3-primary-channel:   #4481BE;
-				--noise3-secondary-note:    #7CA7D3;
-				--noise3-primary-note:      #476685;
-				--noise4-secondary-channel: #C5A5E0;
-				--noise4-primary-channel:   #8553AE;
-				--noise4-secondary-note:    #B290CC;
-				--noise4-primary-note:      #684F7D;
-				--noise5-secondary-channel: #B8CE93;
-				--noise5-primary-channel:   #87A74F;
-				--noise5-secondary-note:    #ABC183;
-				--noise5-primary-note:      #68784C;
+        "shitbox2": `
+		:root {
+			--page-margin: maroon;
+					--editor-background: black;
+					--hover-preview: white;
+					--playhead: firebrick;
+					--primary-text: silver;
+					--secondary-text: #999;
+					--inverted-text: black;
+				--text-selection: rgba(139,69,19,0.99);
+					--box-selection-fill: rgba(220,20,60,0.2);
+					--loop-accent: #841;
+					--link-accent: #841;
+					--ui-widget-background: #800;
+					--ui-widget-focus: #a00;
+					--pitch-background: #700;
+					--tonic: #522;
+					--fifth-note: #f75;
+					--third-note: #9d3535;
+					--white-piano-key: #bbb;
+					--black-piano-key: #444;
+				--pitch1-secondary-channel: #7e4a35;
+					--pitch1-primary-channel:   #c27251;
+					--pitch1-secondary-note:    #7e4a35;
+					--pitch1-primary-note:      #f09571;
+					--pitch2-secondary-channel: #998a5c;
+					--pitch2-primary-channel:   #d9c27c;
+					--pitch2-secondary-note:    #998a5c;
+					--pitch2-primary-note:      #fae196;
+					--pitch3-secondary-channel: #9c927c;
+					--pitch3-primary-channel:   #dbceb0;
+					--pitch3-secondary-note:    #9c927c;
+					--pitch3-primary-note:      #eddebb;
+					--pitch4-secondary-channel: #838060;
+					--pitch4-primary-channel:   #ccc795;
+					--pitch4-secondary-note:    #838060;
+					--pitch4-primary-note:      #f2ecb1;
+					--pitch5-secondary-channel: #8b6f47;
+					--pitch5-primary-channel:   #d1a76b;
+					--pitch5-secondary-note:    #8b6f47;
+					--pitch5-primary-note:      #ffcc82;
+					--pitch6-secondary-channel: #a96e5b;
+					--pitch6-primary-channel:   #e3967d;
+					--pitch6-secondary-note:    #a96e5b;
+					--pitch6-primary-note:      #ffa68a;
+						--pitch7-secondary-channel: #7e4a35;
+					--pitch7-primary-channel:   #c27251;
+					--pitch7-secondary-note:    #7e4a35;
+					--pitch7-primary-note:      #f09571;
+					--pitch8-secondary-channel: #998a5c;
+					--pitch8-primary-channel:   #d9c27c;
+					--pitch8-secondary-note:    #998a5c;
+					--pitch8-primary-note:      #fae196;
+					--pitch9-secondary-channel: #9c927c;
+					--pitch9-primary-channel:   #dbceb0;
+					--pitch9-secondary-note:    #9c927c;
+					--pitch9-primary-note:      #eddebb;
+					--pitch10-secondary-channel: #838060;
+					--pitch10-primary-channel:   #ccc795;
+					--pitch10-secondary-note:    #838060;
+					--pitch10-primary-note:      #f2ecb1;
+					--noise1-secondary-channel: #6f6f6f;
+					--noise1-primary-channel:   #aaaaaa;
+					--noise1-secondary-note:    #a7a7a7;
+					--noise1-primary-note:      #e0e0e0;
+					--noise2-secondary-channel: #996633;
+					--noise2-primary-channel:   #ddaa77;
+					--noise2-secondary-note:    #cc9966;
+					--noise2-primary-note:      #f0d0bb;
+					--noise3-secondary-channel: #4a6d8f;
+					--noise3-primary-channel:   #77aadd;
+					--noise3-secondary-note:    #6f9fcf;
+					--noise3-primary-note:      #bbd7ff;
+					--noise4-secondary-channel: #6f6f6f;
+					--noise4-primary-channel:   #aaaaaa;
+					--noise4-secondary-note:    #a7a7a7;
+					--noise4-primary-note:      #e0e0e0;
+					--noise5-secondary-channel: #996633;
+					--noise5-primary-channel:   #ddaa77;
+					--noise5-secondary-note:    #cc9966;
+					--noise5-primary-note:      #f0d0bb;
+				}
+
+			.beepboxEditor input[type="range"]::-moz-range-thumb {
+				width: 8px !important;
+			  }
+
+			button.playButton,
+			button.pauseButton,
+			button.recordButton {
+				width: 80px;
 			}
-			
-			.beepboxEditor button, .beepboxEditor select {
-				box-shadow: inset 0 0 0 1px var(--secondary-text);
+			button.prevBarButton {
+				width: 40px;
+				left:-5px;
 			}
+			button.nextBarButton {
+				width: 40px;
+			}
+
+			.beepboxEditor {
+				line-height: 1.25;
+			}
+
+			#text-content {
+				font-size: 32px;
+				line-height: 40px;
+			}
+
+			#text-content > section > h1 {
+				color: #C8C8C8;
+				}
 		`,
+        "realm": `
+		:root {
+			--page-margin: #252525;
+			--editor-background: #252525;
+			--hover-preview: white;
+			--playhead: white;
+			--primary-text: #6e6e6e;
+			--secondary-text: #999;
+			--inverted-text: black;
+			--text-selection: rgba(119,68,255,0.99);
+			--box-selection-fill: rgba(255,255,255,0.2);
+			--loop-accent: #673daf;
+			--link-accent: #945800;
+			--ui-widget-background: #444;
+			--ui-widget-focus: #565656;
+			--pitch-background:  #673daf;
+			--tonic: #673daf;
+			--fifth-note: #673daf;
+			--octave-scrollbar: #673daf;
+			--white-piano-key: #bbb;
+			--black-piano-key: #444;
+			 --pitch1-secondary-channel: #0099a1;
+			 --pitch1-primary-channel:   #25f3ff;
+			 --pitch1-secondary-note:    #0099a1;
+			 --pitch1-primary-note:      #25f3ff;
+			 --pitch2-secondary-channel: #439143;
+			 --pitch2-primary-channel:   #44ff44;
+			 --pitch2-secondary-note:    #439143;
+			 --pitch2-primary-note:      #44ff44;
+			 --pitch3-secondary-channel: #a1a100;
+			 --pitch3-primary-channel:   #ffff25;
+			 --pitch3-secondary-note:    #a1a100;
+			 --pitch3-primary-note:      #ffff25;
+			 --pitch4-secondary-channel: #c75000;
+			 --pitch4-primary-channel:   #ff9752;
+			 --pitch4-secondary-note:    #c75000;
+			 --pitch4-primary-note:      #ff9752;
+			 --pitch5-secondary-channel: #d020d0;
+			 --pitch5-primary-channel:   #FF90FF;
+			 --pitch5-secondary-note:    #d020d0;
+			 --pitch5-primary-note:      #ff90ff;
+			 --pitch6-secondary-channel: #552377;
+			 --pitch6-primary-channel:   #9f31ea;
+			 --pitch6-secondary-note:    #552377;
+			 --pitch6-primary-note:      #9f31ea;
+			 --pitch7-secondary-channel: #221b89;
+			 --pitch7-primary-channel:   #2b6aff;
+			 --pitch7-secondary-note:    #221b89;
+			 --pitch7-primary-note:      #2b6aff;
+			 --pitch8-secondary-channel: #00995f;
+			 --pitch8-primary-channel:   #00ff9f;
+			 --pitch8-secondary-note:    #00995f;
+			 --pitch8-primary-note:      #00ff9f;
+			 --pitch9-secondary-channel: #d6b03e;
+			 --pitch9-primary-channel:   #ffbf00;
+			 --pitch9-secondary-note:    #d6b03e;
+			 --pitch9-primary-note:      #ffbf00;
+			 --pitch10-secondary-channel:#b25915;
+			 --pitch10-primary-channel:  #d85d00;
+			 --pitch10-secondary-note:   #b25915;
+			 --pitch10-primary-note:     #d85d00;
+			 --pitch11-secondary-channel:#891a60;
+			 --pitch11-primary-channel:  #ff00a1;
+			 --pitch11-secondary-note:   #891a60;
+			 --pitch11-primary-note:     #ff00a1;
+			 --pitch12-secondary-channel:#965cbc;
+			 --pitch12-primary-channel:  #c26afc;
+			 --pitch12-secondary-note:   #965cbc;
+			 --pitch12-primary-note:     #c26afc;
+			 --noise1-secondary-channel: #991010;
+			 --noise1-primary-channel:   #ff1616;
+			 --noise1-secondary-note:    #991010;
+			 --noise1-primary-note:      #ff1616;
+			 --noise2-secondary-channel: #aaaaaa;
+			 --noise2-primary-channel:   #ffffff;
+			 --noise2-secondary-note:    #aaaaaa;
+			 --noise2-primary-note:      #ffffff;
+			 --noise3-secondary-channel: #5869BD;
+			 --noise3-primary-channel:   #768dfc;
+			 --noise3-secondary-note:    #5869BD;
+			 --noise3-primary-note:      #768dfc;
+			 --noise4-secondary-channel: #7c9b42;
+			 --noise4-primary-channel:   #a5ff00;
+			 --noise4-secondary-note:    #7c9b42;
+			 --noise4-primary-note:      #a5ff00;
+			 --noise5-secondary-channel: #7c9b42;
+			 --noise5-primary-channel:   #A2BB77;
+			 --noise5-secondary-note:    #91AA66;
+			 --noise5-primary-note:      #C5E2B2;
+			}
+
+			.beepboxEditor input[type="range"]::-moz-range-thumb {
+				width: 8px !important;
+			  }
+
+			button.playButton {
+				width: 80px;
+			}
+			button.prevBarButton {
+				width: 40px;
+				left:-5px;
+			}
+			button.nextBarButton {
+				width: 40px;
+			}
+
+			span input, 
+			div.harmonics svg,
+			div.spectrum svg,
+			div.filterEditor svg,
+			div.fadeInOut svg,
+			div.loopEditor svg,
+			svg#firstImage 
+			{
+				background: black !important;
+			}
+
+			.beepboxEditor {
+				line-height: 1.25;
+			}
+
+			 #octaveScrollBarContainer {
+			 background-color: black;
+			 }
+
+			#text-content {
+				font-size: 32px;
+				line-height: 40px;
+			}
+
+			#text-content > section > h1 {
+				color: #C8C8C8;
+				}
+
+			html {
+				font: monospace !important;
+				}
+				`,
     };
     ColorConfig.pageMargin = "var(--page-margin)";
     ColorConfig.editorBackground = "var(--editor-background)";
@@ -2637,6 +2763,501 @@ var beepbox = (function (exports) {
 		`,
     };
     Layout._styleElement = document.head.appendChild(HTML.style({ type: "text/css" }));
+
+    const { div: div$d, button: button$d } = HTML;
+    let realMoney = parseInt(window.localStorage.getItem('money') || '0', 10);
+    let gems = parseInt(window.localStorage.getItem('gems') || '0', 10);
+    let moneyMaxChance = 50;
+    const shop = document.getElementById('shopButtons');
+    const shopPage = document.getElementById('shopPage');
+    const gachaListCommon = ["choptop84", "Just a Toad"];
+    const gachaListRare = ["Fauxx", "Yuck31", "Lenny", "Keiiphobix", "yOph", "Grandnands"];
+    const gachaListEpic = ["Bluto", "Hogbrainrot", "Hailey", "Nintari", "Lognes", "Smerg the Dragon", "Chuck"];
+    const gachaListSuperRare = ["Answearing", "Soshu", "Main", "TheSeasOfEnvy", "Geli", "Nobonoko", "Okayxairen", "BrodTsumi", "Impasaurus", "TheGubbys", "Em (O^O)", "Scoob"];
+    const gachaListUltraRare = ["Jummbus", "Neptendo", "LeoV", "Chippy"];
+    const gachaListLegendary = ["Shaktool"];
+    var inventory = new Array();
+    var storedInventory = localStorage.getItem("inventory");
+    var boughtStuff = new Array();
+    var storedStuff = localStorage.getItem("bought");
+    if (storedInventory != null) {
+        inventory = JSON.parse(storedInventory);
+    }
+    if (storedStuff != null) {
+        boughtStuff = JSON.parse(storedStuff);
+    }
+    function addMoney() {
+        realMoney += Math.round(Math.random() * moneyMaxChance);
+        window.localStorage.setItem('money', String(realMoney));
+        var gemchance = Math.round(Math.random() * 10);
+        if (gemchance == 1) {
+            gems += Math.round(Math.random() * 3);
+            window.localStorage.setItem('gems', String(gems));
+        }
+    }
+    function removeMoney(moneyToRemove) {
+        if (realMoney - moneyToRemove >= 0) {
+            realMoney -= moneyToRemove;
+            localStorage.setItem("money", String(realMoney));
+        }
+        else {
+            alert("You don't have enough shitcoins bitch!");
+        }
+    }
+    function removeGems(gemsToRemove) {
+        if (gems - gemsToRemove >= 0) {
+            gems -= gemsToRemove;
+            localStorage.setItem("gems", String(gems));
+        }
+        else {
+            alert("You don't have enough gems bitch!");
+        }
+    }
+    let moneyShits = div$d({ style: "top:0; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "shitcoins: " + realMoney);
+    let gemShits = div$d({ style: "top:32px; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "gems: " + gems);
+    let songPlayerButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "songPlayerOption", onclick: () => buyThing("songPlayer", 2500, songPlayerButton) }, "Song Player"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("songPlayer")) {
+        songPlayerButton.style.display = "none";
+    }
+    let shortenUrlButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "shortenUrlOption", onclick: () => buyThing("shortenUrl", 1000, shortenUrlButton) }, "Shorten Url"), div$d({ style: "font-size: 16px" }, "1000 shitcoins"));
+    if (boughtStuff.includes("shortenUrl")) {
+        shortenUrlButton.style.display = "none";
+    }
+    let importButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "importOption", onclick: () => buyThing("import", 2500, importButton) }, "Import Prompt"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("import")) {
+        importButton.style.display = "none";
+    }
+    let exportButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "exportOption", onclick: () => buyThing("export", 2500, exportButton) }, "Export Prompt"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("export")) {
+        exportButton.style.display = "none";
+    }
+    let recoveryButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "recoveryOption", onclick: () => buyThing("recovery", 2500, recoveryButton) }, "Recovery Prompt"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("recovery")) {
+        exportButton.style.display = "none";
+    }
+    let copyUrlButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "copyUrlOption", onclick: () => buyThing("copyUrl", 1500, copyUrlButton) }, "Copy Url"), div$d({ style: "font-size: 16px" }, "1500 shitcoins"));
+    if (boughtStuff.includes("copyUrl")) {
+        copyUrlButton.style.display = "none";
+    }
+    let beatsPerBarButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "beatsPerBarOption", onclick: () => buyThing("beatsPerBar", 2500, beatsPerBarButton) }, "BPM Prompt"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("beatsPerBar")) {
+        beatsPerBarButton.style.display = "none";
+    }
+    let showScrollBarButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "showScrollBarOption", onclick: () => buyThing("showScrollBar", 1500, showScrollBarButton) }, "Octave ScrollBar"), div$d({ style: "font-size: 16px" }, "1500 shitcoins"));
+    if (boughtStuff.includes("showScrollBar")) {
+        shortenUrlButton.style.display = "none";
+    }
+    let showLettersButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "showLettersOption", onclick: () => buyThing("showLetters", 1500, showLettersButton) }, "Piano Keys"), div$d({ style: "font-size: 16px" }, "1500 shitcoins"));
+    if (boughtStuff.includes("showLetters")) {
+        showLettersButton.style.display = "none";
+    }
+    let autoPlayButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "autoPlayOption", onclick: () => buyThing("autoPlay", 500, autoPlayButton) }, "Auto Play"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("autoPlay")) {
+        autoPlayButton.style.display = "none";
+    }
+    let autoFollowButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "autoFollowOption", onclick: () => buyThing("autoFollow", 500, autoFollowButton) }, "Auto Follow"), div$d({ style: "font-size: 16px" }, "1000 shitcoins"));
+    if (boughtStuff.includes("autoFollow")) {
+        autoFollowButton.style.display = "none";
+    }
+    let enableNotePreviewButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "enableNotePreviewOption", onclick: () => buyThing("enableNotePreview", 2000, enableNotePreviewButton) }, "Preview Notes"), div$d({ style: "font-size: 16px" }, "2000 shitcoins"));
+    if (boughtStuff.includes("enableNotePreview")) {
+        enableNotePreviewButton.style.display = "none";
+    }
+    let fifthNoteButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "fifthNoteOption", onclick: () => buyThing("fifthNote", 2500, fifthNoteButton) }, "Fifth Note"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("fifthNote")) {
+        fifthNoteButton.style.display = "none";
+    }
+    let notesOutsideScaleButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "notesOutsideScaleOption", onclick: () => buyThing("notesOutsideScale", 1000, notesOutsideScaleButton) }, "Notes Outside Scale"), div$d({ style: "font-size: 16px" }, "1000 shitcoins"));
+    if (boughtStuff.includes("notesOutsideScale")) {
+        notesOutsideScaleButton.style.display = "none";
+    }
+    let showChannelsButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "showChannelsOption", onclick: () => buyThing("showChannels", 2500, showChannelsButton) }, "Show Channels"), div$d({ style: "font-size: 16px" }, "2500 shitcoins"));
+    if (boughtStuff.includes("showChannels")) {
+        showChannelsButton.style.display = "none";
+    }
+    let instrumentCopyPasteButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "instrumentCopyPasteOption", onclick: () => buyThing("instrumentCopyPaste", 1000, instrumentCopyPasteButton) }, "Copy/Paste Buttons"), div$d({ style: "font-size: 16px" }, "1000 shitcoins"));
+    if (boughtStuff.includes("showChannels")) {
+        showChannelsButton.style.display = "none";
+    }
+    let enableChannelMutingButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "enableChannelMutingOption", onclick: () => buyThing("enableChannelMuting", 3000, enableChannelMutingButton) }, "Channel Muting"), div$d({ style: "font-size: 16px" }, "3000 shitcoins"));
+    if (boughtStuff.includes("enableChannelMuting")) {
+        enableChannelMutingButton.style.display = "none";
+    }
+    let displayBrowserUrlButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "displayBrowserUrlOption", onclick: () => buyThing("displayBrowserUrl", 3000, displayBrowserUrlButton) }, "Show URL"), div$d({ style: "font-size: 16px" }, "3000 shitcoins"));
+    if (boughtStuff.includes("displayBrowserUrl")) {
+        enableChannelMutingButton.style.display = "none";
+    }
+    let recordingSetupButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "recordingSetupOption", onclick: () => buyThing("recordingSetup", 1500, recordingSetupButton) }, "Midi setup"), div$d({ style: "font-size: 16px" }, "1500 shitcoins"));
+    if (boughtStuff.includes("recordingSetup")) {
+        recordingSetupButton.style.display = "none";
+    }
+    let keyCSharpButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyCSharpOption", onclick: () => buyThing("keyCSharp", 500, keyCSharpButton) }, "C#"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyCSharp")) {
+        keyCSharpButton.style.display = "none";
+    }
+    let keyDButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyDOption", onclick: () => buyThing("keyD", 500, keyDButton) }, "D"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyD")) {
+        keyDButton.style.display = "none";
+    }
+    let keyDSharpButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyDSharpOption", onclick: () => buyThing("keyDSharp", 500, keyDSharpButton) }, "D#"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyDSharp")) {
+        keyDSharpButton.style.display = "none";
+    }
+    let keyEButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyEOption", onclick: () => buyThing("keyE", 500, keyEButton) }, "E"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyE")) {
+        keyEButton.style.display = "none";
+    }
+    let keyFButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyFOption", onclick: () => buyThing("keyF", 500, keyFButton) }, "F"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyF")) {
+        keyFButton.style.display = "none";
+    }
+    let keyFSharpButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyFSharpOption", onclick: () => buyThing("keyFSharp", 500, keyFSharpButton) }, "F#"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyFSharp")) {
+        keyFSharpButton.style.display = "none";
+    }
+    let keyGButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyGOption", onclick: () => buyThing("keyG", 500, keyGButton) }, "G"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyG")) {
+        keyGButton.style.display = "none";
+    }
+    let keyGSharpButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyGSharpOption", onclick: () => buyThing("keyGSharp", 500, keyGSharpButton) }, "G#"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyGSharp")) {
+        keyGSharpButton.style.display = "none";
+    }
+    let keyAButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyAOption", onclick: () => buyThing("keyA", 500, keyAButton) }, "A"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyA")) {
+        keyAButton.style.display = "none";
+    }
+    let keyASharpButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyASharpOption", onclick: () => buyThing("keyASharp", 500, keyASharpButton) }, "A#"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyASharp")) {
+        keyASharpButton.style.display = "none";
+    }
+    let keyBButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "keyBOption", onclick: () => buyThing("keyB", 500, keyBButton) }, "B"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("keyB")) {
+        keyBButton.style.display = "none";
+    }
+    let easySadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "easySadOption", onclick: () => buyThing("easySad", 500, easySadButton) }, "Easy :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("easySad")) {
+        easySadButton.style.display = "none";
+    }
+    let islandHappyButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "islandHappyOption", onclick: () => buyThing("islandHappy", 500, islandHappyButton) }, "Island :)"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("islandHappy")) {
+        islandHappyButton.style.display = "none";
+    }
+    let islandSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "islandSadOption", onclick: () => buyThing("islandSad", 500, islandSadButton) }, "Island :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("islandSad")) {
+        islandSadButton.style.display = "none";
+    }
+    let bluesHappyButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "bluesHappyOption", onclick: () => buyThing("bluesHappy", 500, bluesHappyButton) }, "Blues :)"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("bluesHappy")) {
+        bluesHappyButton.style.display = "none";
+    }
+    let bluesSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "bluesSadOption", onclick: () => buyThing("bluesSad", 500, bluesSadButton) }, "Blues :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("bluesSad")) {
+        bluesSadButton.style.display = "none";
+    }
+    let normalHappyButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "normalHappyOption", onclick: () => buyThing("normalHappy", 500, normalHappyButton) }, "Normal :)"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("normalHappy")) {
+        normalHappyButton.style.display = "none";
+    }
+    let normalSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "normalSadOption", onclick: () => buyThing("NormalSad", 500, normalSadButton) }, "Normal :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("NormalSad")) {
+        normalSadButton.style.display = "none";
+    }
+    let dblHappyButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "dblHappyOption", onclick: () => buyThing("dblHappy", 500, dblHappyButton) }, "DblH :)"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("dblHappy")) {
+        dblHappyButton.style.display = "none";
+    }
+    let dblSadButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "dblSadOption", onclick: () => buyThing("dblSad", 500, dblSadButton) }, "DblH :("), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("dblSad")) {
+        dblSadButton.style.display = "none";
+    }
+    let strangeButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "strangeOption", onclick: () => buyThing("strange", 500, strangeButton) }, "Strange"), div$d({ style: "font-size: 16px" }, "500 shitcoins"));
+    if (boughtStuff.includes("strange")) {
+        strangeButton.style.display = "none";
+    }
+    let expertButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "expertOption", onclick: () => buyThing("expert", 5000, expertButton) }, "Expert"), div$d({ style: "font-size: 16px" }, "5000 shitcoins"));
+    if (boughtStuff.includes("expert")) {
+        expertButton.style.display = "none";
+    }
+    let shitbox2Button = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "shitbox2Option", onclick: () => buyThing("shitbox2", 2000, shitbox2Button) }, "ShitBox 2.0"), div$d({ style: "font-size: 16px" }, "2000 shitcoins"));
+    if (boughtStuff.includes("shitbox2")) {
+        shitbox2Button.style.display = "none";
+    }
+    let realmButton = div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$d({ class: "shopButton", id: "realmOption", onclick: () => buyThing("realm", 2000, realmButton) }, "Realm"), div$d({ style: "font-size: 16px" }, "2000 shitcoins"));
+    if (boughtStuff.includes("realm")) {
+        realmButton.style.display = "none";
+    }
+    let gachaButton = button$d({ class: "shopButton", id: "gachaButton", onclick: () => openThing("gacha") }, "Gacha");
+    let itemsButton = button$d({ class: "shopButton", id: "buyButton", onclick: () => openThing("items") }, "Buy");
+    let closeShopButton = button$d({ class: "shopButton", id: "closeButton", onclick: () => closeshop() }, "Close");
+    let fileMenuStuffs = div$d({ id: "fileMenuStuff" }, div$d({ style: "font-size: 16px" }, "File Menu Shit:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, importButton, exportButton, copyUrlButton, songPlayerButton, shortenUrlButton, recoveryButton));
+    let editMenuStuffs = div$d({ id: "editMenuStuff" }, div$d({ style: "font-size: 16px" }, "Edit Menu Shit:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, beatsPerBarButton));
+    let prefMenuStuffs = div$d({ id: "prefMenuStuff" }, div$d({ style: "font-size: 16px" }, "Preferences Menu Shit:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, autoPlayButton, autoFollowButton, enableNotePreviewButton, showLettersButton, fifthNoteButton, notesOutsideScaleButton, showChannelsButton, showScrollBarButton, instrumentCopyPasteButton, enableChannelMutingButton, displayBrowserUrlButton, recordingSetupButton));
+    let keyStuffs = div$d({ id: "keys" }, div$d({ style: "font-size: 16px" }, "Keys:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, keyCSharpButton, keyDButton, keyDSharpButton, keyEButton, keyFButton, keyFSharpButton, keyGButton, keyGSharpButton, keyAButton, keyASharpButton, keyBButton));
+    let scaleStuffs = div$d({ id: "scales" }, div$d({ style: "font-size: 16px" }, "Scales:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, easySadButton, islandHappyButton, islandSadButton, bluesHappyButton, bluesSadButton, normalHappyButton, normalSadButton, dblHappyButton, dblSadButton, strangeButton, expertButton));
+    let themeMenuStuffs = div$d({ id: "themeMenuStuff" }, div$d({ style: "font-size: 16px" }, "Themes:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, shitbox2Button, realmButton));
+    let itemsDiv = div$d({ class: "itemsDiv", id: "itemsDiv", style: "display:none; position:absolute; left:10vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin: 0.5em;" }, "Stupid Shit"), div$d({ style: "display: flex; flex-direction: column;max-height: 270px; overflow-y: scroll;" }, fileMenuStuffs, editMenuStuffs, prefMenuStuffs, keyStuffs, scaleStuffs, themeMenuStuffs), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("items") }, "Close"));
+    if (boughtStuff.includes("songPlayer")
+        && boughtStuff.includes("shortenUrl")
+        && boughtStuff.includes("import")
+        && boughtStuff.includes("export")
+        && boughtStuff.includes("recovery")
+        && boughtStuff.includes("copyUrl")) {
+        fileMenuStuffs.style.display = "none";
+    }
+    if (boughtStuff.includes("beatsPerBar")) {
+        editMenuStuffs.style.display = "none";
+    }
+    if (boughtStuff.includes("showScrollBar")
+        && boughtStuff.includes("showLetters")) {
+        prefMenuStuffs.style.display = "none";
+    }
+    if (boughtStuff.includes("keyCSharp")
+        && boughtStuff.includes("keyCSharp")
+        && boughtStuff.includes("keyD")
+        && boughtStuff.includes("keyDSharp")
+        && boughtStuff.includes("keyE")
+        && boughtStuff.includes("keyF")
+        && boughtStuff.includes("keyFSharp")
+        && boughtStuff.includes("keyG")
+        && boughtStuff.includes("keyGSharp")
+        && boughtStuff.includes("keyA")
+        && boughtStuff.includes("keyASharp")
+        && boughtStuff.includes("keyB")) {
+        keyStuffs.style.display = "none";
+    }
+    if (boughtStuff.includes("easySad")
+        && boughtStuff.includes("islandHappy")
+        && boughtStuff.includes("islandSad")
+        && boughtStuff.includes("bluesHappy")
+        && boughtStuff.includes("bluesSad")
+        && boughtStuff.includes("normalHappy")
+        && boughtStuff.includes("normalSad")
+        && boughtStuff.includes("dblHappy")
+        && boughtStuff.includes("dblSad")
+        && boughtStuff.includes("strange")
+        && boughtStuff.includes("expert")) {
+        scaleStuffs.style.display = "none";
+    }
+    let gachaDiv = div$d({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$d({ style: "" }, "Roll for awesome rewards:"), div$d({ style: "display: flex; " }, div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$d({ style: "font-size: 16px" }, "50 Gems")), div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollMultipleGacha(5) }, "Roll 5x"), div$d({ style: "font-size: 16px" }, "250 Gems"))), div$d({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$d({ class: "result", id: "gachaRarity" }, "!")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
+    function rollGacha() {
+        let chanceThingy = Math.floor(Math.random() * 100);
+        let whatYouGot = "";
+        const gachaResult = document.getElementById('gachaResult');
+        const gachaRarity = document.getElementById('gachaRarity');
+        if (chanceThingy >= 0 && chanceThingy < 65) {
+            whatYouGot = gachaListCommon[Math.floor(Math.random() * gachaListCommon.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Common)";
+            }
+        }
+        if (chanceThingy >= 65 && chanceThingy < 85) {
+            whatYouGot = gachaListRare[Math.floor(Math.random() * gachaListRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Rare)";
+            }
+        }
+        if (chanceThingy >= 85 && chanceThingy < 95) {
+            whatYouGot = gachaListEpic[Math.floor(Math.random() * gachaListEpic.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Epic)";
+            }
+        }
+        if (chanceThingy >= 95 && chanceThingy < 98) {
+            whatYouGot = gachaListSuperRare[Math.floor(Math.random() * gachaListSuperRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (SR)";
+            }
+        }
+        if (chanceThingy >= 98 && chanceThingy < 99) {
+            whatYouGot = gachaListUltraRare[Math.floor(Math.random() * gachaListUltraRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (UR)";
+            }
+        }
+        if (chanceThingy >= 99) {
+            whatYouGot = gachaListLegendary[Math.floor(Math.random() * gachaListLegendary.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (UR)";
+            }
+        }
+        inventory.push(whatYouGot);
+        if (gachaResult != null) {
+            gachaResult.innerHTML = "You just got: " + whatYouGot;
+        }
+        if (inventory != null) {
+            localStorage.setItem("inventory", JSON.stringify(inventory));
+        }
+    }
+    function buyThing(thingToBuy, price, hides) {
+        const chaChing = new Audio("sfx/buy.mp3");
+        const nope = new Audio("sfx/nuh_uh.mp3");
+        if (!boughtStuff.includes(thingToBuy)) {
+            if (realMoney >= price) {
+                removeMoney(price);
+                boughtStuff.push(thingToBuy);
+                if (boughtStuff != null) {
+                    localStorage.setItem("bought", JSON.stringify(boughtStuff));
+                }
+                moneyShits.innerHTML = "shitcoins: " + realMoney;
+                hides.style.display = "none";
+                chaChing.play();
+            }
+            else {
+                nope.play();
+                alert("You cannot buy that rn! Get more moneys!!!");
+            }
+        }
+        else {
+            nope.play();
+            if (realMoney >= price) {
+                alert("You can't buy this! You already own it!");
+            }
+            else {
+                alert("Even though you don't have enough, you still own this. Meaning you don't need to buy it again.");
+            }
+        }
+    }
+    function rollOneGacha() {
+        if (gems >= 50) {
+            rollGacha();
+            removeGems(50);
+            gemShits.innerHTML = "gems: " + gems;
+        }
+        else {
+            alert("damn you're broke");
+        }
+    }
+    function rollMultipleGacha(num) {
+        if (gems >= 50 * num) {
+            for (let i = num; i > 0; num--) {
+                rollGacha();
+            }
+            removeGems(50 * num);
+            gemShits.innerHTML = "gems: " + gems;
+        }
+        else {
+            alert("damn you're broke");
+        }
+    }
+    function openThing(thing) {
+        if (thing != null && thing != undefined) {
+            let divThing = document.getElementById(thing + "Div");
+            if (divThing != null) {
+                divThing.style.display = "unset";
+                if (shop != null) {
+                    shop.style.display = "none";
+                }
+            }
+            else {
+                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
+            }
+            if (shopPage != null) {
+                shopPage.style.display = "unset";
+            }
+            else {
+                console.log("how the fuck? Somehow the shop page isn't real!");
+            }
+        }
+    }
+    function closeThing(thing) {
+        if (thing != null && thing != undefined) {
+            let divThing = document.getElementById(thing + "Div");
+            if (divThing != null) {
+                divThing.style.display = "none";
+                if (shop != null) {
+                    shop.style.display = "";
+                }
+            }
+            else {
+                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
+            }
+            if (shopPage != null) {
+                shopPage.style.display = "none";
+            }
+            else {
+                console.log("how the fuck? Somehow the shop page isn't real!");
+            }
+        }
+    }
+    function closeshop() {
+        const shopdiv = document.getElementById('shop');
+        shopdiv.style.display = 'none';
+    }
+    document.body.appendChild(moneyShits);
+    document.body.appendChild(gemShits);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(gachaButton);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(itemsButton);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(closeShopButton);
+    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(itemsDiv);
+    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(gachaDiv);
+
+    const { button: button$c, div: div$c, h2: h2$b, select: select$8, option: option$8 } = HTML;
+    class ThemePrompt {
+        constructor(_doc) {
+            this._doc = _doc;
+            this._themeSelect = select$8({ style: "width: 100%;", id: "themeSelect" }, option$8({ value: "shitbox4 classic" }, "shitbox4"), option$8({ value: "shitbox2" }, "ShitBox 2.0"), option$8({ value: "realm" }, "Realm"));
+            this._cancelButton = button$c({ class: "cancelButton" });
+            this._okayButton = button$c({ class: "okayButton", style: "width:45%;" }, "Okay");
+            this.container = div$c({ class: "prompt noSelection", style: "width: 220px;" }, h2$b("Set Theme"), div$c({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, div$c({ class: "selectContainer", style: "width: 100%;" }, this._themeSelect)), div$c({ style: "display: flex; flex-direction: row-reverse; justify-content: space-between;" }, this._okayButton), this._cancelButton);
+            this.lastTheme = window.localStorage.getItem("colorTheme");
+            this._close = () => {
+                if (this.lastTheme != null) {
+                    ColorConfig.setTheme(this.lastTheme);
+                }
+                else {
+                    ColorConfig.setTheme("shitbox4 classic");
+                }
+                this._doc.undo();
+            };
+            this._reloadThemes = () => {
+                if (boughtStuff.includes("shitbox2")) {
+                    const thingOption = this._themeSelect.querySelector('[value="shitbox2"]');
+                    thingOption.disabled = false;
+                }
+                else {
+                    const thingOption = this._themeSelect.querySelector('[value="shitbox2"]');
+                    thingOption.disabled = true;
+                }
+                if (boughtStuff.includes("realm")) {
+                    const thingOption = this._themeSelect.querySelector('[value="realm"]');
+                    thingOption.disabled = false;
+                }
+                else {
+                    const thingOption = this._themeSelect.querySelector('[value="realm"]');
+                    thingOption.disabled = true;
+                }
+            };
+            this.cleanUp = () => {
+                this._okayButton.removeEventListener("click", this._saveChanges);
+                this._cancelButton.removeEventListener("click", this._close);
+                this.container.removeEventListener("keydown", this._whenKeyPressed);
+            };
+            this._whenKeyPressed = (event) => {
+                if (event.target.tagName != "BUTTON" && event.keyCode == 13) {
+                    this._saveChanges();
+                }
+            };
+            this._saveChanges = () => {
+                window.localStorage.setItem("colorTheme", this._themeSelect.value);
+                this._doc.prompt = null;
+                this._doc.prefs.shitbox4colorTheme = this._themeSelect.value;
+                this._doc.undo();
+            };
+            this._previewTheme = () => {
+                ColorConfig.setTheme(this._themeSelect.value);
+                this._doc.notifier.changed();
+            };
+            if (this.lastTheme != null) {
+                this._themeSelect.value = this.lastTheme;
+            }
+            this._okayButton.addEventListener("click", this._saveChanges);
+            this._cancelButton.addEventListener("click", this._close);
+            this.container.addEventListener("keydown", this._whenKeyPressed);
+            this._themeSelect.addEventListener("change", this._previewTheme);
+            this._themeSelect.addEventListener("focus", this._reloadThemes);
+        }
+    }
 
     function scaleElementsByFactor(array, factor) {
         for (let i = 0; i < array.length; i++) {
@@ -10037,11 +10658,11 @@ var beepbox = (function (exports) {
 			const operator#Scaled   = operator#OutputMult * operator#Output;
 	`).split("\n");
 
-    const { button: button$c, div: div$c, p: p$4, h2: h2$a } = HTML;
+    const { button: button$b, div: div$b, p: p$4, h2: h2$a } = HTML;
     class TipPrompt {
         constructor(_doc, type) {
             this._doc = _doc;
-            this._closeButton = button$c({ class: "cancelButton" });
+            this._closeButton = button$b({ class: "cancelButton" });
             this._close = () => {
                 this._doc.undo();
             };
@@ -10052,212 +10673,212 @@ var beepbox = (function (exports) {
             switch (type) {
                 case "scale":
                     {
-                        message = div$c(h2$a("Scale"), p$4("This setting limits the available pitches for adding notes. You may think that there's no point in limiting your choices, but the set of pitches you use has a strong influence on the mood and feel of your song, and these scales serve as guides to help you choose appropriate pitches. Don't worry, you can change the scale at any time, so you're not locked into it. Try making little melodies using all the available pitches of a scale to get a sense for how it sounds."), p$4("Most of the scales have a major version, marked with a smiley face, and a minor version, marked with a sad face. Assuming your song uses all pitches in the scale and especially \"tonic\" pitches (the brown rows in the pattern editor) then major scales tend to sound more playful or optimistic, whereas minor scales sound more serious or sad."));
+                        message = div$b(h2$a("Scale"), p$4("This setting limits the available pitches for adding notes. You may think that there's no point in limiting your choices, but the set of pitches you use has a strong influence on the mood and feel of your song, and these scales serve as guides to help you choose appropriate pitches. Don't worry, you can change the scale at any time, so you're not locked into it. Try making little melodies using all the available pitches of a scale to get a sense for how it sounds."), p$4("Most of the scales have a major version, marked with a smiley face, and a minor version, marked with a sad face. Assuming your song uses all pitches in the scale and especially \"tonic\" pitches (the brown rows in the pattern editor) then major scales tend to sound more playful or optimistic, whereas minor scales sound more serious or sad."));
                     }
                     break;
                 case "key":
                     {
-                        message = div$c(h2$a("Song Key"), p$4("This setting can shift the frequency of every note in your entire song up or down, keeping the \"tonic\" pitches (the brown rows in the pattern editor) aligned with the selected \"key\" pitch."), p$4("If you've already placed some notes but they don't emphasize \"tonic\" pitches then the selected key isn't very meaningful. You can select the \"Detect Key\" option in the key menu to automatically align the most emphasized notes with \"tonic\" pitches."));
+                        message = div$b(h2$a("Song Key"), p$4("This setting can shift the frequency of every note in your entire song up or down, keeping the \"tonic\" pitches (the brown rows in the pattern editor) aligned with the selected \"key\" pitch."), p$4("If you've already placed some notes but they don't emphasize \"tonic\" pitches then the selected key isn't very meaningful. You can select the \"Detect Key\" option in the key menu to automatically align the most emphasized notes with \"tonic\" pitches."));
                     }
                     break;
                 case "tempo":
                     {
-                        message = div$c(h2$a("Song Tempo"), p$4("This setting controls the speed of your song, measured in beats-per-minute. A \"beat\" is the duration of the little gray rectangles in the pattern editor. (In conventional music notation, a \"quarter note\" is usually equivalent to \"beat\".)"));
+                        message = div$b(h2$a("Song Tempo"), p$4("This setting controls the speed of your song, measured in beats-per-minute. A \"beat\" is the duration of the little gray rectangles in the pattern editor. (In conventional music notation, a \"quarter note\" is usually equivalent to \"beat\".)"));
                     }
                     break;
                 case "reverb":
                     {
-                        message = div$c(h2$a("Reverb"), p$4("Reverb is like a continuous echo effect. A little bit helps instruments sound more natural. Adding a lot of reverb can add sense of depth or mystery, but too much reverb can kinda \"smear\" sounds so that it's harder to distinguish notes or instruments, especially for lower \"bass\" notes."));
+                        message = div$b(h2$a("Reverb"), p$4("Reverb is like a continuous echo effect. A little bit helps instruments sound more natural. Adding a lot of reverb can add sense of depth or mystery, but too much reverb can kinda \"smear\" sounds so that it's harder to distinguish notes or instruments, especially for lower \"bass\" notes."));
                     }
                     break;
                 case "rhythm":
                     {
-                        message = div$c(h2$a("Rhythm"), p$4("This setting determines how beats are divided. The pattern editor helps you align notes to fractions of a beat based on this setting."), p$4("If you've already placed some notes but they don't align with the selected rhythm, you can select the \"Snap Notes To Rhythm\" option in the rhythm menu to force the notes in the currently selected pattern(s) to align with the selected rhythm."));
+                        message = div$b(h2$a("Rhythm"), p$4("This setting determines how beats are divided. The pattern editor helps you align notes to fractions of a beat based on this setting."), p$4("If you've already placed some notes but they don't align with the selected rhythm, you can select the \"Snap Notes To Rhythm\" option in the rhythm menu to force the notes in the currently selected pattern(s) to align with the selected rhythm."));
                     }
                     break;
                 case "instrumentIndex":
                     {
-                        message = div$c(h2$a("Instrument Number"), p$4("In the \"Channel Settings\" option from BeepBox's \"Edit\" menu, there are a few ways to enable multiple instruments per channel."), p$4("First, you could enable multiple simultaneous instruments per channel. All of the channel's instruments will play all of the notes in the channel at the same time, and you can click an instrument number to view and edit its settings."), p$4("Second, you could enable different instruments per pattern. Only one of the instruments will play at any given time, but you can click the instrument number to change which instrument is used for the currently selected pattern(s)."), p$4("Finally, you can enable them both, in which case you can click an instrument number once to view it, and again to toggle whether the instrument is used for the currently selected pattern(s)."), p$4("Either way, you can click the + button to add more instruments to a channel, and you can press shift and a number key on your keyboard to select an instrument as if you had clicked the corresponding button here."));
+                        message = div$b(h2$a("Instrument Number"), p$4("In the \"Channel Settings\" option from BeepBox's \"Edit\" menu, there are a few ways to enable multiple instruments per channel."), p$4("First, you could enable multiple simultaneous instruments per channel. All of the channel's instruments will play all of the notes in the channel at the same time, and you can click an instrument number to view and edit its settings."), p$4("Second, you could enable different instruments per pattern. Only one of the instruments will play at any given time, but you can click the instrument number to change which instrument is used for the currently selected pattern(s)."), p$4("Finally, you can enable them both, in which case you can click an instrument number once to view it, and again to toggle whether the instrument is used for the currently selected pattern(s)."), p$4("Either way, you can click the + button to add more instruments to a channel, and you can press shift and a number key on your keyboard to select an instrument as if you had clicked the corresponding button here."));
                     }
                     break;
                 case "instrumentVolume":
                     {
-                        message = div$c(h2$a("Instrument Volume"), p$4("This setting controls the volume of the selected instrument without affecting the volume of the other instruments. This allows you to balance the loudness of each instrument relative to each other."));
+                        message = div$b(h2$a("Instrument Volume"), p$4("This setting controls the volume of the selected instrument without affecting the volume of the other instruments. This allows you to balance the loudness of each instrument relative to each other."));
                     }
                     break;
                 case "pan":
                     {
-                        message = div$c(h2$a("Instrument Panning"), p$4("If you're listening through headphones or some other stereo sound system, this controls the position of the instrument and where the sound is coming from, ranging from left to right."), p$4("As a suggestion, composers often put lead melodies, drums, and basses in the center, and spread other instruments toward either side. If too many instruments seem like they're coming from the same place, it can feel crowded and harder to distinguish individual sounds, especially if they cover a similar pitch range."));
+                        message = div$b(h2$a("Instrument Panning"), p$4("If you're listening through headphones or some other stereo sound system, this controls the position of the instrument and where the sound is coming from, ranging from left to right."), p$4("As a suggestion, composers often put lead melodies, drums, and basses in the center, and spread other instruments toward either side. If too many instruments seem like they're coming from the same place, it can feel crowded and harder to distinguish individual sounds, especially if they cover a similar pitch range."));
                     }
                     break;
                 case "instrumentType":
                     {
-                        message = div$c(h2$a("Instrument Type"), p$4("BeepBox comes with many instrument presets, try them out! You can also create your own custom instruments!"), p$4("There are also options for copying and pasting instrument settings and for generating random instruments at the top of the instrument type menu."));
+                        message = div$b(h2$a("Instrument Type"), p$4("BeepBox comes with many instrument presets, try them out! You can also create your own custom instruments!"), p$4("There are also options for copying and pasting instrument settings and for generating random instruments at the top of the instrument type menu."));
                     }
                     break;
                 case "eqFilter":
                     {
-                        message = div$c(h2$a("EQ Filter"), p$4("Filters are a way of emphasizing or diminishing different parts of a sound. Musical notes have a fundamental (base) frequency, but the sound of a musical note also has parts at higher frequencies and filters can adjust the volume of each of these parts based on their frequency."), p$4("Click in the filter editor to insert, delete, or drag a filter control point. The horizontal position of the point determines which frequencies it affects, and the vertical position determines how the volume is affected at that frequency."), p$4("Insert a new point on the left side of the filter editor to add a \"high-pass\" filter point, which additionally reduces the volume of lower frequencies, or insert a new point on the right side to add a \"low-pass\" filter point which reduces the volume of higher frequencies."), p$4("You can also enable a \"Note Filter\" as an effect. EQ and note filters are mostly the same, but have different purposes. EQ filters are for overall adjustments, whereas note filters are for dynamic control and can be moved with envelopes. Note filters also change how the distortion effect sounds."));
+                        message = div$b(h2$a("EQ Filter"), p$4("Filters are a way of emphasizing or diminishing different parts of a sound. Musical notes have a fundamental (base) frequency, but the sound of a musical note also has parts at higher frequencies and filters can adjust the volume of each of these parts based on their frequency."), p$4("Click in the filter editor to insert, delete, or drag a filter control point. The horizontal position of the point determines which frequencies it affects, and the vertical position determines how the volume is affected at that frequency."), p$4("Insert a new point on the left side of the filter editor to add a \"high-pass\" filter point, which additionally reduces the volume of lower frequencies, or insert a new point on the right side to add a \"low-pass\" filter point which reduces the volume of higher frequencies."), p$4("You can also enable a \"Note Filter\" as an effect. EQ and note filters are mostly the same, but have different purposes. EQ filters are for overall adjustments, whereas note filters are for dynamic control and can be moved with envelopes. Note filters also change how the distortion effect sounds."));
                     }
                     break;
                 case "noteFilter":
                     {
-                        message = div$c(h2$a("Note Filter"), p$4("Note filters are mostly the same as EQ filters, but have a different purpose. EQ filters are for overall adjustments, whereas note filters are for dynamic control and can be moved with envelopes. Note filters also change how the distortion effect sounds."), p$4("Filters are a way of emphasizing or diminishing different parts of a sound. Musical notes have a fundamental (base) frequency, but the sound of a musical note also has parts at higher frequencies and filters can adjust the volume of each of these parts based on their frequency."), p$4("Click in the filter editor to insert, delete, or drag a filter control point. The horizontal position of the point determines which frequencies it affects, and the vertical position determines how the volume is affected at that frequency."), p$4("Insert a new point on the left side of the filter editor to add a \"high-pass\" filter point, which additionally reduces the volume of lower frequencies, or insert a new point on the right side to add a \"low-pass\" filter point which reduces the volume of higher frequencies."));
+                        message = div$b(h2$a("Note Filter"), p$4("Note filters are mostly the same as EQ filters, but have a different purpose. EQ filters are for overall adjustments, whereas note filters are for dynamic control and can be moved with envelopes. Note filters also change how the distortion effect sounds."), p$4("Filters are a way of emphasizing or diminishing different parts of a sound. Musical notes have a fundamental (base) frequency, but the sound of a musical note also has parts at higher frequencies and filters can adjust the volume of each of these parts based on their frequency."), p$4("Click in the filter editor to insert, delete, or drag a filter control point. The horizontal position of the point determines which frequencies it affects, and the vertical position determines how the volume is affected at that frequency."), p$4("Insert a new point on the left side of the filter editor to add a \"high-pass\" filter point, which additionally reduces the volume of lower frequencies, or insert a new point on the right side to add a \"low-pass\" filter point which reduces the volume of higher frequencies."));
                     }
                     break;
                 case "fadeInOut":
                     {
-                        message = div$c(h2$a("Fade In/Out"), p$4("This setting controls how long it takes for notes to reach full volume at the beginning or decay to silence at the end."), p$4("An instant fade-in sounds like instruments that are played by hitting or plucking, whereas slower fade-ins sound like instruments that are played by blowing air."), p$4("You can also make the fade-out start before the note ends to leave a gap before the next note starts, or after the note ends to allow the sound of the end of the note to overlap with the start of the next note."));
+                        message = div$b(h2$a("Fade In/Out"), p$4("This setting controls how long it takes for notes to reach full volume at the beginning or decay to silence at the end."), p$4("An instant fade-in sounds like instruments that are played by hitting or plucking, whereas slower fade-ins sound like instruments that are played by blowing air."), p$4("You can also make the fade-out start before the note ends to leave a gap before the next note starts, or after the note ends to allow the sound of the end of the note to overlap with the start of the next note."));
                     }
                     break;
                 case "transition":
                     {
-                        message = div$c(h2$a("Transition"), p$4("Usually, when one note ends at the same time another begins, the old note will fade out and the new note will fade in based on the fade in/out settings, but this setting can override that, connecting the end of one note to the beginning of the next."), p$4("The \"interrupt\" transition makes the wave suddenly change from the old note's frequency to the new note's frequency without any fading, but still restarts envelopes at the beginning of the new note. The \"continue\" transition is similar but it doesn't even restart envelopes, and can be used to make each of the notes in a chord start or stop at different times!"), p$4("The \"slide\" transition makes the pitch shift quickly but not instantaneously from the old note's frequency to the new note's frequency, and softly restarts envelopes. The \"slide in pattern\" transition is the same except it doesn't connect the last note in a pattern to the first note in the next pattern."));
+                        message = div$b(h2$a("Transition"), p$4("Usually, when one note ends at the same time another begins, the old note will fade out and the new note will fade in based on the fade in/out settings, but this setting can override that, connecting the end of one note to the beginning of the next."), p$4("The \"interrupt\" transition makes the wave suddenly change from the old note's frequency to the new note's frequency without any fading, but still restarts envelopes at the beginning of the new note. The \"continue\" transition is similar but it doesn't even restart envelopes, and can be used to make each of the notes in a chord start or stop at different times!"), p$4("The \"slide\" transition makes the pitch shift quickly but not instantaneously from the old note's frequency to the new note's frequency, and softly restarts envelopes. The \"slide in pattern\" transition is the same except it doesn't connect the last note in a pattern to the first note in the next pattern."));
                     }
                     break;
                 case "chipWave":
                     {
-                        message = div$c(h2$a("Chip Wave"), p$4("BeepBox comes with some sound waves based on classic electronic sound chips, as well as several unique waves. This is the basic source of the sound of the instrument, which is modified by the other instrument settings."));
+                        message = div$b(h2$a("Chip Wave"), p$4("BeepBox comes with some sound waves based on classic electronic sound chips, as well as several unique waves. This is the basic source of the sound of the instrument, which is modified by the other instrument settings."));
                     }
                     break;
                 case "chipNoise":
                     {
-                        message = div$c(h2$a("Noise"), p$4("BeepBox comes with several basic noise sounds. These do not have any distinct musical pitch, and can be used like drums to create beats and emphasize your song's rhythm."));
+                        message = div$b(h2$a("Noise"), p$4("BeepBox comes with several basic noise sounds. These do not have any distinct musical pitch, and can be used like drums to create beats and emphasize your song's rhythm."));
                     }
                     break;
                 case "supersawDynamism":
                     {
-                        message = div$c(h2$a("Supersaw Dynamism"), p$4("A supersaw is a combination of many sawtooth waves, and this setting controls the contribution of extra sawtooth waves."), p$4("At the low end of the slider, only the first wave is contributing to the sound, which sounds like an ordinary static sawtooth wave. At the maximum setting, all of the waves are contributing equally and the resulting tone can randomly shift depending on how the waves line up with each other, similar to the \"unison\" and \"chorus\" settings."));
+                        message = div$b(h2$a("Supersaw Dynamism"), p$4("A supersaw is a combination of many sawtooth waves, and this setting controls the contribution of extra sawtooth waves."), p$4("At the low end of the slider, only the first wave is contributing to the sound, which sounds like an ordinary static sawtooth wave. At the maximum setting, all of the waves are contributing equally and the resulting tone can randomly shift depending on how the waves line up with each other, similar to the \"unison\" and \"chorus\" settings."));
                     }
                     break;
                 case "supersawSpread":
                     {
-                        message = div$c(h2$a("Supersaw Spread"), p$4("A supersaw is a combination of many sawtooth waves, and this setting controls the distance between their frequencies. The dynamism setting must be used for the extra waves to have any effect."), p$4("At the low end of the spread slider, all of the voices have the same frequency but random phase, resulting in a different sound every time a note starts. In the middle, the waves all have slightly different frequencies that shift in and out of phase over time similar to the \"unison\" and \"chorus\" settings, creating a classic supersaw sound. At the extreme end, the frequencies are so far apart they sound dissonant."));
+                        message = div$b(h2$a("Supersaw Spread"), p$4("A supersaw is a combination of many sawtooth waves, and this setting controls the distance between their frequencies. The dynamism setting must be used for the extra waves to have any effect."), p$4("At the low end of the spread slider, all of the voices have the same frequency but random phase, resulting in a different sound every time a note starts. In the middle, the waves all have slightly different frequencies that shift in and out of phase over time similar to the \"unison\" and \"chorus\" settings, creating a classic supersaw sound. At the extreme end, the frequencies are so far apart they sound dissonant."));
                     }
                     break;
                 case "supersawShape":
                     {
-                        message = div$c(h2$a("Supersaw Shape"), p$4("This supersaw instrument includes an option to change the shape of the waves from sawtooth waves to pulse waves. Use this setting to morph between the two shapes."), p$4("When a pulse wave shape is used, you can also control the pulse width with a separate setting."));
+                        message = div$b(h2$a("Supersaw Shape"), p$4("This supersaw instrument includes an option to change the shape of the waves from sawtooth waves to pulse waves. Use this setting to morph between the two shapes."), p$4("When a pulse wave shape is used, you can also control the pulse width with a separate setting."));
                     }
                     break;
                 case "pulseWidth":
                     {
-                        message = div$c(h2$a("Pulse Wave Width"), p$4("This setting controls the shape and sound of a pulse wave. At the minimum width, it sounds light and buzzy. At the maximum width, it is shaped like a classic square wave."));
+                        message = div$b(h2$a("Pulse Wave Width"), p$4("This setting controls the shape and sound of a pulse wave. At the minimum width, it sounds light and buzzy. At the maximum width, it is shaped like a classic square wave."));
                     }
                     break;
                 case "unison":
                     {
-                        message = div$c(h2$a("Unison"), p$4("This instrument can play two identical waves at different frequencies. When two waves play at slightly different frequencies, they move in and out of phase with each other over time as different parts of the waves line up. This creates a dynamic, shifting sound. Pianos are a common example of this kind of sound, because each piano key strikes multiple strings that are tuned to slightly different frequencies."), p$4("The distance between two frequencies is called an \"interval\", and this setting controls how large it is. If the interval is too wide, then the waves may sound out-of-tune and \"dissonant\". However, if the interval is even larger, then the two frequencies can even be distinct pitches."));
+                        message = div$b(h2$a("Unison"), p$4("This instrument can play two identical waves at different frequencies. When two waves play at slightly different frequencies, they move in and out of phase with each other over time as different parts of the waves line up. This creates a dynamic, shifting sound. Pianos are a common example of this kind of sound, because each piano key strikes multiple strings that are tuned to slightly different frequencies."), p$4("The distance between two frequencies is called an \"interval\", and this setting controls how large it is. If the interval is too wide, then the waves may sound out-of-tune and \"dissonant\". However, if the interval is even larger, then the two frequencies can even be distinct pitches."));
                     }
                     break;
                 case "chords":
                     {
-                        message = div$c(h2$a("Chords"), p$4("When multiple different notes occur at the same time, this is called a chord. Chords can be created in BeepBox's pattern editor by adding notes above or below another note."), p$4("This setting determines how chords are played. The standard option is \"simultaneous\" which starts playing all of the pitches in a chord at the same instant. The \"strum\" option is similar, but plays the notes starting at slightly different times. The \"arpeggio\" option is used in \"chiptune\" style music and plays a single tone that rapidly alternates between all of the pitches in the chord."), p$4("Some BeepBox instruments have an option called \"custom interval\" which uses the chord notes to control the interval between the waves of a single tone. This can create strange sound effects when combined with FM modulators."));
+                        message = div$b(h2$a("Chords"), p$4("When multiple different notes occur at the same time, this is called a chord. Chords can be created in BeepBox's pattern editor by adding notes above or below another note."), p$4("This setting determines how chords are played. The standard option is \"simultaneous\" which starts playing all of the pitches in a chord at the same instant. The \"strum\" option is similar, but plays the notes starting at slightly different times. The \"arpeggio\" option is used in \"chiptune\" style music and plays a single tone that rapidly alternates between all of the pitches in the chord."), p$4("Some BeepBox instruments have an option called \"custom interval\" which uses the chord notes to control the interval between the waves of a single tone. This can create strange sound effects when combined with FM modulators."));
                     }
                     break;
                 case "vibrato":
                     {
-                        message = div$c(h2$a("Vibrato"), p$4("This setting causes the frequency of a note to wobble slightly. Singers and violinists often use vibrato."));
+                        message = div$b(h2$a("Vibrato"), p$4("This setting causes the frequency of a note to wobble slightly. Singers and violinists often use vibrato."));
                     }
                     break;
                 case "algorithm":
                     {
-                        message = div$c(h2$a("FM Algorithm"), p$4('FM Synthesis is a mysterious but powerful technique for crafting sounds, popularized by Yamaha keyboards and the Sega Genesis/Mega Drive. It may seem confusing, but try playing around with the options until you get a feel for it, or check out some of the preset examples!'), p$4('This FM synthesizer uses up to four waves, numbered 1, 2, 3, and 4. Each wave may have its own frequency and volume.'), p$4('There are two kinds of waves: "carrier" waves play a tone out loud, but "modulator" waves distort other waves instead. Wave 1 is always a carrier and plays a tone, but other waves may distort it. The "Algorithm" setting determines which waves are modulators, and which other waves those modulators distort. For example, "1←2" means that wave 2 modulates wave 1, and wave 1 plays out loud.'));
+                        message = div$b(h2$a("FM Algorithm"), p$4('FM Synthesis is a mysterious but powerful technique for crafting sounds, popularized by Yamaha keyboards and the Sega Genesis/Mega Drive. It may seem confusing, but try playing around with the options until you get a feel for it, or check out some of the preset examples!'), p$4('This FM synthesizer uses up to four waves, numbered 1, 2, 3, and 4. Each wave may have its own frequency and volume.'), p$4('There are two kinds of waves: "carrier" waves play a tone out loud, but "modulator" waves distort other waves instead. Wave 1 is always a carrier and plays a tone, but other waves may distort it. The "Algorithm" setting determines which waves are modulators, and which other waves those modulators distort. For example, "1←2" means that wave 2 modulates wave 1, and wave 1 plays out loud.'));
                     }
                     break;
                 case "feedbackType":
                     {
-                        message = div$c(h2$a("Feedback Type"), p$4('Modulators distort in one direction (like 1←2), but you can also use the feedback setting to make any wave distort in the opposite direction (1→2), or even itself (1⟲).'));
+                        message = div$b(h2$a("Feedback Type"), p$4('Modulators distort in one direction (like 1←2), but you can also use the feedback setting to make any wave distort in the opposite direction (1→2), or even itself (1⟲).'));
                     }
                     break;
                 case "feedbackVolume":
                     {
-                        message = div$c(h2$a("Feedback Distortion"), p$4("This setting controls the amount of feedback distortion based on the feedback type setting."));
+                        message = div$b(h2$a("Feedback Distortion"), p$4("This setting controls the amount of feedback distortion based on the feedback type setting."));
                     }
                     break;
                 case "operatorFrequency":
                     {
-                        message = div$c(h2$a("Operator Frequency"), p$4('This setting controls the frequency of an individual FM wave, relative to the fundamental frequency of the note. The multiplier 1× is the same as the fundamental frequency, whereas 2x would be an octave (12 semitones) above it. The frequencies with a "~" are slightly detuned and shift in and out of phase over time compared to the other frequencies.'), p$4('Try different combinations of a "carrier" wave and a "modulator" wave with different frequencies to get a feel for how they sound together.'));
+                        message = div$b(h2$a("Operator Frequency"), p$4('This setting controls the frequency of an individual FM wave, relative to the fundamental frequency of the note. The multiplier 1× is the same as the fundamental frequency, whereas 2x would be an octave (12 semitones) above it. The frequencies with a "~" are slightly detuned and shift in and out of phase over time compared to the other frequencies.'), p$4('Try different combinations of a "carrier" wave and a "modulator" wave with different frequencies to get a feel for how they sound together.'));
                     }
                     break;
                 case "operatorVolume":
                     {
-                        message = div$c(h2$a("Operator Volume"), p$4("This setting controls the volume of \"carrier\" waves, or the amount of distortion that \"modulator\" waves apply to other waves."));
+                        message = div$b(h2$a("Operator Volume"), p$4("This setting controls the volume of \"carrier\" waves, or the amount of distortion that \"modulator\" waves apply to other waves."));
                     }
                     break;
                 case "spectrum":
                     {
-                        message = div$c(h2$a("Spectrum"), p$4("This setting allows you to draw your own noise spectrum! This is good for making drum sounds."), p$4("If you only use certain frequencies and a soft fade in/out, it's also possible to make howling wind sounds or even musical wind instruments."), p$4("The left side of the spectrum editor controls the noise energy at lower frequencies, and the right side controls higher frequencies."));
+                        message = div$b(h2$a("Spectrum"), p$4("This setting allows you to draw your own noise spectrum! This is good for making drum sounds."), p$4("If you only use certain frequencies and a soft fade in/out, it's also possible to make howling wind sounds or even musical wind instruments."), p$4("The left side of the spectrum editor controls the noise energy at lower frequencies, and the right side controls higher frequencies."));
                     }
                     break;
                 case "harmonics":
                     {
-                        message = div$c(h2$a("Harmonics"), p$4("This setting allows you to design your own sound wave! Most musical waves are actually a combination of sine waves at certain frequencies, and this lets you control the volume of each sine wave individually."), p$4("The left side of the harmonics editor controls the sine wave volumes at lower frequencies, and the right side controls higher frequencies."));
+                        message = div$b(h2$a("Harmonics"), p$4("This setting allows you to design your own sound wave! Most musical waves are actually a combination of sine waves at certain frequencies, and this lets you control the volume of each sine wave individually."), p$4("The left side of the harmonics editor controls the sine wave volumes at lower frequencies, and the right side controls higher frequencies."));
                     }
                     break;
                 case "effects":
                     {
-                        message = div$c(h2$a("Effects"), p$4("BeepBox has many different kinds of special effects you can add to instruments. You can turn on multiple effects at once, and they can be configured individually. Try them all out!"));
+                        message = div$b(h2$a("Effects"), p$4("BeepBox has many different kinds of special effects you can add to instruments. You can turn on multiple effects at once, and they can be configured individually. Try them all out!"));
                     }
                     break;
                 case "drumsetEnvelope":
                     {
-                        message = div$c(h2$a("Drumset Envelope"), p$4("This drumset comes with a low-pass filter, and this setting can dynamically change the low-pass filter frequency over time. Each row in the pattern editor can have a different envelope shape."));
+                        message = div$b(h2$a("Drumset Envelope"), p$4("This drumset comes with a low-pass filter, and this setting can dynamically change the low-pass filter frequency over time. Each row in the pattern editor can have a different envelope shape."));
                     }
                     break;
                 case "drumsetSpectrum":
                     {
-                        message = div$c(h2$a("Drumset Spectrum"), p$4("This setting allows you to draw your own noise spectrum! This is good for making drumsets. Each row in the pattern editor gets its own spectrum."), p$4("The left side of the spectrum editor controls the noise energy at lower frequencies, and the right side controls higher frequencies."));
+                        message = div$b(h2$a("Drumset Spectrum"), p$4("This setting allows you to draw your own noise spectrum! This is good for making drumsets. Each row in the pattern editor gets its own spectrum."), p$4("The left side of the spectrum editor controls the noise energy at lower frequencies, and the right side controls higher frequencies."));
                     }
                     break;
                 case "chorus":
                     {
-                        message = div$c(h2$a("Chorus"), p$4("The chorus effect combines multiple copies of the instrument's sound and adds a bit of vibrato to simulate an ensemble of instruments or voices. Drag the slider to control how much chorus is added."));
+                        message = div$b(h2$a("Chorus"), p$4("The chorus effect combines multiple copies of the instrument's sound and adds a bit of vibrato to simulate an ensemble of instruments or voices. Drag the slider to control how much chorus is added."));
                     }
                     break;
                 case "echoSustain":
                     {
-                        message = div$c(h2$a("Echo Volume"), p$4("The echo effect repeats the instrument's sound after a delay. Each echo is a little bit quieter than the last, and this setting controls how much quieter."));
+                        message = div$b(h2$a("Echo Volume"), p$4("The echo effect repeats the instrument's sound after a delay. Each echo is a little bit quieter than the last, and this setting controls how much quieter."));
                     }
                     break;
                 case "echoDelay":
                     {
-                        message = div$c(h2$a("Echo Delay"), p$4("The echo effect repeats the instrument's sound after a delay, and this setting controls how long the delay is."));
+                        message = div$b(h2$a("Echo Delay"), p$4("The echo effect repeats the instrument's sound after a delay, and this setting controls how long the delay is."));
                     }
                     break;
                 case "pitchShift":
                     {
-                        message = div$c(h2$a("Pitch Shift"), p$4("This setting makes instruments play higher or lower pitches than the ones displayed in the pattern editor. Be careful that you don't confuse yourself!"), p$4("You can combine this with envelopes to bend pitch over time, or play multiple simultaneous instruments with different pitch shifts for interesting layered sounds."), p$4("The intervals created by this setting are in \"just intonation\" which means they stay in phase with the original pitch instead of shifting in and out of phase over time. If you want the shifting, add the detune effect!"));
+                        message = div$b(h2$a("Pitch Shift"), p$4("This setting makes instruments play higher or lower pitches than the ones displayed in the pattern editor. Be careful that you don't confuse yourself!"), p$4("You can combine this with envelopes to bend pitch over time, or play multiple simultaneous instruments with different pitch shifts for interesting layered sounds."), p$4("The intervals created by this setting are in \"just intonation\" which means they stay in phase with the original pitch instead of shifting in and out of phase over time. If you want the shifting, add the detune effect!"));
                     }
                     break;
                 case "detune":
                     {
-                        message = div$c(h2$a("Detune"), p$4("This setting slightly adjusts the frequency of notes played by the instrument. You can use a little bit to add a pleasing shifting sound similar to the \"unison\" feature when combined with other instruments. If you use too much, then the instrument may sound unpleasantly out-of-tune."));
+                        message = div$b(h2$a("Detune"), p$4("This setting slightly adjusts the frequency of notes played by the instrument. You can use a little bit to add a pleasing shifting sound similar to the \"unison\" feature when combined with other instruments. If you use too much, then the instrument may sound unpleasantly out-of-tune."));
                     }
                     break;
                 case "distortion":
                     {
-                        message = div$c(h2$a("Distortion"), p$4("This is the famous electric guitar effect! However, there are some things to be aware of."), p$4("First, most chords don't sound right when combined with heavy distortion. The only chords commonly used with distorted electric guitars are \"power chords\" which consist of a root note, a \"fifth\" note above that, and/or any octaves of those two notes."), p$4("Second, the distortion sound depends a lot on filtering. In particular, I recommend enabling the note filter effect, and adding both high-pass and low-pass points to the note filter. (Note filters are applied first, then distortion which transforms the sound based on that filtering, then the EQ filter is applied last.)"), p$4("Finally, I recommend adjusting the fade-out setting to allow the end of each note to overlap a little bit with the beginning of the next, but not too much!"));
+                        message = div$b(h2$a("Distortion"), p$4("This is the famous electric guitar effect! However, there are some things to be aware of."), p$4("First, most chords don't sound right when combined with heavy distortion. The only chords commonly used with distorted electric guitars are \"power chords\" which consist of a root note, a \"fifth\" note above that, and/or any octaves of those two notes."), p$4("Second, the distortion sound depends a lot on filtering. In particular, I recommend enabling the note filter effect, and adding both high-pass and low-pass points to the note filter. (Note filters are applied first, then distortion which transforms the sound based on that filtering, then the EQ filter is applied last.)"), p$4("Finally, I recommend adjusting the fade-out setting to allow the end of each note to overlap a little bit with the beginning of the next, but not too much!"));
                     }
                     break;
                 case "bitcrusherQuantization":
                     {
-                        message = div$c(h2$a("Bitcrusher Quantization"), p$4("This effect makes stuff sounds harsher, artificial, and \"low quality\", which is great if that's what you're going for!"));
+                        message = div$b(h2$a("Bitcrusher Quantization"), p$4("This effect makes stuff sounds harsher, artificial, and \"low quality\", which is great if that's what you're going for!"));
                     }
                     break;
                 case "bitcrusherFreq":
                     {
-                        message = div$c(h2$a("Frequency Quantization"), p$4("The bitcrusher effect comes with an additional frequency quantization effect! This is a fun one to play with, especially when combined with the note filter effect."), p$4("Every other notch on this slider is aligned with the currently selected key of the song, and the in-between notches are aligned with the tritones of the key."));
+                        message = div$b(h2$a("Frequency Quantization"), p$4("The bitcrusher effect comes with an additional frequency quantization effect! This is a fun one to play with, especially when combined with the note filter effect."), p$4("Every other notch on this slider is aligned with the currently selected key of the song, and the in-between notches are aligned with the tritones of the key."));
                     }
                     break;
                 case "envelopes":
                     {
-                        message = div$c(h2$a("Envelopes"), p$4("Envelopes are a way to dynamically adjust various other settings over time, usually based on how long the note lasts. Press the + button to add an envelope, then use the menus below to select which setting to control and the curve of the envelope. Try different combinations to see how they sound!"), p$4("Most envelope curves restart from the beginning every time a new note plays. The \"note size\" option is based on the note width as drawn in the pattern editor."), p$4("Envelope curves move in the range from 0 to 1 (or vice versa), where 0 means as quiet as possible and 1 is the same as the corresponding position selected in the instrument settings above. If multiple envelopes are targetting the same setting, they are multiplied before applying to the setting."));
+                        message = div$b(h2$a("Envelopes"), p$4("Envelopes are a way to dynamically adjust various other settings over time, usually based on how long the note lasts. Press the + button to add an envelope, then use the menus below to select which setting to control and the curve of the envelope. Try different combinations to see how they sound!"), p$4("Most envelope curves restart from the beginning every time a new note plays. The \"note size\" option is based on the note width as drawn in the pattern editor."), p$4("Envelope curves move in the range from 0 to 1 (or vice versa), where 0 means as quiet as possible and 1 is the same as the corresponding position selected in the instrument settings above. If multiple envelopes are targetting the same setting, they are multiplied before applying to the setting."));
                     }
                     break;
                 default: throw new Error("Unhandled TipPrompt type: " + type);
             }
-            this.container = div$c({ class: "prompt", style: "width: 300px;" }, message, this._closeButton);
+            this.container = div$b({ class: "prompt", style: "width: 300px;" }, message, this._closeButton);
             setTimeout(() => this._closeButton.focus());
             this._closeButton.addEventListener("click", this._close);
         }
@@ -13350,220 +13971,6 @@ var beepbox = (function (exports) {
             }
         }
     }
-
-    const { div: div$b, button: button$b } = HTML;
-    let realMoney = parseInt(window.localStorage.getItem('money') || '0', 10);
-    let gems = parseInt(window.localStorage.getItem('gems') || '0', 10);
-    let moneyMaxChance = 20;
-    const shop = document.getElementById('shopButtons');
-    const shopPage = document.getElementById('shopPage');
-    const gachaListCommon = ["choptop84"];
-    const gachaListRare = ["Fauxx", "Yuck31", "Lenny", "Keiiphobix", "Just a Toad", "yOph", "Grandnands"];
-    const gachaListEpic = ["Bluto", "Hogbrainrot", "Hailey", "Nintari", "Lognes", "Smerg the Dragon", "Chuck"];
-    const gachaListSuperRare = ["Answearing", "Soshu", "Main", "TheSeasOfEnvy", "Geli", "Nobonoko", "Okayxairen", "BrodTsumi", "Impasaurus", "TheGubbys", "Em (O^O)", "Scoob"];
-    const gachaListUltraRare = ["Jummbus", "Neptendo", "LeoV", "Chippy"];
-    const gachaListLegendary = ["Shaktool"];
-    var inventory = new Array();
-    var storedInventory = localStorage.getItem("inventory");
-    var boughtStuff = new Array();
-    var storedStuff = localStorage.getItem("bought");
-    if (storedInventory != null) {
-        inventory = JSON.parse(storedInventory);
-    }
-    if (storedStuff != null) {
-        boughtStuff = JSON.parse(storedStuff);
-    }
-    function addMoney() {
-        realMoney += Math.round(Math.random() * moneyMaxChance);
-        window.localStorage.setItem('money', String(realMoney));
-        var gemchance = Math.round(Math.random() * 10);
-        if (gemchance == 1) {
-            gems++;
-            window.localStorage.setItem('gems', String(gems));
-        }
-    }
-    function removeMoney(moneyToRemove) {
-        if (realMoney - moneyToRemove >= 0) {
-            realMoney -= moneyToRemove;
-            localStorage.setItem("money", String(realMoney));
-        }
-        else {
-            alert("You don't have enough shitcoins bitch!");
-        }
-    }
-    function removeGems(gemsToRemove) {
-        if (gems - gemsToRemove >= 0) {
-            gems -= gemsToRemove;
-            localStorage.setItem("gems", String(gems));
-        }
-        else {
-            alert("You don't have enough gems bitch!");
-        }
-    }
-    let moneyShits = div$b({ style: "top:0; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "shitcoins: " + realMoney);
-    let gemShits = div$b({ style: "top:32px; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "gems: " + gems);
-    let songPlayerButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "songPlayerOption", onclick: () => buyThing("songPlayer", 3000, songPlayerButton) }, "Song Player"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
-    let shortenUrlButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "shortenUrlOption", onclick: () => buyThing("shortenUrl", 2000, shortenUrlButton) }, "Shorten Url"), div$b({ style: "font-size: 16px" }, "2000 shitcoins"));
-    let beatsPerBarButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "beatsPerBarOption", onclick: () => buyThing("beatsPerBar", 2500, beatsPerBarButton) }, "BPM Prompt"), div$b({ style: "font-size: 16px" }, "2500 shitcoins"));
-    let showScrollBarButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "showScrollBarOption", onclick: () => buyThing("showScrollBar", 3000, showScrollBarButton) }, "Octave ScrollBar"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
-    let showLettersButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "showLettersOption", onclick: () => buyThing("showLetters", 3000, showLettersButton) }, "Piano Keys"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
-    let keyDButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "keyDOption", onclick: () => buyThing("keyD", 500, keyDButton) }, "D"), div$b({ style: "font-size: 16px" }, "500 shitcoins"));
-    let easySadButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "easySadOption", onclick: () => buyThing("easySad", 500, easySadButton) }, "Easy :("), div$b({ style: "font-size: 16px" }, "500 shitcoins"));
-    let gachaButton = button$b({ class: "shopButton", id: "gachaButton", onclick: () => openThing("gacha") }, "Gacha");
-    let itemsButton = button$b({ class: "shopButton", id: "buyButton", onclick: () => openThing("items") }, "Buy");
-    let closeShopButton = button$b({ class: "shopButton", id: "closeButton", onclick: () => closeshop() }, "Close");
-    let itemsDiv = div$b({ class: "itemsDiv", id: "itemsDiv", style: "display:none; position:absolute; left:10vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$b({ style: "margin: 0.5em;" }, "Stupid Shit"), div$b({ style: "display: flex; flex-direction: column;max-height: 270px; overflow-y: scroll;" }, div$b({ class: "fileMenuStuff" }, div$b({ style: "font-size: 16px" }, "File Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, songPlayerButton, shortenUrlButton)), div$b({ class: "editMenuStuff" }, div$b({ style: "font-size: 16px" }, "Edit Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, beatsPerBarButton)), div$b({ class: "prefMenuStuff" }, div$b({ style: "font-size: 16px" }, "Preferences Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, showScrollBarButton, showLettersButton)), div$b({ class: "keys" }, div$b({ style: "font-size: 16px" }, "Keys:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, keyDButton)), div$b({ class: "scales" }, div$b({ style: "font-size: 16px" }, "Scales:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, easySadButton))), button$b({ class: "shopButton", id: "closeButton", onclick: () => closeThing("items") }, "Close"));
-    let gachaDiv = div$b({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$b({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$b({ style: "" }, "Roll for awesome rewards:"), div$b({ style: "display: flex; " }, div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$b({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$b({ style: "font-size: 16px" }, "50 Gems")), div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$b({ class: "shopButton", id: "gachaButton", onclick: () => rollMultipleGacha(5) }, "Roll 5x"), div$b({ style: "font-size: 16px" }, "250 Gems"))), div$b({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$b({ class: "result", id: "gachaRarity" }, "!")), button$b({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
-    if (boughtStuff.includes("songPlayer")) {
-        songPlayerButton.style.display = "none";
-    }
-    function rollGacha() {
-        let chanceThingy = Math.floor(Math.random() * 100);
-        let whatYouGot = "";
-        const gachaResult = document.getElementById('gachaResult');
-        const gachaRarity = document.getElementById('gachaRarity');
-        if (chanceThingy >= 0 && chanceThingy < 65) {
-            whatYouGot = gachaListCommon[Math.floor(Math.random() * gachaListCommon.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (Common)";
-            }
-        }
-        if (chanceThingy >= 65 && chanceThingy < 85) {
-            whatYouGot = gachaListRare[Math.floor(Math.random() * gachaListRare.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (Rare)";
-            }
-        }
-        if (chanceThingy >= 85 && chanceThingy < 95) {
-            whatYouGot = gachaListEpic[Math.floor(Math.random() * gachaListEpic.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (Epic)";
-            }
-        }
-        if (chanceThingy >= 95 && chanceThingy < 98) {
-            whatYouGot = gachaListSuperRare[Math.floor(Math.random() * gachaListSuperRare.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (SR)";
-            }
-        }
-        if (chanceThingy >= 98 && chanceThingy < 99) {
-            whatYouGot = gachaListUltraRare[Math.floor(Math.random() * gachaListUltraRare.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (UR)";
-            }
-        }
-        if (chanceThingy >= 99) {
-            whatYouGot = gachaListLegendary[Math.floor(Math.random() * gachaListLegendary.length)];
-            if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (UR)";
-            }
-        }
-        inventory.push(whatYouGot);
-        if (gachaResult != null) {
-            gachaResult.innerHTML = "You just got: " + whatYouGot;
-        }
-        if (inventory != null) {
-            localStorage.setItem("inventory", JSON.stringify(inventory));
-        }
-    }
-    function buyThing(thingToBuy, price, hides) {
-        if (!boughtStuff.includes(thingToBuy)) {
-            if (realMoney >= price) {
-                removeMoney(price);
-                boughtStuff.push(thingToBuy);
-                if (boughtStuff != null) {
-                    localStorage.setItem("bought", JSON.stringify(boughtStuff));
-                }
-                moneyShits.innerHTML = "shitcoins: " + realMoney;
-                hides.style.display = "none";
-                alert("You might own what you just bought, but you won't see any changes until you click on the editor. It's a pain I KNOW but deal with it.");
-            }
-            else {
-                alert("You cannot buy that rn! Get more moneys!!!");
-            }
-        }
-        else {
-            if (realMoney >= price) {
-                alert("You can't buy this! You already own it!");
-            }
-            else {
-                alert("Even though you don't have enough, you still own this. Meaning you don't need to buy it again.");
-            }
-        }
-    }
-    function rollOneGacha() {
-        if (gems >= 50) {
-            rollGacha();
-            removeGems(50);
-            gemShits.innerHTML = "gems: " + gems;
-        }
-        else {
-            alert("damn you're broke");
-        }
-    }
-    function rollMultipleGacha(num) {
-        if (gems >= 50 * num) {
-            for (let i = num; i > 0; num--) {
-                rollGacha();
-            }
-            removeGems(50 * num);
-            gemShits.innerHTML = "gems: " + gems;
-        }
-        else {
-            alert("damn you're broke");
-        }
-    }
-    function openThing(thing) {
-        if (thing != null && thing != undefined) {
-            let divThing = document.getElementById(thing + "Div");
-            if (divThing != null) {
-                divThing.style.display = "unset";
-                if (shop != null) {
-                    shop.style.display = "none";
-                }
-            }
-            else {
-                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
-            }
-            if (shopPage != null) {
-                shopPage.style.display = "unset";
-            }
-            else {
-                console.log("how the fuck? Somehow the shop page isn't real!");
-            }
-        }
-    }
-    function closeThing(thing) {
-        if (thing != null && thing != undefined) {
-            let divThing = document.getElementById(thing + "Div");
-            if (divThing != null) {
-                divThing.style.display = "none";
-                if (shop != null) {
-                    shop.style.display = "";
-                }
-            }
-            else {
-                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
-            }
-            if (shopPage != null) {
-                shopPage.style.display = "none";
-            }
-            else {
-                console.log("how the fuck? Somehow the shop page isn't real!");
-            }
-        }
-    }
-    function closeshop() {
-        const shopdiv = document.getElementById('shop');
-        shopdiv.style.display = 'none';
-    }
-    document.body.appendChild(moneyShits);
-    document.body.appendChild(gemShits);
-    shop === null || shop === void 0 ? void 0 : shop.appendChild(gachaButton);
-    shop === null || shop === void 0 ? void 0 : shop.appendChild(itemsButton);
-    shop === null || shop === void 0 ? void 0 : shop.appendChild(closeShopButton);
-    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(itemsDiv);
-    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(gachaDiv);
 
     function makeEmptyReplacementElement(node) {
         const clone = node.cloneNode(false);
@@ -19584,7 +19991,7 @@ You should be redirected to the song at:<br /><br />
             this._volumeSlider = input({ title: "main volume", style: "width: 5em; flex-grow: 1; margin: 0;", type: "range", min: "0", max: "75", value: "50", step: "1" });
             this._fileMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "File"), option({ value: "new" }, "+ New Blank Song"), option({ value: "import" }, "↑ Import Song... (" + EditorConfig.ctrlSymbol + "O)"), option({ value: "export" }, "↓ Export Song... (" + EditorConfig.ctrlSymbol + "S)"), option({ value: "copyUrl" }, "⎘ Copy Song URL"), option({ value: "shareUrl" }, "⤳ Share Song URL"), option({ value: "shortenUrl" }, "… Shorten Song URL"), option({ value: "viewPlayer" }, "▶ View in Song Player"), option({ value: "copyEmbed" }, "⎘ Copy HTML Embed Code"), option({ value: "songRecovery" }, "⚠ Recover Recent Song..."));
             this._editMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Edit"), option({ value: "undo" }, "Undo (Z)"), option({ value: "redo" }, "Redo (Y)"), option({ value: "copy" }, "Copy Pattern (C)"), option({ value: "pasteNotes" }, "Paste Pattern Notes (V)"), option({ value: "pasteNumbers" }, "Paste Pattern Numbers (" + EditorConfig.ctrlSymbol + "⇧V)"), option({ value: "insertBars" }, "Insert Bar (⏎)"), option({ value: "deleteBars" }, "Delete Selected Bars (⌫)"), option({ value: "insertChannel" }, "Insert Channel (" + EditorConfig.ctrlSymbol + "⏎)"), option({ value: "deleteChannel" }, "Delete Selected Channels (" + EditorConfig.ctrlSymbol + "⌫)"), option({ value: "selectAll" }, "Select All (A)"), option({ value: "selectChannel" }, "Select Channel (⇧A)"), option({ value: "duplicatePatterns" }, "Duplicate Reused Patterns (D)"), option({ value: "transposeUp" }, "Move Notes Up (+ or ⇧+)"), option({ value: "transposeDown" }, "Move Notes Down (- or ⇧-)"), option({ value: "moveNotesSideways" }, "Move All Notes Sideways..."), option({ value: "beatsPerBar" }, "Change Beats Per Bar..."), option({ value: "barCount" }, "Change Song Length..."), option({ value: "channelSettings" }, "Channel Settings... (Q)"));
-            this._optionsMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Preferences"), option({ value: "autoPlay" }, "Auto Play on Load"), option({ value: "autoFollow" }, "Show And Play The Same Bar"), option({ value: "enableNotePreview" }, "Hear Preview of Added Notes"), option({ value: "showLetters" }, "Show Piano Keys"), option({ value: "showFifth" }, 'Highlight "Fifth" of Song Key'), option({ value: "notesOutsideScale" }, "Allow Adding Notes Not in Scale"), option({ value: "setDefaultScale" }, "Use Current Scale as Default"), option({ value: "showChannels" }, "Show Notes From All Channels"), option({ value: "showScrollBar" }, "Show Octave Scroll Bar"), option({ value: "alwaysShowSettings" }, "Customize All Instruments"), option({ value: "instrumentCopyPaste" }, "Instrument Copy/Paste Buttons"), option({ value: "enableChannelMuting" }, "Enable Channel Muting"), option({ value: "displayBrowserUrl" }, "Display Song Data in URL"), option({ value: "recordingSetup" }, "Set Up Note Recording..."));
+            this._optionsMenu = select({ style: "width: 100%;" }, option({ selected: true, disabled: true, hidden: false }, "Preferences"), option({ value: "autoPlay" }, "Auto Play on Load"), option({ value: "autoFollow" }, "Show And Play The Same Bar"), option({ value: "enableNotePreview" }, "Hear Preview of Added Notes"), option({ value: "showLetters" }, "Show Piano Keys"), option({ value: "showFifth" }, 'Highlight "Fifth" of Song Key'), option({ value: "notesOutsideScale" }, "Allow Adding Notes Not in Scale"), option({ value: "setDefaultScale" }, "Use Current Scale as Default"), option({ value: "showChannels" }, "Show Notes From All Channels"), option({ value: "showScrollBar" }, "Show Octave Scroll Bar"), option({ value: "alwaysShowSettings" }, "Customize All Instruments"), option({ value: "instrumentCopyPaste" }, "Instrument Copy/Paste Buttons"), option({ value: "enableChannelMuting" }, "Enable Channel Muting"), option({ value: "displayBrowserUrl" }, "Display Song Data in URL"), option({ value: "colorTheme" }, "Set Theme..."), option({ value: "recordingSetup" }, "Set Up Note Recording..."));
             this._scaleSelect = buildOptions(select(), Config.scales.map(scale => scale.name));
             this._keySelect = buildOptions(select(), Config.keys.map(key => key.name).reverse());
             this._tempoSlider = new Slider(input({ style: "margin: 0; width: 4em; flex-grow: 1; vertical-align: middle;", type: "range", min: "0", max: "14", value: "7", step: "1" }), this._doc, (oldValue, newValue) => new ChangeTempo(this._doc, oldValue, Math.round(120.0 * Math.pow(2.0, (-4.0 + newValue) / 9.0))));
@@ -19739,6 +20146,38 @@ You should be redirected to the song at:<br /><br />
                             const thingOption = this._fileMenu.querySelector("[value=shortenUrl]");
                             thingOption.disabled = true;
                         }
+                        if (boughtStuff.includes("import")) {
+                            const thingOption = this._fileMenu.querySelector("[value=import]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=import]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("export")) {
+                            const thingOption = this._fileMenu.querySelector("[value=export]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=export]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("recovery")) {
+                            const thingOption = this._fileMenu.querySelector("[value=songRecovery]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=songRecovery]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("copyUrl")) {
+                            const thingOption = this._fileMenu.querySelector("[value=copyUrl]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=copyUrl]");
+                            thingOption.disabled = true;
+                        }
                         if (boughtStuff.includes("beatsPerBar")) {
                             const thingOption = this._editMenu.querySelector("[value=beatsPerBar]");
                             thingOption.disabled = false;
@@ -19748,19 +20187,107 @@ You should be redirected to the song at:<br /><br />
                             thingOption.disabled = true;
                         }
                         if (boughtStuff.includes("showScrollBar")) {
-                            const thingOption = this._optionsMenu.querySelector("[value=showScrollBar]");
+                            const thingOption = this._optionsMenu.querySelector('[value="showScrollBar"]');
                             thingOption.disabled = false;
                         }
                         else {
-                            const thingOption = this._optionsMenu.querySelector("[value=showScrollBar]");
+                            const thingOption = this._optionsMenu.querySelector('[value="showScrollBar"]');
                             thingOption.disabled = true;
                         }
                         if (boughtStuff.includes("showLetters")) {
-                            const thingOption = this._optionsMenu.querySelector("[value=showLetters]");
+                            const thingOption = this._optionsMenu.querySelector('[value="showLetters"]');
                             thingOption.disabled = false;
                         }
                         else {
-                            const thingOption = this._optionsMenu.querySelector("[value=showLetters]");
+                            const thingOption = this._optionsMenu.querySelector('[value="showLetters"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("autoPlay")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="autoPlay"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="autoPlay"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("autoFollow")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="autoFollow"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="autoFollow"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("enableNotePreview")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="enableNotePreview"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="enableNotePreview"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("fifthNote")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="showFifth"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="showFifth"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("notesOutsideScale")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="notesOutsideScale"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="notesOutsideScale"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("showChannels")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="showChannels"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="showChannels"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("instrumentCopyPaste")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="instrumentCopyPaste"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="instrumentCopyPaste"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("enableChannelMuting")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="enableChannelMuting"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="enableChannelMuting"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("displayBrowserUrl")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="displayBrowserUrl"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="displayBrowserUrl"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("recordingSetup")) {
+                            const thingOption = this._optionsMenu.querySelector('[value="recordingSetup"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector('[value="recordingSetup"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyCSharp")) {
+                            const thingOption = this._keySelect.querySelector('[value="10"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="10"]');
                             thingOption.disabled = true;
                         }
                         if (boughtStuff.includes("keyD")) {
@@ -19771,6 +20298,99 @@ You should be redirected to the song at:<br /><br />
                             const thingOption = this._keySelect.querySelector('[value="9"]');
                             thingOption.disabled = true;
                         }
+                        if (boughtStuff.includes("keyDSharp")) {
+                            const thingOption = this._keySelect.querySelector('[value="8"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="8"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyE")) {
+                            const thingOption = this._keySelect.querySelector('[value="7"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="7"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyF")) {
+                            const thingOption = this._keySelect.querySelector('[value="6"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="6"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyFSharp")) {
+                            const thingOption = this._keySelect.querySelector('[value="5"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="5"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyG")) {
+                            const thingOption = this._keySelect.querySelector('[value="4"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="4"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyGSharp")) {
+                            const thingOption = this._keySelect.querySelector('[value="3"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="3"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyA")) {
+                            const thingOption = this._keySelect.querySelector('[value="2"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="2"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyASharp")) {
+                            const thingOption = this._keySelect.querySelector('[value="1"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="1"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyB")) {
+                            const thingOption = this._keySelect.querySelector('[value="0"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="0"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyCSharp")
+                            && boughtStuff.includes("keyCSharp")
+                            && boughtStuff.includes("keyD")
+                            && boughtStuff.includes("keyDSharp")
+                            && boughtStuff.includes("keyE")
+                            && boughtStuff.includes("keyF")
+                            && boughtStuff.includes("keyFSharp")
+                            && boughtStuff.includes("keyG")
+                            && boughtStuff.includes("keyGSharp")
+                            && boughtStuff.includes("keyA")
+                            && boughtStuff.includes("keyASharp")
+                            && boughtStuff.includes("keyB")) {
+                            const thingOption = this._keySelect.querySelector('[label="Edit"]');
+                            thingOption.disabled = false;
+                            thingOption.removeAttribute("hidden");
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[label="Edit"]');
+                            thingOption.disabled = true;
+                            thingOption.setAttribute("hidden", "");
+                        }
                         if (boughtStuff.includes("easySad")) {
                             const thingOption = this._scaleSelect.querySelector('[value="1"]');
                             thingOption.disabled = false;
@@ -19779,6 +20399,126 @@ You should be redirected to the song at:<br /><br />
                             const thingOption = this._scaleSelect.querySelector('[value="1"]');
                             thingOption.disabled = true;
                         }
+                        if (boughtStuff.includes("islandHappy")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="2"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="2"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("islandSad")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="3"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="3"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("bluesHappy")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="4"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="4"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("bluesSad")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="5"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="5"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("normalEasy")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="6"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="6"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("normalSad")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="7"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="7"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("dblHappy")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="8"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="8"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("dblSad")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="9"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="9"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("strange")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="10"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="10"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("expert")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="11"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="11"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("easySad")
+                            && boughtStuff.includes("islandHappy")
+                            && boughtStuff.includes("islandSad")
+                            && boughtStuff.includes("bluesHappy")
+                            && boughtStuff.includes("bluesSad")
+                            && boughtStuff.includes("normalHappy")
+                            && boughtStuff.includes("normalSad")
+                            && boughtStuff.includes("dblHappy")
+                            && boughtStuff.includes("dblSad")
+                            && boughtStuff.includes("strange")
+                            && boughtStuff.includes("expert")) {
+                            const thingOption = this._scaleSelect.querySelector('[label="Edit"]');
+                            thingOption.disabled = false;
+                            thingOption.removeAttribute("hidden");
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[label="Edit"]');
+                            thingOption.disabled = true;
+                            thingOption.setAttribute("hidden", "");
+                        }
+                        const _themePrompt = new ThemePrompt(this._doc);
+                        if (boughtStuff.includes("shitbox2")) {
+                            const thingOption = _themePrompt._themeSelect.querySelector('[value="shitbox2"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = _themePrompt._themeSelect.querySelector('[value="shitbox2"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("realm")) {
+                            const thingOption = _themePrompt._themeSelect.querySelector('[value="realm"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = _themePrompt._themeSelect.querySelector('[value="realm"]');
+                            thingOption.disabled = true;
+                        }
+                        const htmlEmbedOption = this._fileMenu.querySelector("[value=copyEmbed]");
+                        htmlEmbedOption.disabled = true;
+                        htmlEmbedOption.setAttribute("hidden", "");
                     }
                 }
                 this._trackAndMuteContainer.scrollLeft = this._doc.barScrollPos * this._doc.getBarWidth();
@@ -19831,6 +20571,7 @@ You should be redirected to the song at:<br /><br />
                     (prefs.instrumentCopyPaste ? "✓ " : "　") + "Instrument Copy/Paste Buttons",
                     (prefs.enableChannelMuting ? "✓ " : "　") + "Enable Channel Muting",
                     (prefs.displayBrowserUrl ? "✓ " : "　") + "Display Song Data in URL",
+                    "　Set Theme...",
                     "　Set Up Note Recording...",
                 ];
                 for (let i = 0; i < optionCommands.length; i++) {
@@ -20453,8 +21194,10 @@ You should be redirected to the song at:<br /><br />
                         if (canPlayNotes)
                             break;
                         if (event.ctrlKey || event.metaKey) {
-                            this._openPrompt("export");
-                            event.preventDefault();
+                            if (boughtStuff.includes("export")) {
+                                this._openPrompt("export");
+                                event.preventDefault();
+                            }
                         }
                         else if (this._doc.prefs.enableChannelMuting) {
                             this._doc.selection.soloChannels(event.shiftKey);
@@ -20465,8 +21208,10 @@ You should be redirected to the song at:<br /><br />
                         if (canPlayNotes)
                             break;
                         if (event.ctrlKey || event.metaKey) {
-                            this._openPrompt("import");
-                            event.preventDefault();
+                            if (boughtStuff.includes("import")) {
+                                this._openPrompt("import");
+                                event.preventDefault();
+                            }
                         }
                         break;
                     case 86:
@@ -21008,12 +21753,11 @@ You should be redirected to the song at:<br /><br />
                     case "layout":
                         this._openPrompt("layout");
                         break;
-                    case "colorTheme":
-                        this._doc.prefs.shitbox4colorTheme = this._doc.prefs.shitbox4colorTheme == "light classic" ? "dark classic" : "light classic";
-                        ColorConfig.setTheme(this._doc.prefs.shitbox4colorTheme);
-                        break;
                     case "recordingSetup":
                         this._openPrompt("recordingSetup");
+                        break;
+                    case "colorTheme":
+                        this._openPrompt("colorTheme");
                         break;
                 }
                 this._optionsMenu.selectedIndex = 0;
@@ -21177,6 +21921,9 @@ You should be redirected to the song at:<br /><br />
                         break;
                     case "layout":
                         this.prompt = new LayoutPrompt(this._doc);
+                        break;
+                    case "colorTheme":
+                        this.prompt = new ThemePrompt(this._doc);
                         break;
                     case "recordingSetup":
                         this.prompt = new RecordingSetupPrompt(this._doc);
@@ -22194,7 +22941,7 @@ You should be redirected to the song at:<br /><br />
             this.metronomeWhileRecording = window.localStorage.getItem("shitbox4metronomeWhileRecording") != "false";
             this.keyboardLayout = window.localStorage.getItem("shitbox4keyboardLayout") || "wickiHayden";
             this.shitbox4layout = window.localStorage.getItem("shitbox4layout") || "small";
-            this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "dark classic";
+            this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "shitbox4 classic";
             this.visibleOctaves = (window.localStorage.getItem("shitbox4visibleOctaves") >>> 0) || Preferences.defaultVisibleOctaves;
             const defaultScale = Config.scales.dictionary[window.localStorage.getItem("defaultScale")];
             this.defaultScale = (defaultScale != undefined) ? defaultScale.index : 0;
@@ -22225,7 +22972,7 @@ You should be redirected to the song at:<br /><br />
             window.localStorage.setItem("shitbox4metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
             window.localStorage.setItem("shitbox4keyboardLayout", this.keyboardLayout);
             window.localStorage.setItem("shitbox4shitbox4layout", this.shitbox4layout);
-            window.localStorage.setItem("shitbox4shitbox4colorTheme", this.shitbox4colorTheme);
+            window.localStorage.setItem("shitbox4colorTheme", this.shitbox4colorTheme);
             window.localStorage.setItem("shitbox4volume", String(this.volume));
             window.localStorage.setItem("shitbox4visibleOctaves", String(this.visibleOctaves));
         }

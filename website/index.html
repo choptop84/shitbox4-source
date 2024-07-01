@@ -21,7 +21,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" rel="stylesheet" media="none" onload="if (this.media != 'all') this.media='all';" /> <!-- this is a trick to load CSS asynchronously. -->
 	<style type="text/css">
 		html {
-			background: #252525;
+			background: var(--page-margin, #252525);
 			overflow-x: hidden;
 			font-size: large;
 			font-family: 'Roboto', sans-serif;
@@ -41,7 +41,7 @@
 		#beepboxEditorContainer {
 			min-height: 645px;
 			overflow: auto;
-			background: #252525;
+			background: var(--editor-background, #252525);
 			width: 100%;
 			max-width: 710px;
 			padding-left: 30px;
@@ -49,7 +49,7 @@
 		}
 		#text-content {
 			overflow: auto;
-			background: #252525;
+			background: var(--editor-background, #252525);
 			width: 100%;
 			max-width: 710px;
 			padding-left: 30px;

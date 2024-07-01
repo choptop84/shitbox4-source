@@ -4,6 +4,7 @@ import {InstrumentType, EffectType, Config, getPulseWidthRatio, effectsIncludeTr
 import {Preset, PresetCategory, EditorConfig, isMobile, prettyNumber} from "./EditorConfig";
 import {ColorConfig, ChannelColors} from "./ColorConfig";
 import "./Layout"; // Imported here for the sake of ensuring this code is transpiled early.
+import {ThemePrompt} from "./ThemePrompt";
 import {Instrument, Channel, Synth} from "../synth/synth";
 import {HTML} from "imperative-html/dist/esm/elements-strict";
 import {Preferences} from "./Preferences";
@@ -192,6 +193,7 @@ export class SongEditor {
 		option({value: "instrumentCopyPaste"}, "Instrument Copy/Paste Buttons"),
 		option({value: "enableChannelMuting"}, "Enable Channel Muting"),
 		option({value: "displayBrowserUrl"}, "Display Song Data in URL"),
+		option({value: "colorTheme"}, "Set Theme..."),
 		option({value: "recordingSetup"}, "Set Up Note Recording..."),
 	);
 	private readonly _scaleSelect: HTMLSelectElement = buildOptions(select(), Config.scales.map(scale=>scale.name));
@@ -650,6 +652,9 @@ export class SongEditor {
 				case "layout":
 					this.prompt = new LayoutPrompt(this._doc);
 					break;
+				case "colorTheme":
+					this.prompt = new ThemePrompt(this._doc);
+					break;
 				case "recordingSetup":
 					this.prompt = new RecordingSetupPrompt(this._doc);
 					break;
@@ -699,6 +704,7 @@ export class SongEditor {
 
 		if (boughtStuff != undefined) {
 			if (boughtStuff != null) {
+				//#region File Menu Shits
 				if (boughtStuff.includes("songPlayer")) {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=viewPlayer]");
 					thingOption.disabled = false;
@@ -715,6 +721,39 @@ export class SongEditor {
 					thingOption.disabled = true;
 				} 
 
+				if (boughtStuff.includes("import")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=import]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=import]");
+					thingOption.disabled = true;
+				}
+
+				if (boughtStuff.includes("export")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=export]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=export]");
+					thingOption.disabled = true;
+				}
+
+				if (boughtStuff.includes("recovery")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=songRecovery]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=songRecovery]");
+					thingOption.disabled = true;
+				}
+
+				if (boughtStuff.includes("copyUrl")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=copyUrl]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=copyUrl]");
+					thingOption.disabled = true;
+				}
+				//#endregion
+				//#region Edit Menu Shits
 				if (boughtStuff.includes("beatsPerBar")) {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._editMenu.querySelector("[value=beatsPerBar]");
 					thingOption.disabled = false;
@@ -722,23 +761,112 @@ export class SongEditor {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._editMenu.querySelector("[value=beatsPerBar]");
 					thingOption.disabled = true;
 				} 
-
+				//#endregion
+				//#region Preferences Menu Shits
 				if (boughtStuff.includes("showScrollBar")) {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showScrollBar]");
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showScrollBar"]');
 					thingOption.disabled = false;
 				} else {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showScrollBar]");
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showScrollBar"]');
 					thingOption.disabled = true;
 				} 
 
 				if (boughtStuff.includes("showLetters")) {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showLetters]");
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showLetters"]');
 					thingOption.disabled = false;
 				} else {
-					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showLetters]");
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showLetters"]');
 					thingOption.disabled = true;
 				} 
 
+				if (boughtStuff.includes("autoPlay")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="autoPlay"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="autoPlay"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("autoFollow")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="autoFollow"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="autoFollow"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("enableNotePreview")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="enableNotePreview"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="enableNotePreview"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("fifthNote")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showFifth"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showFifth"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("notesOutsideScale")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="notesOutsideScale"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="notesOutsideScale"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("showChannels")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showChannels"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="showChannels"]');
+					thingOption.disabled = true;
+				} 
+				
+				if (boughtStuff.includes("instrumentCopyPaste")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="instrumentCopyPaste"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="instrumentCopyPaste"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("enableChannelMuting")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="enableChannelMuting"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="enableChannelMuting"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("displayBrowserUrl")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="displayBrowserUrl"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="displayBrowserUrl"]');
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("recordingSetup")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="recordingSetup"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector('[value="recordingSetup"]');
+					thingOption.disabled = true;
+				} 
+				//#endregion
+				//#region Key Shits
+				if (boughtStuff.includes("keyCSharp")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="10"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="10"]');
+					thingOption.disabled = true;
+				} 
 				if (boughtStuff.includes("keyD")) {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="9"]');
 					thingOption.disabled = false;
@@ -746,7 +874,93 @@ export class SongEditor {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="9"]');
 					thingOption.disabled = true;
 				} 
-				
+				if (boughtStuff.includes("keyDSharp")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="8"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="8"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyE")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="7"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="7"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyF")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="6"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="6"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyFSharp")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="5"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="5"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyG")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="4"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="4"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyGSharp")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="3"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="3"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyA")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="2"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="2"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyASharp")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="1"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="1"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("keyB")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="0"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="0"]');
+					thingOption.disabled = true;
+				} 
+
+				if 
+				(boughtStuff.includes("keyCSharp")
+				&&boughtStuff.includes("keyCSharp")
+				&&boughtStuff.includes("keyD")
+				&&boughtStuff.includes("keyDSharp")
+				&&boughtStuff.includes("keyE") 
+				&&boughtStuff.includes("keyF")
+				&&boughtStuff.includes("keyFSharp")
+				&&boughtStuff.includes("keyG")
+				&&boughtStuff.includes("keyGSharp")
+				&&boughtStuff.includes("keyA")
+				&&boughtStuff.includes("keyASharp")
+				&&boughtStuff.includes("keyB")) {
+					const thingOption: HTMLOptGroupElement = <HTMLOptGroupElement>this._keySelect.querySelector('[label="Edit"]');
+					thingOption.disabled = false;
+					thingOption.removeAttribute("hidden");
+				} else {
+					const thingOption: HTMLOptGroupElement = <HTMLOptGroupElement>this._keySelect.querySelector('[label="Edit"]');
+					thingOption.disabled = true;
+					thingOption.setAttribute("hidden","");
+				}
+				//#endregion
+				//#region Scale Shits
 				if (boughtStuff.includes("easySad")) {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="1"]');
 					thingOption.disabled = false;
@@ -754,7 +968,117 @@ export class SongEditor {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="1"]');
 					thingOption.disabled = true;
 				} 
-				
+				if (boughtStuff.includes("islandHappy")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="2"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="2"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("islandSad")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="3"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="3"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("bluesHappy")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="4"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="4"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("bluesSad")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="5"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="5"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("normalEasy")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="6"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="6"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("normalSad")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="7"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="7"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("dblHappy")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="8"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="8"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("dblSad")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="9"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="9"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("strange")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="10"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="10"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("expert")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="11"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="11"]');
+					thingOption.disabled = true;
+				} 
+				if 
+				(boughtStuff.includes("easySad")
+				&&boughtStuff.includes("islandHappy")
+				&&boughtStuff.includes("islandSad")
+				&&boughtStuff.includes("bluesHappy")
+				&&boughtStuff.includes("bluesSad") 
+				&&boughtStuff.includes("normalHappy")
+				&&boughtStuff.includes("normalSad")
+				&&boughtStuff.includes("dblHappy")
+				&&boughtStuff.includes("dblSad")
+				&&boughtStuff.includes("strange")
+				&&boughtStuff.includes("expert")) {
+					const thingOption: HTMLOptGroupElement = <HTMLOptGroupElement>this._scaleSelect.querySelector('[label="Edit"]');
+					thingOption.disabled = false;
+					thingOption.removeAttribute("hidden");
+				} else {
+					const thingOption: HTMLOptGroupElement = <HTMLOptGroupElement>this._scaleSelect.querySelector('[label="Edit"]');
+					thingOption.disabled = true;
+					thingOption.setAttribute("hidden","");
+				}
+				//#endregion
+				const _themePrompt = new ThemePrompt(this._doc);
+				if (boughtStuff.includes("shitbox2")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="shitbox2"]');
+					thingOption.disabled = false;
+				} else {
+					
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="shitbox2"]');
+					thingOption.disabled = true;
+				} 
+				if (boughtStuff.includes("realm")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="realm"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>_themePrompt._themeSelect.querySelector('[value="realm"]');
+					thingOption.disabled = true;
+				} 
+
+				const htmlEmbedOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=copyEmbed]");
+				htmlEmbedOption.disabled = true;
+				htmlEmbedOption.setAttribute("hidden","");
 			}
 		}
 
@@ -811,6 +1135,7 @@ export class SongEditor {
 			(prefs.instrumentCopyPaste ? "✓ " : "　") + "Instrument Copy/Paste Buttons",
 			(prefs.enableChannelMuting ? "✓ " : "　") + "Enable Channel Muting",
 			(prefs.displayBrowserUrl ? "✓ " : "　") + "Display Song Data in URL",
+			"　Set Theme...",
 			"　Set Up Note Recording...",
 		];
 		for (let i: number = 0; i < optionCommands.length; i++) {
@@ -1435,8 +1760,10 @@ export class SongEditor {
 			case 83: // s
 				if (canPlayNotes) break;
 				if (event.ctrlKey || event.metaKey) {
-					this._openPrompt("export");
-					event.preventDefault();
+					if (boughtStuff.includes("export")) {
+						this._openPrompt("export");
+						event.preventDefault();
+					}
 				} else if (this._doc.prefs.enableChannelMuting) {
 						this._doc.selection.soloChannels(event.shiftKey);
 						event.preventDefault();
@@ -1445,8 +1772,10 @@ export class SongEditor {
 			case 79: // o
 				if (canPlayNotes) break;
 				if (event.ctrlKey || event.metaKey) {
-					this._openPrompt("import");
-					event.preventDefault();
+					if (boughtStuff.includes("import")) {
+						this._openPrompt("import");
+						event.preventDefault();
+					}
 				}
 				break;
 			case 86: // v
@@ -2035,12 +2364,11 @@ export class SongEditor {
 			case "layout":
 				this._openPrompt("layout");
 				break;
-			case "colorTheme":
-				this._doc.prefs.shitbox4colorTheme = this._doc.prefs.shitbox4colorTheme == "light classic" ? "dark classic" : "light classic";
-				ColorConfig.setTheme(this._doc.prefs.shitbox4colorTheme);
-				break;
 			case "recordingSetup":
 				this._openPrompt("recordingSetup");
+				break;
+			case "colorTheme":
+				this._openPrompt("colorTheme");
 				break;
 		}
 		this._optionsMenu.selectedIndex = 0;

@@ -31,6 +31,7 @@ export class Preferences {
 	public metronomeCountIn: boolean;
 	public metronomeWhileRecording: boolean;
 	
+	
 	constructor() {
 		this.reload();
 	}
@@ -57,7 +58,7 @@ export class Preferences {
 		this.metronomeWhileRecording = window.localStorage.getItem("shitbox4metronomeWhileRecording") != "false";
 		this.keyboardLayout = window.localStorage.getItem("shitbox4keyboardLayout") || "wickiHayden";
 		this.shitbox4layout = window.localStorage.getItem("shitbox4layout") || "small";
-		this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "dark classic";
+		this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "shitbox4 classic";
 		this.visibleOctaves = ((<any>window.localStorage.getItem("shitbox4visibleOctaves")) >>> 0) || Preferences.defaultVisibleOctaves;
 		
 		const defaultScale: Scale | undefined = Config.scales.dictionary[window.localStorage.getItem("defaultScale")!];
@@ -92,7 +93,7 @@ export class Preferences {
 		window.localStorage.setItem("shitbox4metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
 		window.localStorage.setItem("shitbox4keyboardLayout", this.keyboardLayout);
 		window.localStorage.setItem("shitbox4shitbox4layout", this.shitbox4layout);
-		window.localStorage.setItem("shitbox4shitbox4colorTheme", this.shitbox4colorTheme);
+		window.localStorage.setItem("shitbox4colorTheme", this.shitbox4colorTheme);
 		window.localStorage.setItem("shitbox4volume", String(this.volume));
 		window.localStorage.setItem("shitbox4visibleOctaves", String(this.visibleOctaves));
 	}
