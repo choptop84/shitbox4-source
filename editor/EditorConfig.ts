@@ -24,7 +24,6 @@ export function prettyNumber(value: number): string {
 export class EditorConfig {
 	public static readonly version: string = "";
 	
-	public static readonly versionDisplayName: string = "ShitBox4";
 	public static readonly releaseNotesURL: string = "https://github.com/johnnesky/beepbox/releases/tag/v" + EditorConfig.version;
 	
 	public static readonly isOnMac: boolean = /^Mac/i.test(navigator.platform) || /Mac OS X/i.test(navigator.userAgent) || /^(iPhone|iPad|iPod)/i.test(navigator.platform) || /(iPhone|iPad|iPod)/i.test(navigator.userAgent);

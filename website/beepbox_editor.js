@@ -517,7 +517,6 @@ var beepbox = (function (exports) {
         }
     }
     EditorConfig.version = "";
-    EditorConfig.versionDisplayName = "ShitBox4";
     EditorConfig.releaseNotesURL = "https://github.com/johnnesky/beepbox/releases/tag/v" + EditorConfig.version;
     EditorConfig.isOnMac = /^Mac/i.test(navigator.platform) || /Mac OS X/i.test(navigator.userAgent) || /^(iPhone|iPad|iPod)/i.test(navigator.platform) || /(iPhone|iPad|iPod)/i.test(navigator.userAgent);
     EditorConfig.ctrlSymbol = EditorConfig.isOnMac ? "⌘" : "Ctrl+";
@@ -13357,6 +13356,23 @@ var beepbox = (function (exports) {
     let gems = parseInt(window.localStorage.getItem('gems') || '0', 10);
     let moneyMaxChance = 20;
     const shop = document.getElementById('shopButtons');
+    const shopPage = document.getElementById('shopPage');
+    const gachaListCommon = ["choptop84"];
+    const gachaListRare = ["Fauxx", "Yuck31", "Lenny", "Keiiphobix", "Just a Toad", "yOph", "Grandnands"];
+    const gachaListEpic = ["Bluto", "Hogbrainrot", "Hailey", "Nintari", "Lognes", "Smerg the Dragon", "Chuck"];
+    const gachaListSuperRare = ["Answearing", "Soshu", "Main", "TheSeasOfEnvy", "Geli", "Nobonoko", "Okayxairen", "BrodTsumi", "Impasaurus", "TheGubbys", "Em (O^O)", "Scoob"];
+    const gachaListUltraRare = ["Jummbus", "Neptendo", "LeoV", "Chippy"];
+    const gachaListLegendary = ["Shaktool"];
+    var inventory = new Array();
+    var storedInventory = localStorage.getItem("inventory");
+    var boughtStuff = new Array();
+    var storedStuff = localStorage.getItem("bought");
+    if (storedInventory != null) {
+        inventory = JSON.parse(storedInventory);
+    }
+    if (storedStuff != null) {
+        boughtStuff = JSON.parse(storedStuff);
+    }
     function addMoney() {
         realMoney += Math.round(Math.random() * moneyMaxChance);
         window.localStorage.setItem('money', String(realMoney));
@@ -13366,22 +13382,176 @@ var beepbox = (function (exports) {
             window.localStorage.setItem('gems', String(gems));
         }
     }
-    function removeMoney(moneyToRemove = 5) {
-        if (realMoney - moneyToRemove > 0) {
+    function removeMoney(moneyToRemove) {
+        if (realMoney - moneyToRemove >= 0) {
             realMoney -= moneyToRemove;
+            localStorage.setItem("money", String(realMoney));
         }
         else {
             alert("You don't have enough shitcoins bitch!");
         }
     }
+    function removeGems(gemsToRemove) {
+        if (gems - gemsToRemove >= 0) {
+            gems -= gemsToRemove;
+            localStorage.setItem("gems", String(gems));
+        }
+        else {
+            alert("You don't have enough gems bitch!");
+        }
+    }
     let moneyShits = div$b({ style: "top:0; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "shitcoins: " + realMoney);
     let gemShits = div$b({ style: "top:32px; left:0; position:fixed; pointer-events: none; z-index: 15;" }, "gems: " + gems);
-    let gachaButton = button$b({ class: "shopButton", id: "gachaButton", onclick: () => opengacha() }, "Gacha");
-    let shopButton = button$b({ class: "shopButton", id: "buyButton", onclick: () => openbuy() }, "Buy");
-    let closeButton = button$b({ class: "shopButton", id: "closeButton", onclick: () => closeshop() }, "Close");
-    function opengacha() {
+    let songPlayerButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "songPlayerOption", onclick: () => buyThing("songPlayer", 3000, songPlayerButton) }, "Song Player"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
+    let shortenUrlButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "shortenUrlOption", onclick: () => buyThing("shortenUrl", 2000, shortenUrlButton) }, "Shorten Url"), div$b({ style: "font-size: 16px" }, "2000 shitcoins"));
+    let beatsPerBarButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "beatsPerBarOption", onclick: () => buyThing("beatsPerBar", 2500, beatsPerBarButton) }, "BPM Prompt"), div$b({ style: "font-size: 16px" }, "2500 shitcoins"));
+    let showScrollBarButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "showScrollBarOption", onclick: () => buyThing("showScrollBar", 3000, showScrollBarButton) }, "Octave ScrollBar"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
+    let showLettersButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "showLettersOption", onclick: () => buyThing("showLetters", 3000, showLettersButton) }, "Piano Keys"), div$b({ style: "font-size: 16px" }, "3000 shitcoins"));
+    let keyDButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "keyDOption", onclick: () => buyThing("keyD", 500, keyDButton) }, "D"), div$b({ style: "font-size: 16px" }, "500 shitcoins"));
+    let easySadButton = div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em; text-align: center;" }, button$b({ class: "shopButton", id: "easySadOption", onclick: () => buyThing("easySad", 500, easySadButton) }, "Easy :("), div$b({ style: "font-size: 16px" }, "500 shitcoins"));
+    let gachaButton = button$b({ class: "shopButton", id: "gachaButton", onclick: () => openThing("gacha") }, "Gacha");
+    let itemsButton = button$b({ class: "shopButton", id: "buyButton", onclick: () => openThing("items") }, "Buy");
+    let closeShopButton = button$b({ class: "shopButton", id: "closeButton", onclick: () => closeshop() }, "Close");
+    let itemsDiv = div$b({ class: "itemsDiv", id: "itemsDiv", style: "display:none; position:absolute; left:10vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$b({ style: "margin: 0.5em;" }, "Stupid Shit"), div$b({ style: "display: flex; flex-direction: column;max-height: 270px; overflow-y: scroll;" }, div$b({ class: "fileMenuStuff" }, div$b({ style: "font-size: 16px" }, "File Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, songPlayerButton, shortenUrlButton)), div$b({ class: "editMenuStuff" }, div$b({ style: "font-size: 16px" }, "Edit Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, beatsPerBarButton)), div$b({ class: "prefMenuStuff" }, div$b({ style: "font-size: 16px" }, "Preferences Menu Shit:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, showScrollBarButton, showLettersButton)), div$b({ class: "keys" }, div$b({ style: "font-size: 16px" }, "Keys:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, keyDButton)), div$b({ class: "scales" }, div$b({ style: "font-size: 16px" }, "Scales:"), div$b({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, easySadButton))), button$b({ class: "shopButton", id: "closeButton", onclick: () => closeThing("items") }, "Close"));
+    let gachaDiv = div$b({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$b({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$b({ style: "" }, "Roll for awesome rewards:"), div$b({ style: "display: flex; " }, div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$b({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$b({ style: "font-size: 16px" }, "50 Gems")), div$b({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$b({ class: "shopButton", id: "gachaButton", onclick: () => rollMultipleGacha(5) }, "Roll 5x"), div$b({ style: "font-size: 16px" }, "250 Gems"))), div$b({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$b({ class: "result", id: "gachaRarity" }, "!")), button$b({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
+    if (boughtStuff.includes("songPlayer")) {
+        songPlayerButton.style.display = "none";
     }
-    function openbuy() {
+    function rollGacha() {
+        let chanceThingy = Math.floor(Math.random() * 100);
+        let whatYouGot = "";
+        const gachaResult = document.getElementById('gachaResult');
+        const gachaRarity = document.getElementById('gachaRarity');
+        if (chanceThingy >= 0 && chanceThingy < 65) {
+            whatYouGot = gachaListCommon[Math.floor(Math.random() * gachaListCommon.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Common)";
+            }
+        }
+        if (chanceThingy >= 65 && chanceThingy < 85) {
+            whatYouGot = gachaListRare[Math.floor(Math.random() * gachaListRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Rare)";
+            }
+        }
+        if (chanceThingy >= 85 && chanceThingy < 95) {
+            whatYouGot = gachaListEpic[Math.floor(Math.random() * gachaListEpic.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (Epic)";
+            }
+        }
+        if (chanceThingy >= 95 && chanceThingy < 98) {
+            whatYouGot = gachaListSuperRare[Math.floor(Math.random() * gachaListSuperRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (SR)";
+            }
+        }
+        if (chanceThingy >= 98 && chanceThingy < 99) {
+            whatYouGot = gachaListUltraRare[Math.floor(Math.random() * gachaListUltraRare.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (UR)";
+            }
+        }
+        if (chanceThingy >= 99) {
+            whatYouGot = gachaListLegendary[Math.floor(Math.random() * gachaListLegendary.length)];
+            if (gachaRarity != null) {
+                gachaRarity.innerHTML = " (UR)";
+            }
+        }
+        inventory.push(whatYouGot);
+        if (gachaResult != null) {
+            gachaResult.innerHTML = "You just got: " + whatYouGot;
+        }
+        if (inventory != null) {
+            localStorage.setItem("inventory", JSON.stringify(inventory));
+        }
+    }
+    function buyThing(thingToBuy, price, hides) {
+        if (!boughtStuff.includes(thingToBuy)) {
+            if (realMoney >= price) {
+                removeMoney(price);
+                boughtStuff.push(thingToBuy);
+                if (boughtStuff != null) {
+                    localStorage.setItem("bought", JSON.stringify(boughtStuff));
+                }
+                moneyShits.innerHTML = "shitcoins: " + realMoney;
+                hides.style.display = "none";
+                alert("You might own what you just bought, but you won't see any changes until you click on the editor. It's a pain I KNOW but deal with it.");
+            }
+            else {
+                alert("You cannot buy that rn! Get more moneys!!!");
+            }
+        }
+        else {
+            if (realMoney >= price) {
+                alert("You can't buy this! You already own it!");
+            }
+            else {
+                alert("Even though you don't have enough, you still own this. Meaning you don't need to buy it again.");
+            }
+        }
+    }
+    function rollOneGacha() {
+        if (gems >= 50) {
+            rollGacha();
+            removeGems(50);
+            gemShits.innerHTML = "gems: " + gems;
+        }
+        else {
+            alert("damn you're broke");
+        }
+    }
+    function rollMultipleGacha(num) {
+        if (gems >= 50 * num) {
+            for (let i = num; i > 0; num--) {
+                rollGacha();
+            }
+            removeGems(50 * num);
+            gemShits.innerHTML = "gems: " + gems;
+        }
+        else {
+            alert("damn you're broke");
+        }
+    }
+    function openThing(thing) {
+        if (thing != null && thing != undefined) {
+            let divThing = document.getElementById(thing + "Div");
+            if (divThing != null) {
+                divThing.style.display = "unset";
+                if (shop != null) {
+                    shop.style.display = "none";
+                }
+            }
+            else {
+                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
+            }
+            if (shopPage != null) {
+                shopPage.style.display = "unset";
+            }
+            else {
+                console.log("how the fuck? Somehow the shop page isn't real!");
+            }
+        }
+    }
+    function closeThing(thing) {
+        if (thing != null && thing != undefined) {
+            let divThing = document.getElementById(thing + "Div");
+            if (divThing != null) {
+                divThing.style.display = "none";
+                if (shop != null) {
+                    shop.style.display = "";
+                }
+            }
+            else {
+                console.log("how the fuck? Somehow the " + thing + " div isn't real! Did you spell it right dumbass?");
+            }
+            if (shopPage != null) {
+                shopPage.style.display = "none";
+            }
+            else {
+                console.log("how the fuck? Somehow the shop page isn't real!");
+            }
+        }
     }
     function closeshop() {
         const shopdiv = document.getElementById('shop');
@@ -13390,8 +13560,10 @@ var beepbox = (function (exports) {
     document.body.appendChild(moneyShits);
     document.body.appendChild(gemShits);
     shop === null || shop === void 0 ? void 0 : shop.appendChild(gachaButton);
-    shop === null || shop === void 0 ? void 0 : shop.appendChild(shopButton);
-    shop === null || shop === void 0 ? void 0 : shop.appendChild(closeButton);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(itemsButton);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(closeShopButton);
+    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(itemsDiv);
+    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(gachaDiv);
 
     function makeEmptyReplacementElement(node) {
         const clone = node.cloneNode(false);
@@ -19221,7 +19393,7 @@ You should be redirected to the song at:<br /><br />
         }
     }
 
-    const { button: button$1, label, div: div$1, p, a: a$1, h2, input: input$1, select: select$1, option: option$1 } = HTML;
+    const { button: button$1, label, div: div$1, p, a, h2, input: input$1, select: select$1, option: option$1 } = HTML;
     class RecordingSetupPrompt {
         constructor(_doc) {
             this._doc = _doc;
@@ -19236,7 +19408,7 @@ You should be redirected to the song at:<br /><br />
             this._metronomeWhileRecording = input$1({ style: "width: 2em; margin-left: 1em;", type: "checkbox" });
             this._okayButton = button$1({ class: "okayButton", style: "width:45%;" }, "Okay");
             this._cancelButton = button$1({ class: "cancelButton" });
-            this.container = div$1({ class: "prompt noSelection recordingSetupPrompt", style: "width: 333px; text-align: right; max-height: 90%;" }, h2("Note Recording Setup"), div$1({ style: "display: grid; overflow-y: auto; overflow-x: hidden; flex-shrink: 1;" }, p("BeepBox can record notes as you perform them. You can start recording by pressing Ctrl+Space (or " + EditorConfig.ctrlSymbol + "P)."), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Add ● record button next to ▶ play button:", this._showRecordButton), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Snap recorded notes to the song's rhythm:", this._snapRecordedNotesToRhythm), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Ignore notes not in the song's scale:", this._ignorePerformedNotesNotInScale), p("While recording, you can perform notes on your keyboard!"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Keyboard layout:", div$1({ class: "selectContainer", style: "width: 65%; margin-left: 1em;" }, this._keyboardLayout)), this._keyboardLayoutPreview, p("When not recording, you can use the computer keyboard either for shortcuts (like C and V for copy and paste) or for performing notes, depending on this mode:"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, div$1({ class: "selectContainer", style: "width: 100%;" }, this._keyboardMode)), p("Performing music takes practice! Try slowing the tempo and using this metronome to help you keep a rhythm."), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Hear metronome while recording:", this._metronomeWhileRecording), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Count-in 1 bar of metronome before recording:", this._metronomeCountIn), p("If you have a ", a$1({ href: "https://caniuse.com/midi", target: "_blank" }, "compatible browser"), " on a device connected to a MIDI keyboard, you can use it to perform notes in BeepBox! (Or you could buy ", a$1({ href: "https://imitone.com/", target: "_blank" }, "Imitone"), " or ", a$1({ href: "https://vochlea.com/", target: "_blank" }, "Dubler"), " to hum notes into a microphone while wearing headphones!)"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Enable MIDI performance:", this._enableMidi), p("The range of pitches available to play via your computer keyboard is affected by the octave scrollbar of the currently selected channel."), p("Recorded notes often overlap such that one note ends after the next note already started. In BeepBox, these notes get split into multiple notes which may sound different when re-played than they did when you were recording. To fix the sound, you can either manually clean up the notes in the pattern editor, or you could try enabling the \"transition type\" effect on the instrument and setting it to \"continue\"."), div$1({ style: `width: 100%; height: 80px; background: linear-gradient(rgba(0,0,0,0), ${ColorConfig.editorBackground}); position: sticky; bottom: 0; pointer-events: none;` })), div$1({ style: "display: flex; flex-direction: row-reverse; justify-content: space-between;" }, this._okayButton), this._cancelButton);
+            this.container = div$1({ class: "prompt noSelection recordingSetupPrompt", style: "width: 333px; text-align: right; max-height: 90%;" }, h2("Note Recording Setup"), div$1({ style: "display: grid; overflow-y: auto; overflow-x: hidden; flex-shrink: 1;" }, p("BeepBox can record notes as you perform them. You can start recording by pressing Ctrl+Space (or " + EditorConfig.ctrlSymbol + "P)."), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Add ● record button next to ▶ play button:", this._showRecordButton), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Snap recorded notes to the song's rhythm:", this._snapRecordedNotesToRhythm), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Ignore notes not in the song's scale:", this._ignorePerformedNotesNotInScale), p("While recording, you can perform notes on your keyboard!"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Keyboard layout:", div$1({ class: "selectContainer", style: "width: 65%; margin-left: 1em;" }, this._keyboardLayout)), this._keyboardLayoutPreview, p("When not recording, you can use the computer keyboard either for shortcuts (like C and V for copy and paste) or for performing notes, depending on this mode:"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, div$1({ class: "selectContainer", style: "width: 100%;" }, this._keyboardMode)), p("Performing music takes practice! Try slowing the tempo and using this metronome to help you keep a rhythm."), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Hear metronome while recording:", this._metronomeWhileRecording), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Count-in 1 bar of metronome before recording:", this._metronomeCountIn), p("If you have a ", a({ href: "https://caniuse.com/midi", target: "_blank" }, "compatible browser"), " on a device connected to a MIDI keyboard, you can use it to perform notes in BeepBox! (Or you could buy ", a({ href: "https://imitone.com/", target: "_blank" }, "Imitone"), " or ", a({ href: "https://vochlea.com/", target: "_blank" }, "Dubler"), " to hum notes into a microphone while wearing headphones!)"), label({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, "Enable MIDI performance:", this._enableMidi), p("The range of pitches available to play via your computer keyboard is affected by the octave scrollbar of the currently selected channel."), p("Recorded notes often overlap such that one note ends after the next note already started. In BeepBox, these notes get split into multiple notes which may sound different when re-played than they did when you were recording. To fix the sound, you can either manually clean up the notes in the pattern editor, or you could try enabling the \"transition type\" effect on the instrument and setting it to \"continue\"."), div$1({ style: `width: 100%; height: 80px; background: linear-gradient(rgba(0,0,0,0), ${ColorConfig.editorBackground}); position: sticky; bottom: 0; pointer-events: none;` })), div$1({ style: "display: flex; flex-direction: row-reverse; justify-content: space-between;" }, this._okayButton), this._cancelButton);
             this._close = () => {
                 this._doc.undo();
             };
@@ -19316,7 +19488,7 @@ You should be redirected to the song at:<br /><br />
         }
     }
 
-    const { a, button, div, input, select, span, optgroup, option } = HTML;
+    const { button, div, input, select, span, optgroup, option } = HTML;
     function buildOptions(menu, items) {
         for (let index = 0; index < items.length; index++) {
             menu.appendChild(option({ value: index }, items[index]));
@@ -19513,7 +19685,7 @@ You should be redirected to the song at:<br /><br />
             this._menuArea = div({ class: "menu-area" }, div({ class: "selectContainer menu file" }, this._fileMenu), div({ class: "selectContainer menu edit" }, this._editMenu), div({ class: "selectContainer menu preferences" }, this._optionsMenu));
             this._songSettingsArea = div({ class: "song-settings-area" }, div({ class: "editor-controls" }, div({ style: `margin: 3px 0; text-align: center; color: ${ColorConfig.secondaryText};` }, "Song Settings"), div({ class: "selectRow" }, span({ class: "tip", onclick: () => this._openPrompt("scale") }, "Scale:"), div({ class: "selectContainer" }, this._scaleSelect)), div({ class: "selectRow" }, span({ class: "tip", onclick: () => this._openPrompt("key") }, "Key:"), div({ class: "selectContainer" }, this._keySelect)), div({ class: "selectRow" }, span({ class: "tip", onclick: () => this._openPrompt("tempo") }, "Tempo:"), span({ style: "display: flex;" }, this._tempoSlider.input, this._tempoStepper)), div({ class: "selectRow" }, span({ class: "tip", onclick: () => this._openPrompt("rhythm") }, "Rhythm:"), div({ class: "selectContainer" }, this._rhythmSelect))));
             this._instrumentSettingsArea = div({ class: "instrument-settings-area" }, this._instrumentSettingsGroup);
-            this._settingsArea = div({ class: "settings-area noSelection" }, div({ class: "version-area" }, div({ style: `text-align: center; margin: 3px 0; color: ${ColorConfig.secondaryText};` }, EditorConfig.versionDisplayName, " ", a({ class: "tip", target: "_blank", href: EditorConfig.releaseNotesURL }, EditorConfig.version))), div({ class: "play-pause-area" }, div({ class: "playback-bar-controls" }, this._playButton, this._pauseButton, this._recordButton, this._stopButton, this._prevBarButton, this._nextBarButton), div({ class: "playback-volume-controls" }, span({ class: "volume-speaker" }), this._volumeSlider)), this._menuArea, this._songSettingsArea, this._instrumentSettingsArea);
+            this._settingsArea = div({ class: "settings-area noSelection" }, div({ class: "play-pause-area" }, div({ class: "playback-bar-controls" }, this._playButton, this._pauseButton, this._recordButton, this._stopButton, this._prevBarButton, this._nextBarButton), div({ class: "playback-volume-controls" }, span({ class: "volume-speaker" }), this._volumeSlider)), this._menuArea, this._songSettingsArea, this._instrumentSettingsArea);
             this.mainLayer = div({ class: "beepboxEditor", tabIndex: "0" }, this._patternArea, this._trackArea, this._settingsArea, this._promptContainer);
             this._wasPlaying = false;
             this._currentPromptName = null;
@@ -19549,6 +19721,66 @@ You should be redirected to the song at:<br /><br />
                 this._trackEditor.render();
                 moneyShits.innerText = "shitcoins: " + realMoney;
                 gemShits.innerText = "gems: " + gems;
+                if (boughtStuff != undefined) {
+                    if (boughtStuff != null) {
+                        if (boughtStuff.includes("songPlayer")) {
+                            const thingOption = this._fileMenu.querySelector("[value=viewPlayer]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=viewPlayer]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("shortenUrl")) {
+                            const thingOption = this._fileMenu.querySelector("[value=shortenUrl]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._fileMenu.querySelector("[value=shortenUrl]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("beatsPerBar")) {
+                            const thingOption = this._editMenu.querySelector("[value=beatsPerBar]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._editMenu.querySelector("[value=beatsPerBar]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("showScrollBar")) {
+                            const thingOption = this._optionsMenu.querySelector("[value=showScrollBar]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector("[value=showScrollBar]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("showLetters")) {
+                            const thingOption = this._optionsMenu.querySelector("[value=showLetters]");
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._optionsMenu.querySelector("[value=showLetters]");
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("keyD")) {
+                            const thingOption = this._keySelect.querySelector('[value="9"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._keySelect.querySelector('[value="9"]');
+                            thingOption.disabled = true;
+                        }
+                        if (boughtStuff.includes("easySad")) {
+                            const thingOption = this._scaleSelect.querySelector('[value="1"]');
+                            thingOption.disabled = false;
+                        }
+                        else {
+                            const thingOption = this._scaleSelect.querySelector('[value="1"]');
+                            thingOption.disabled = true;
+                        }
+                    }
+                }
                 this._trackAndMuteContainer.scrollLeft = this._doc.barScrollPos * this._doc.getBarWidth();
                 this._trackAndMuteContainer.scrollTop = this._doc.channelScrollPos * ChannelRow.patternHeight;
                 this._piano.container.style.display = prefs.showLetters ? "" : "none";
@@ -20225,16 +20457,9 @@ You should be redirected to the song at:<br /><br />
                             event.preventDefault();
                         }
                         else if (this._doc.prefs.enableChannelMuting) {
-                            if (realMoney - 20 > 0) {
-                                this._doc.selection.soloChannels(event.shiftKey);
-                                event.preventDefault();
-                                removeMoney(20);
-                            }
-                            else {
-                                alert("You don't have enough shitcoins bitch!");
-                            }
+                            this._doc.selection.soloChannels(event.shiftKey);
+                            event.preventDefault();
                         }
-                        console.log(realMoney);
                         break;
                     case 79:
                         if (canPlayNotes)
@@ -21948,66 +22173,61 @@ You should be redirected to the song at:<br /><br />
             this.reload();
         }
         reload() {
-            this.autoPlay = window.localStorage.getItem("autoPlay") == "true";
-            this.autoFollow = window.localStorage.getItem("autoFollow") != "false";
-            this.enableNotePreview = window.localStorage.getItem("enableNotePreview") != "false";
-            this.showFifth = window.localStorage.getItem("showFifth") == "true";
-            this.notesOutsideScale = window.localStorage.getItem("notesOutsideScale") == "true";
-            this.showLetters = window.localStorage.getItem("showLetters") == "true";
-            this.showChannels = window.localStorage.getItem("showChannels") == "true";
-            this.showScrollBar = window.localStorage.getItem("showScrollBar") == "true";
-            this.alwaysShowSettings = window.localStorage.getItem("alwaysShowSettings") == "true";
-            this.instrumentCopyPaste = window.localStorage.getItem("instrumentCopyPaste") == "true";
-            this.enableChannelMuting = window.localStorage.getItem("enableChannelMuting") == "true";
-            this.displayBrowserUrl = window.localStorage.getItem("displayBrowserUrl") != "false";
-            this.pressControlForShortcuts = window.localStorage.getItem("pressControlForShortcuts") == "true";
-            this.enableMidi = window.localStorage.getItem("enableMidi") != "false";
-            this.showRecordButton = window.localStorage.getItem("showRecordButton") == "true";
-            this.snapRecordedNotesToRhythm = window.localStorage.getItem("snapRecordedNotesToRhythm") == "true";
-            this.ignorePerformedNotesNotInScale = window.localStorage.getItem("ignorePerformedNotesNotInScale") == "true";
-            this.metronomeCountIn = window.localStorage.getItem("metronomeCountIn") != "false";
-            this.metronomeWhileRecording = window.localStorage.getItem("metronomeWhileRecording") != "false";
-            this.keyboardLayout = window.localStorage.getItem("keyboardLayout") || "wickiHayden";
+            this.autoPlay = window.localStorage.getItem("shitbox4autoPlay") == "true";
+            this.autoFollow = window.localStorage.getItem("shitbox4autoFollow") != "false";
+            this.enableNotePreview = window.localStorage.getItem("shitbox4enableNotePreview") != "false";
+            this.showFifth = window.localStorage.getItem("shitbox4showFifth") == "true";
+            this.notesOutsideScale = window.localStorage.getItem("shitbox4notesOutsideScale") == "true";
+            this.showLetters = window.localStorage.getItem("shitbox4showLetters") == "true";
+            this.showChannels = window.localStorage.getItem("shitbox4showChannels") == "true";
+            this.showScrollBar = window.localStorage.getItem("shitbox4showScrollBar") == "true";
+            this.alwaysShowSettings = window.localStorage.getItem("shitbox4alwaysShowSettings") == "true";
+            this.instrumentCopyPaste = window.localStorage.getItem("shitbox4instrumentCopyPaste") == "true";
+            this.enableChannelMuting = window.localStorage.getItem("shitbox4enableChannelMuting") == "true";
+            this.displayBrowserUrl = window.localStorage.getItem("shitbox4displayBrowserUrl") != "false";
+            this.pressControlForShortcuts = window.localStorage.getItem("shitbox4pressControlForShortcuts") == "true";
+            this.enableMidi = window.localStorage.getItem("shitbox4enableMidi") != "false";
+            this.showRecordButton = window.localStorage.getItem("shitbox4showRecordButton") == "true";
+            this.snapRecordedNotesToRhythm = window.localStorage.getItem("shitbox4snapRecordedNotesToRhythm") == "true";
+            this.ignorePerformedNotesNotInScale = window.localStorage.getItem("shitbox4ignorePerformedNotesNotInScale") == "true";
+            this.metronomeCountIn = window.localStorage.getItem("shitbox4metronomeCountIn") != "false";
+            this.metronomeWhileRecording = window.localStorage.getItem("shitbox4metronomeWhileRecording") != "false";
+            this.keyboardLayout = window.localStorage.getItem("shitbox4keyboardLayout") || "wickiHayden";
             this.shitbox4layout = window.localStorage.getItem("shitbox4layout") || "small";
             this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "dark classic";
-            this.visibleOctaves = (window.localStorage.getItem("visibleOctaves") >>> 0) || Preferences.defaultVisibleOctaves;
+            this.visibleOctaves = (window.localStorage.getItem("shitbox4visibleOctaves") >>> 0) || Preferences.defaultVisibleOctaves;
             const defaultScale = Config.scales.dictionary[window.localStorage.getItem("defaultScale")];
             this.defaultScale = (defaultScale != undefined) ? defaultScale.index : 0;
             if (window.localStorage.getItem("volume") != null) {
                 this.volume = Math.min(window.localStorage.getItem("volume") >>> 0, 75);
             }
-            if (window.localStorage.getItem("fullScreen") != null) {
-                if (window.localStorage.getItem("fullScreen") == "true")
-                    this.shitbox4layout = "long";
-                window.localStorage.removeItem("fullScreen");
-            }
         }
         save() {
-            window.localStorage.setItem("autoPlay", this.autoPlay ? "true" : "false");
-            window.localStorage.setItem("autoFollow", this.autoFollow ? "true" : "false");
-            window.localStorage.setItem("enableNotePreview", this.enableNotePreview ? "true" : "false");
-            window.localStorage.setItem("showFifth", this.showFifth ? "true" : "false");
-            window.localStorage.setItem("notesOutsideScale", this.notesOutsideScale ? "true" : "false");
-            window.localStorage.setItem("defaultScale", Config.scales[this.defaultScale].name);
-            window.localStorage.setItem("showLetters", this.showLetters ? "true" : "false");
-            window.localStorage.setItem("showChannels", this.showChannels ? "true" : "false");
-            window.localStorage.setItem("showScrollBar", this.showScrollBar ? "true" : "false");
-            window.localStorage.setItem("alwaysShowSettings", this.alwaysShowSettings ? "true" : "false");
-            window.localStorage.setItem("enableChannelMuting", this.enableChannelMuting ? "true" : "false");
-            window.localStorage.setItem("instrumentCopyPaste", this.instrumentCopyPaste ? "true" : "false");
-            window.localStorage.setItem("displayBrowserUrl", this.displayBrowserUrl ? "true" : "false");
-            window.localStorage.setItem("pressControlForShortcuts", this.pressControlForShortcuts ? "true" : "false");
-            window.localStorage.setItem("enableMidi", this.enableMidi ? "true" : "false");
-            window.localStorage.setItem("showRecordButton", this.showRecordButton ? "true" : "false");
-            window.localStorage.setItem("snapRecordedNotesToRhythm", this.snapRecordedNotesToRhythm ? "true" : "false");
-            window.localStorage.setItem("ignorePerformedNotesNotInScale", this.ignorePerformedNotesNotInScale ? "true" : "false");
-            window.localStorage.setItem("metronomeCountIn", this.metronomeCountIn ? "true" : "false");
-            window.localStorage.setItem("metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
-            window.localStorage.setItem("keyboardLayout", this.keyboardLayout);
-            window.localStorage.setItem("shitbox4layout", this.shitbox4layout);
-            window.localStorage.setItem("shitbox4colorTheme", this.shitbox4colorTheme);
-            window.localStorage.setItem("volume", String(this.volume));
-            window.localStorage.setItem("visibleOctaves", String(this.visibleOctaves));
+            window.localStorage.setItem("shitbox4autoPlay", this.autoPlay ? "true" : "false");
+            window.localStorage.setItem("shitbox4autoFollow", this.autoFollow ? "true" : "false");
+            window.localStorage.setItem("shitbox4enableNotePreview", this.enableNotePreview ? "true" : "false");
+            window.localStorage.setItem("shitbox4showFifth", this.showFifth ? "true" : "false");
+            window.localStorage.setItem("shitbox4notesOutsideScale", this.notesOutsideScale ? "true" : "false");
+            window.localStorage.setItem("shitbox4defaultScale", Config.scales[this.defaultScale].name);
+            window.localStorage.setItem("shitbox4showLetters", this.showLetters ? "true" : "false");
+            window.localStorage.setItem("shitbox4showChannels", this.showChannels ? "true" : "false");
+            window.localStorage.setItem("shitbox4showScrollBar", this.showScrollBar ? "true" : "false");
+            window.localStorage.setItem("shitbox4alwaysShowSettings", this.alwaysShowSettings ? "true" : "false");
+            window.localStorage.setItem("shitbox4enableChannelMuting", this.enableChannelMuting ? "true" : "false");
+            window.localStorage.setItem("shitbox4instrumentCopyPaste", this.instrumentCopyPaste ? "true" : "false");
+            window.localStorage.setItem("shitbox4displayBrowserUrl", this.displayBrowserUrl ? "true" : "false");
+            window.localStorage.setItem("shitbox4pressControlForShortcuts", this.pressControlForShortcuts ? "true" : "false");
+            window.localStorage.setItem("shitbox4enableMidi", this.enableMidi ? "true" : "false");
+            window.localStorage.setItem("shitbox4showRecordButton", this.showRecordButton ? "true" : "false");
+            window.localStorage.setItem("shitbox4snapRecordedNotesToRhythm", this.snapRecordedNotesToRhythm ? "true" : "false");
+            window.localStorage.setItem("shitbox4ignorePerformedNotesNotInScale", this.ignorePerformedNotesNotInScale ? "true" : "false");
+            window.localStorage.setItem("shitbox4metronomeCountIn", this.metronomeCountIn ? "true" : "false");
+            window.localStorage.setItem("shitbox4metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
+            window.localStorage.setItem("shitbox4keyboardLayout", this.keyboardLayout);
+            window.localStorage.setItem("shitbox4shitbox4layout", this.shitbox4layout);
+            window.localStorage.setItem("shitbox4shitbox4colorTheme", this.shitbox4colorTheme);
+            window.localStorage.setItem("shitbox4volume", String(this.volume));
+            window.localStorage.setItem("shitbox4visibleOctaves", String(this.visibleOctaves));
         }
     }
     Preferences.defaultVisibleOctaves = 3;

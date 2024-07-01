@@ -36,29 +36,29 @@ export class Preferences {
 	}
 	
 	public reload(): void {
-		this.autoPlay = window.localStorage.getItem("autoPlay") == "true";
-		this.autoFollow = window.localStorage.getItem("autoFollow") != "false";
-		this.enableNotePreview = window.localStorage.getItem("enableNotePreview") != "false";
-		this.showFifth = window.localStorage.getItem("showFifth") == "true";
-		this.notesOutsideScale = window.localStorage.getItem("notesOutsideScale") == "true";
-		this.showLetters = window.localStorage.getItem("showLetters") == "true";
-		this.showChannels = window.localStorage.getItem("showChannels") == "true";
-		this.showScrollBar = window.localStorage.getItem("showScrollBar") == "true";
-		this.alwaysShowSettings = window.localStorage.getItem("alwaysShowSettings") == "true";
-		this.instrumentCopyPaste = window.localStorage.getItem("instrumentCopyPaste") == "true";
-		this.enableChannelMuting = window.localStorage.getItem("enableChannelMuting") == "true";
-		this.displayBrowserUrl = window.localStorage.getItem("displayBrowserUrl") != "false";
-		this.pressControlForShortcuts = window.localStorage.getItem("pressControlForShortcuts") == "true";
-		this.enableMidi = window.localStorage.getItem("enableMidi") != "false";
-		this.showRecordButton = window.localStorage.getItem("showRecordButton") == "true";
-		this.snapRecordedNotesToRhythm = window.localStorage.getItem("snapRecordedNotesToRhythm") == "true";
-		this.ignorePerformedNotesNotInScale = window.localStorage.getItem("ignorePerformedNotesNotInScale") == "true";
-		this.metronomeCountIn = window.localStorage.getItem("metronomeCountIn") != "false";
-		this.metronomeWhileRecording = window.localStorage.getItem("metronomeWhileRecording") != "false";
-		this.keyboardLayout = window.localStorage.getItem("keyboardLayout") || "wickiHayden";
+		this.autoPlay = window.localStorage.getItem("shitbox4autoPlay") == "true";
+		this.autoFollow = window.localStorage.getItem("shitbox4autoFollow") != "false";
+		this.enableNotePreview = window.localStorage.getItem("shitbox4enableNotePreview") != "false";
+		this.showFifth = window.localStorage.getItem("shitbox4showFifth") == "true";
+		this.notesOutsideScale = window.localStorage.getItem("shitbox4notesOutsideScale") == "true";
+		this.showLetters = window.localStorage.getItem("shitbox4showLetters") == "true";
+		this.showChannels = window.localStorage.getItem("shitbox4showChannels") == "true";
+		this.showScrollBar = window.localStorage.getItem("shitbox4showScrollBar") == "true";
+		this.alwaysShowSettings = window.localStorage.getItem("shitbox4alwaysShowSettings") == "true";
+		this.instrumentCopyPaste = window.localStorage.getItem("shitbox4instrumentCopyPaste") == "true";
+		this.enableChannelMuting = window.localStorage.getItem("shitbox4enableChannelMuting") == "true";
+		this.displayBrowserUrl = window.localStorage.getItem("shitbox4displayBrowserUrl") != "false";
+		this.pressControlForShortcuts = window.localStorage.getItem("shitbox4pressControlForShortcuts") == "true";
+		this.enableMidi = window.localStorage.getItem("shitbox4enableMidi") != "false";
+		this.showRecordButton = window.localStorage.getItem("shitbox4showRecordButton") == "true";
+		this.snapRecordedNotesToRhythm = window.localStorage.getItem("shitbox4snapRecordedNotesToRhythm") == "true";
+		this.ignorePerformedNotesNotInScale = window.localStorage.getItem("shitbox4ignorePerformedNotesNotInScale") == "true";
+		this.metronomeCountIn = window.localStorage.getItem("shitbox4metronomeCountIn") != "false";
+		this.metronomeWhileRecording = window.localStorage.getItem("shitbox4metronomeWhileRecording") != "false";
+		this.keyboardLayout = window.localStorage.getItem("shitbox4keyboardLayout") || "wickiHayden";
 		this.shitbox4layout = window.localStorage.getItem("shitbox4layout") || "small";
 		this.shitbox4colorTheme = window.localStorage.getItem("shitbox4colorTheme") || "dark classic";
-		this.visibleOctaves = ((<any>window.localStorage.getItem("visibleOctaves")) >>> 0) || Preferences.defaultVisibleOctaves;
+		this.visibleOctaves = ((<any>window.localStorage.getItem("shitbox4visibleOctaves")) >>> 0) || Preferences.defaultVisibleOctaves;
 		
 		const defaultScale: Scale | undefined = Config.scales.dictionary[window.localStorage.getItem("defaultScale")!];
 		this.defaultScale = (defaultScale != undefined) ? defaultScale.index : 0;
@@ -67,37 +67,33 @@ export class Preferences {
 			this.volume = Math.min(<any>window.localStorage.getItem("volume") >>> 0, 75);
 		}
 		
-		if (window.localStorage.getItem("fullScreen") != null) {
-			if (window.localStorage.getItem("fullScreen") == "true") this.shitbox4layout = "long";
-			window.localStorage.removeItem("fullScreen");
-		}
 	}
 	
 	public save(): void {
-		window.localStorage.setItem("autoPlay", this.autoPlay ? "true" : "false");
-		window.localStorage.setItem("autoFollow", this.autoFollow ? "true" : "false");
-		window.localStorage.setItem("enableNotePreview", this.enableNotePreview ? "true" : "false");
-		window.localStorage.setItem("showFifth", this.showFifth ? "true" : "false");
-		window.localStorage.setItem("notesOutsideScale", this.notesOutsideScale ? "true" : "false");
-		window.localStorage.setItem("defaultScale", Config.scales[this.defaultScale].name);
-		window.localStorage.setItem("showLetters", this.showLetters ? "true" : "false");
-		window.localStorage.setItem("showChannels", this.showChannels ? "true" : "false");
-		window.localStorage.setItem("showScrollBar", this.showScrollBar ? "true" : "false");
-		window.localStorage.setItem("alwaysShowSettings", this.alwaysShowSettings ? "true" : "false");
-		window.localStorage.setItem("enableChannelMuting", this.enableChannelMuting ? "true" : "false");
-		window.localStorage.setItem("instrumentCopyPaste", this.instrumentCopyPaste ? "true" : "false");
-		window.localStorage.setItem("displayBrowserUrl", this.displayBrowserUrl ? "true" : "false");
-		window.localStorage.setItem("pressControlForShortcuts", this.pressControlForShortcuts ? "true" : "false");
-		window.localStorage.setItem("enableMidi", this.enableMidi ? "true" : "false");
-		window.localStorage.setItem("showRecordButton", this.showRecordButton ? "true" : "false");
-		window.localStorage.setItem("snapRecordedNotesToRhythm", this.snapRecordedNotesToRhythm ? "true" : "false");
-		window.localStorage.setItem("ignorePerformedNotesNotInScale", this.ignorePerformedNotesNotInScale ? "true" : "false");
-		window.localStorage.setItem("metronomeCountIn", this.metronomeCountIn ? "true" : "false");
-		window.localStorage.setItem("metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
-		window.localStorage.setItem("keyboardLayout", this.keyboardLayout);
-		window.localStorage.setItem("shitbox4layout", this.shitbox4layout);
-		window.localStorage.setItem("shitbox4colorTheme", this.shitbox4colorTheme);
-		window.localStorage.setItem("volume", String(this.volume));
-		window.localStorage.setItem("visibleOctaves", String(this.visibleOctaves));
+		window.localStorage.setItem("shitbox4autoPlay", this.autoPlay ? "true" : "false");
+		window.localStorage.setItem("shitbox4autoFollow", this.autoFollow ? "true" : "false");
+		window.localStorage.setItem("shitbox4enableNotePreview", this.enableNotePreview ? "true" : "false");
+		window.localStorage.setItem("shitbox4showFifth", this.showFifth ? "true" : "false");
+		window.localStorage.setItem("shitbox4notesOutsideScale", this.notesOutsideScale ? "true" : "false");
+		window.localStorage.setItem("shitbox4defaultScale", Config.scales[this.defaultScale].name);
+		window.localStorage.setItem("shitbox4showLetters", this.showLetters ? "true" : "false");
+		window.localStorage.setItem("shitbox4showChannels", this.showChannels ? "true" : "false");
+		window.localStorage.setItem("shitbox4showScrollBar", this.showScrollBar ? "true" : "false");
+		window.localStorage.setItem("shitbox4alwaysShowSettings", this.alwaysShowSettings ? "true" : "false");
+		window.localStorage.setItem("shitbox4enableChannelMuting", this.enableChannelMuting ? "true" : "false");
+		window.localStorage.setItem("shitbox4instrumentCopyPaste", this.instrumentCopyPaste ? "true" : "false");
+		window.localStorage.setItem("shitbox4displayBrowserUrl", this.displayBrowserUrl ? "true" : "false");
+		window.localStorage.setItem("shitbox4pressControlForShortcuts", this.pressControlForShortcuts ? "true" : "false");
+		window.localStorage.setItem("shitbox4enableMidi", this.enableMidi ? "true" : "false");
+		window.localStorage.setItem("shitbox4showRecordButton", this.showRecordButton ? "true" : "false");
+		window.localStorage.setItem("shitbox4snapRecordedNotesToRhythm", this.snapRecordedNotesToRhythm ? "true" : "false");
+		window.localStorage.setItem("shitbox4ignorePerformedNotesNotInScale", this.ignorePerformedNotesNotInScale ? "true" : "false");
+		window.localStorage.setItem("shitbox4metronomeCountIn", this.metronomeCountIn ? "true" : "false");
+		window.localStorage.setItem("shitbox4metronomeWhileRecording", this.metronomeWhileRecording ? "true" : "false");
+		window.localStorage.setItem("shitbox4keyboardLayout", this.keyboardLayout);
+		window.localStorage.setItem("shitbox4shitbox4layout", this.shitbox4layout);
+		window.localStorage.setItem("shitbox4shitbox4colorTheme", this.shitbox4colorTheme);
+		window.localStorage.setItem("shitbox4volume", String(this.volume));
+		window.localStorage.setItem("shitbox4visibleOctaves", String(this.visibleOctaves));
 	}
 }

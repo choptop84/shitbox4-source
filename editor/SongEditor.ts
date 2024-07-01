@@ -37,9 +37,10 @@ import {SongRecoveryPrompt} from "./SongRecoveryPrompt";
 import {RecordingSetupPrompt} from "./RecordingSetupPrompt";
 import {Change} from "./Change";
 import {ChangeTempo, ChangeChorus, ChangeEchoDelay, ChangeEchoSustain, ChangeReverb, ChangeVolume, ChangePan, ChangePatternSelection, ChangeSupersawDynamism, ChangeSupersawSpread, ChangeSupersawShape, ChangePulseWidth, ChangeFeedbackAmplitude, ChangeOperatorAmplitude, ChangeOperatorFrequency, ChangeDrumsetEnvelope, ChangePasteInstrument, ChangePreset, pickRandomPresetValue, ChangeRandomGeneratedInstrument, ChangeScale, ChangeDetectKey, ChangeKey, ChangeRhythm, ChangeFeedbackType, ChangeAlgorithm, ChangeCustomizeInstrument, ChangeChipWave, ChangeNoiseWave, ChangeTransition, ChangeToggleEffects, ChangeVibrato, ChangeUnison, ChangeChord, ChangeSong, ChangePitchShift, ChangeDetune, ChangeDistortion, ChangeStringSustain, ChangeBitcrusherFreq, ChangeBitcrusherQuantization, ChangeAddEnvelope, ChangeAddChannelInstrument, ChangeRemoveChannelInstrument} from "./changes";
-import {removeMoney, realMoney, gems, moneyShits, gemShits} from "./MoneyData";
+import {realMoney, gems, moneyShits, gemShits, boughtStuff} from "./MoneyData";
 
-const {a, button, div, input, select, span, optgroup, option} = HTML;
+const {button, div, input, select, span, optgroup, option} = HTML;
+
 
 function buildOptions(menu: HTMLSelectElement, items: ReadonlyArray<string | number>): HTMLSelectElement {
 	for (let index: number = 0; index < items.length; index++) {
@@ -407,15 +408,6 @@ export class SongEditor {
 	);
 	private readonly _instrumentSettingsArea: HTMLDivElement = div({class: "instrument-settings-area"}, this._instrumentSettingsGroup);
 	private readonly _settingsArea: HTMLDivElement = div({class: "settings-area noSelection"},
-		div({class: "version-area"},
-			div({style: `text-align: center; margin: 3px 0; color: ${ColorConfig.secondaryText};`},
-				EditorConfig.versionDisplayName,
-				" ",
-				a({class: "tip", target: "_blank", href: EditorConfig.releaseNotesURL},
-					EditorConfig.version,
-				),
-			),
-		),
 		div({class: "play-pause-area"},
 			div({class: "playback-bar-controls"},
 				this._playButton,
@@ -704,6 +696,67 @@ export class SongEditor {
 
 		moneyShits.innerText = "shitcoins: "+realMoney;
 		gemShits.innerText = "gems: "+gems;
+
+		if (boughtStuff != undefined) {
+			if (boughtStuff != null) {
+				if (boughtStuff.includes("songPlayer")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=viewPlayer]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=viewPlayer]");
+					thingOption.disabled = true;
+				}
+
+				if (boughtStuff.includes("shortenUrl")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=shortenUrl]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._fileMenu.querySelector("[value=shortenUrl]");
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("beatsPerBar")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._editMenu.querySelector("[value=beatsPerBar]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._editMenu.querySelector("[value=beatsPerBar]");
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("showScrollBar")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showScrollBar]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showScrollBar]");
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("showLetters")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showLetters]");
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._optionsMenu.querySelector("[value=showLetters]");
+					thingOption.disabled = true;
+				} 
+
+				if (boughtStuff.includes("keyD")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="9"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._keySelect.querySelector('[value="9"]');
+					thingOption.disabled = true;
+				} 
+				
+				if (boughtStuff.includes("easySad")) {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="1"]');
+					thingOption.disabled = false;
+				} else {
+					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="1"]');
+					thingOption.disabled = true;
+				} 
+				
+			}
+		}
 
 		this._trackAndMuteContainer.scrollLeft = this._doc.barScrollPos * this._doc.getBarWidth();
 		this._trackAndMuteContainer.scrollTop = this._doc.channelScrollPos * ChannelRow.patternHeight;
@@ -1385,16 +1438,9 @@ export class SongEditor {
 					this._openPrompt("export");
 					event.preventDefault();
 				} else if (this._doc.prefs.enableChannelMuting) {
-						if (realMoney - 20 > 0) {
 						this._doc.selection.soloChannels(event.shiftKey);
 						event.preventDefault();
-						removeMoney(20);
-						}
-						else {
-							alert("You don't have enough shitcoins bitch!");
-						}
 					}
-					console.log(realMoney);
 				break;
 			case 79: // o
 				if (canPlayNotes) break;
