@@ -433,53 +433,6 @@ let itemsDiv: HTMLDivElement = div({class:"itemsDiv", id:"itemsDiv", style:"disp
     button({class:"shopButton", id:"closeButton", onclick: ()=>closeThing("items")},"Close"),
 );
 
-if (boughtStuff.includes("songPlayer")
-    &&boughtStuff.includes("shortenUrl")
-    &&boughtStuff.includes("import")
-    &&boughtStuff.includes("export")
-    &&boughtStuff.includes("recovery")
-    &&boughtStuff.includes("copyUrl")) {
-        fileMenuStuffs.style.display = "none";
-}
-
-if (boughtStuff.includes("beatsPerBar")) {
-        editMenuStuffs.style.display = "none";
-}
-
-if (boughtStuff.includes("showScrollBar")
-    &&boughtStuff.includes("showLetters")) {
-        prefMenuStuffs.style.display = "none";
-}
-
-if (boughtStuff.includes("keyCSharp")
-    &&boughtStuff.includes("keyCSharp")
-    &&boughtStuff.includes("keyD")
-    &&boughtStuff.includes("keyDSharp")
-    &&boughtStuff.includes("keyE") 
-    &&boughtStuff.includes("keyF")
-    &&boughtStuff.includes("keyFSharp")
-    &&boughtStuff.includes("keyG")
-    &&boughtStuff.includes("keyGSharp")
-    &&boughtStuff.includes("keyA")
-    &&boughtStuff.includes("keyASharp")
-    &&boughtStuff.includes("keyB")) {
-            keyStuffs.style.display = "none";
-    }
-
-if (boughtStuff.includes("easySad")
-    &&boughtStuff.includes("islandHappy")
-    &&boughtStuff.includes("islandSad")
-    &&boughtStuff.includes("bluesHappy")
-    &&boughtStuff.includes("bluesSad") 
-    &&boughtStuff.includes("normalHappy")
-    &&boughtStuff.includes("normalSad")
-    &&boughtStuff.includes("dblHappy")
-    &&boughtStuff.includes("dblSad")
-    &&boughtStuff.includes("strange")
-    &&boughtStuff.includes("expert")) {
-            scaleStuffs.style.display = "none";
-    }
-
 let gachaDiv: HTMLDivElement = div({class:"gachaDiv", id:"gachaDiv", style:"display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;"}, 
     div({style:"margin-bottom: 0.5em; font-size: 64px;"},"Gacha"),
     div({style:""},"Roll for awesome rewards:"),

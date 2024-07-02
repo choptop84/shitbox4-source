@@ -996,7 +996,7 @@ export class SongEditor {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="5"]');
 					thingOption.disabled = true;
 				} 
-				if (boughtStuff.includes("normalEasy")) {
+				if (boughtStuff.includes("normalHappy")) {
 					const thingOption: HTMLOptionElement = <HTMLOptionElement>this._scaleSelect.querySelector('[value="6"]');
 					thingOption.disabled = false;
 				} else {

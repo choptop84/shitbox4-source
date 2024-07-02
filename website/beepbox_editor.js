@@ -2997,48 +2997,6 @@ var beepbox = (function (exports) {
     let scaleStuffs = div$d({ id: "scales" }, div$d({ style: "font-size: 16px" }, "Scales:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, easySadButton, islandHappyButton, islandSadButton, bluesHappyButton, bluesSadButton, normalHappyButton, normalSadButton, dblHappyButton, dblSadButton, strangeButton, expertButton));
     let themeMenuStuffs = div$d({ id: "themeMenuStuff" }, div$d({ style: "font-size: 16px" }, "Themes:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, shitbox2Button, realmButton));
     let itemsDiv = div$d({ class: "itemsDiv", id: "itemsDiv", style: "display:none; position:absolute; left:10vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin: 0.5em;" }, "Stupid Shit"), div$d({ style: "display: flex; flex-direction: column;max-height: 270px; overflow-y: scroll;" }, fileMenuStuffs, editMenuStuffs, prefMenuStuffs, keyStuffs, scaleStuffs, themeMenuStuffs), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("items") }, "Close"));
-    if (boughtStuff.includes("songPlayer")
-        && boughtStuff.includes("shortenUrl")
-        && boughtStuff.includes("import")
-        && boughtStuff.includes("export")
-        && boughtStuff.includes("recovery")
-        && boughtStuff.includes("copyUrl")) {
-        fileMenuStuffs.style.display = "none";
-    }
-    if (boughtStuff.includes("beatsPerBar")) {
-        editMenuStuffs.style.display = "none";
-    }
-    if (boughtStuff.includes("showScrollBar")
-        && boughtStuff.includes("showLetters")) {
-        prefMenuStuffs.style.display = "none";
-    }
-    if (boughtStuff.includes("keyCSharp")
-        && boughtStuff.includes("keyCSharp")
-        && boughtStuff.includes("keyD")
-        && boughtStuff.includes("keyDSharp")
-        && boughtStuff.includes("keyE")
-        && boughtStuff.includes("keyF")
-        && boughtStuff.includes("keyFSharp")
-        && boughtStuff.includes("keyG")
-        && boughtStuff.includes("keyGSharp")
-        && boughtStuff.includes("keyA")
-        && boughtStuff.includes("keyASharp")
-        && boughtStuff.includes("keyB")) {
-        keyStuffs.style.display = "none";
-    }
-    if (boughtStuff.includes("easySad")
-        && boughtStuff.includes("islandHappy")
-        && boughtStuff.includes("islandSad")
-        && boughtStuff.includes("bluesHappy")
-        && boughtStuff.includes("bluesSad")
-        && boughtStuff.includes("normalHappy")
-        && boughtStuff.includes("normalSad")
-        && boughtStuff.includes("dblHappy")
-        && boughtStuff.includes("dblSad")
-        && boughtStuff.includes("strange")
-        && boughtStuff.includes("expert")) {
-        scaleStuffs.style.display = "none";
-    }
     let gachaDiv = div$d({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$d({ style: "" }, "Roll for awesome rewards:"), div$d({ style: "display: flex; " }, div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$d({ style: "font-size: 16px" }, "50 Gems"))), div$d({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$d({ class: "result", id: "gachaRarity" }, "!")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
     function rollGacha() {
         let chanceThingy = Math.floor(Math.random() * 100);
@@ -20419,7 +20377,7 @@ You should be redirected to the song at:<br /><br />
                             const thingOption = this._scaleSelect.querySelector('[value="5"]');
                             thingOption.disabled = true;
                         }
-                        if (boughtStuff.includes("normalEasy")) {
+                        if (boughtStuff.includes("normalHappy")) {
                             const thingOption = this._scaleSelect.querySelector('[value="6"]');
                             thingOption.disabled = false;
                         }
