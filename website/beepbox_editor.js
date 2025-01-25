@@ -2772,9 +2772,9 @@ var beepbox = (function (exports) {
     const shopPage = document.getElementById('shopPage');
     const gachaListCommon = ["choptop84", "Just a Toad"];
     const gachaListRare = ["Fauxx", "Yuck31", "Lenny", "Keiiphobix", "yOph", "Grandnands"];
-    const gachaListEpic = ["Bluto", "Hogbrainrot", "Hailey", "Nintari", "Lognes", "Smerg the Dragon", "Chuck"];
-    const gachaListSuperRare = ["Answearing", "Soshu", "Main", "TheSeasOfEnvy", "Geli", "Nobonoko", "Okayxairen", "BrodTsumi", "Impasaurus", "TheGubbys", "Em (O^O)", "Scoob"];
-    const gachaListUltraRare = ["Jummbus", "Neptendo", "LeoV", "Chippy"];
+    const gachaListEpic = ["Bluto", "Hogbrainrot", "Hailey", "Lognes", "Smerg the Dragon", "Chuck"];
+    const gachaListSuperRare = ["Answearing", "Soshu", "Main", "TheSeasOfEnvy", "Gelli", "Nobonoko", "BrodTsumi", "Impasaurus", "TheGubbys", "Em (O^O)"];
+    const gachaListUltraRare = ["Jummbus", "Neptendo", "LeoV", "Jinx"];
     const gachaListLegendary = ["Shaktool"];
     var inventory = new Array();
     var storedInventory = localStorage.getItem("inventory");
@@ -2803,6 +2803,11 @@ var beepbox = (function (exports) {
         else {
             alert("You don't have enough shitcoins bitch!");
         }
+    }
+    function addGems(gemsToAdd) {
+        gems += gemsToAdd;
+        gemShits.innerHTML = "gems: " + gems;
+        window.localStorage.setItem('gems', String(gems));
     }
     function removeGems(gemsToRemove) {
         if (gems - gemsToRemove >= 0) {
@@ -2989,6 +2994,7 @@ var beepbox = (function (exports) {
     }
     let gachaButton = button$d({ class: "shopButton", id: "gachaButton", onclick: () => openThing("gacha") }, "Gacha");
     let itemsButton = button$d({ class: "shopButton", id: "buyButton", onclick: () => openThing("items") }, "Buy");
+    let inventoryButton = button$d({ class: "shopButton", id: "inventoryButton", onclick: () => openThing("inventory") }, "Inventory");
     let closeShopButton = button$d({ class: "shopButton", id: "closeButton", onclick: () => closeshop() }, "Close");
     let fileMenuStuffs = div$d({ id: "fileMenuStuff" }, div$d({ style: "font-size: 16px" }, "File Menu Shit:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, importButton, exportButton, copyUrlButton, songPlayerButton, shortenUrlButton, recoveryButton));
     let editMenuStuffs = div$d({ id: "editMenuStuff" }, div$d({ style: "font-size: 16px" }, "Edit Menu Shit:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, beatsPerBarButton));
@@ -2998,6 +3004,60 @@ var beepbox = (function (exports) {
     let themeMenuStuffs = div$d({ id: "themeMenuStuff" }, div$d({ style: "font-size: 16px" }, "Themes:"), div$d({ style: "display: flex; max-width: 35vw; overflow-x: scroll;" }, shitbox2Button, realmButton));
     let itemsDiv = div$d({ class: "itemsDiv", id: "itemsDiv", style: "display:none; position:absolute; left:10vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin: 0.5em;" }, "Stupid Shit"), div$d({ style: "display: flex; flex-direction: column;max-height: 270px; overflow-y: scroll;" }, fileMenuStuffs, editMenuStuffs, prefMenuStuffs, keyStuffs, scaleStuffs, themeMenuStuffs), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("items") }, "Close"));
     let gachaDiv = div$d({ class: "gachaDiv", id: "gachaDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Gacha"), div$d({ style: "" }, "Roll for awesome rewards:"), div$d({ style: "display: flex; " }, div$d({ style: "display:flex; flex-direction: column; align-items: center; margin: 0.5em;" }, button$d({ class: "shopButton", id: "gachaButton", onclick: () => rollOneGacha() }, "Roll 1x"), div$d({ style: "font-size: 16px" }, "50 Gems"))), div$d({ class: "result", id: "gachaResult", style: "display: flex;" }, `You haven't rolled yet`, div$d({ class: "result", id: "gachaRarity" }, "!")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("gacha") }, "close"));
+    var inventoryPosition = 0;
+    let inventoryItem = div$d({ class: "inventoryItem", id: "inventoryItem", }, "You have no items!");
+    let inventoryPlace = div$d({ class: "inventoryPlace", id: "inventoryPlace", }, "(0/0)");
+    let inventoryCharacter = new Image(500, 500);
+    inventoryCharacter.style.position = "absolute";
+    inventoryCharacter.style.left = "432px";
+    inventoryCharacter.style.top = "-20%";
+    if (inventory != undefined && inventory.length != 0) {
+        inventoryItem.innerHTML = inventory[inventoryPosition];
+        if (inventory.length != 0) {
+            inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+        }
+        else {
+            inventoryPlace.innerHTML = "(0/0)";
+        }
+        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+    }
+    else {
+        inventoryCharacter.src = "gachaPeople/missing.png";
+    }
+    let inventoryDiv = div$d({ class: "inventoryDiv", id: "inventoryDiv", style: "display:none; position:absolute; left:7vw; bottom: 20vw; background: #531619; border: #ff7a87; border-style: solid;" }, div$d({ style: "margin-bottom: 0.5em; font-size: 64px;" }, "Inventory"), inventoryPlace, div$d({ style: "" }, "Here's a thing you have:"), inventoryItem, inventoryCharacter, div$d({ style: "display:flex; flex-direction: row; justify-content: space-between;" }, div$d({ style: "display:flex; gap: 5px; flex-direction: row;" }, button$d({ class: "shopButton", id: "inventoryDownButton", onclick: () => changeInventoryPosition(false) }, "<"), button$d({ class: "shopButton", id: "inventoryUpButton", onclick: () => changeInventoryPosition(true) }, ">")), button$d({ class: "shopButton", id: "inventoryUpButton", onclick: () => sellGachaItem(inventory[inventoryPosition]) }, "Sell Item")), button$d({ class: "shopButton", id: "closeButton", onclick: () => closeThing("inventory") }, "close"));
+    function changeInventoryPosition(up) {
+        const nope = new Audio("sfx/nuh_uh.mp3");
+        if (inventory.length != 0) {
+            if (up) {
+                if (inventoryPosition != inventory.length - 1) {
+                    inventoryPosition++;
+                }
+                else {
+                    nope.play();
+                }
+            }
+            else {
+                if (inventoryPosition != 0) {
+                    inventoryPosition--;
+                }
+                else {
+                    nope.play();
+                }
+            }
+            inventoryItem.innerHTML = inventory[inventoryPosition];
+            inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+            if (inventory.length != 0) {
+                inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+            }
+            else {
+                inventoryPlace.innerHTML = "(0/0)";
+            }
+        }
+        else {
+            inventoryItem.innerHTML = "You have no items!";
+            inventoryCharacter.src = "gachaPeople/missing.png";
+        }
+    }
     function rollGacha() {
         let chanceThingy = Math.floor(Math.random() * 100);
         let whatYouGot = "";
@@ -3036,7 +3096,7 @@ var beepbox = (function (exports) {
         if (chanceThingy >= 99) {
             whatYouGot = gachaListLegendary[Math.floor(Math.random() * gachaListLegendary.length)];
             if (gachaRarity != null) {
-                gachaRarity.innerHTML = " (UR)";
+                gachaRarity.innerHTML = " (LEGENDARY)";
             }
         }
         inventory.push(whatYouGot);
@@ -3045,6 +3105,180 @@ var beepbox = (function (exports) {
         }
         if (inventory != null) {
             localStorage.setItem("inventory", JSON.stringify(inventory));
+            if (inventory.length != 0) {
+                inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+            }
+            else {
+                inventoryPlace.innerHTML = "(0/0)";
+                inventoryCharacter.src = "gachaPeople/missing.png";
+            }
+        }
+    }
+    function sellGachaItem(thingtoSell) {
+        const chaChing = new Audio("sfx/buy.mp3");
+        const nope = new Audio("sfx/nuh_uh.mp3");
+        if (thingtoSell != undefined) {
+            for (let i = 0; i < gachaListCommon.length - 1; i++) {
+                if (thingtoSell = gachaListCommon[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(10);
+                    chaChing.play();
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+            for (let i = 0; i < gachaListRare.length - 1; i++) {
+                if (thingtoSell = gachaListRare[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(20);
+                    chaChing.play();
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+            for (let i = 0; i < gachaListEpic.length - 1; i++) {
+                if (thingtoSell = gachaListEpic[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(30);
+                    chaChing.play();
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+            for (let i = 0; i < gachaListSuperRare.length - 1; i++) {
+                if (thingtoSell = gachaListSuperRare[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(40);
+                    chaChing.play();
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+            for (let i = 0; i < gachaListUltraRare.length - 1; i++) {
+                if (thingtoSell = gachaListUltraRare[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(50);
+                    chaChing.play();
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+            for (let i = 0; i < gachaListLegendary.length - 1; i++) {
+                if (thingtoSell = gachaListLegendary[i]) {
+                    inventory.splice(inventoryPosition, 1);
+                    addGems(100);
+                    chaChing.play();
+                    alert("What the fuck is wrong with you?");
+                    localStorage.setItem("inventory", JSON.stringify(inventory));
+                    if (inventory.length != 0) {
+                        inventoryPlace.innerHTML = "(" + String(inventoryPosition + 1) + "/" + String(inventory.length) + ")";
+                    }
+                    else {
+                        inventoryPlace.innerHTML = "(0/0)";
+                    }
+                    if (inventory[i] != undefined) {
+                        if (inventoryPosition - 1 != -1) {
+                            inventoryPosition--;
+                        }
+                        inventoryItem.innerHTML = inventory[inventoryPosition];
+                        inventoryCharacter.src = "gachaPeople/" + String(inventory[inventoryPosition]) + ".png";
+                    }
+                    else {
+                        inventoryItem.innerHTML = "You have no items!";
+                        inventoryCharacter.src = "gachaPeople/missing.png";
+                    }
+                    return;
+                }
+            }
+        }
+        else {
+            nope.play();
+            alert("You can't sell that!");
         }
     }
     function buyThing(thingToBuy, price, hides) {
@@ -3134,9 +3368,11 @@ var beepbox = (function (exports) {
     document.body.appendChild(gemShits);
     shop === null || shop === void 0 ? void 0 : shop.appendChild(gachaButton);
     shop === null || shop === void 0 ? void 0 : shop.appendChild(itemsButton);
+    shop === null || shop === void 0 ? void 0 : shop.appendChild(inventoryButton);
     shop === null || shop === void 0 ? void 0 : shop.appendChild(closeShopButton);
     shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(itemsDiv);
     shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(gachaDiv);
+    shopPage === null || shopPage === void 0 ? void 0 : shopPage.appendChild(inventoryDiv);
 
     const { button: button$c, div: div$c, h2: h2$b, select: select$8, option: option$8 } = HTML;
     class ThemePrompt {
@@ -3146,7 +3382,7 @@ var beepbox = (function (exports) {
             this._cancelButton = button$c({ class: "cancelButton" });
             this._okayButton = button$c({ class: "okayButton", style: "width:45%;" }, "Okay");
             this.container = div$c({ class: "prompt noSelection", style: "width: 220px;" }, h2$b("Set Theme"), div$c({ style: "display: flex; flex-direction: row; align-items: center; height: 2em; justify-content: flex-end;" }, div$c({ class: "selectContainer", style: "width: 100%;" }, this._themeSelect)), div$c({ style: "display: flex; flex-direction: row-reverse; justify-content: space-between;" }, this._okayButton), this._cancelButton);
-            this.lastTheme = window.localStorage.getItem("colorTheme");
+            this.lastTheme = window.localStorage.getItem("shitbox4colorTheme");
             this._close = () => {
                 if (this.lastTheme != null) {
                     ColorConfig.setTheme(this.lastTheme);
@@ -3185,7 +3421,7 @@ var beepbox = (function (exports) {
                 }
             };
             this._saveChanges = () => {
-                window.localStorage.setItem("colorTheme", this._themeSelect.value);
+                window.localStorage.setItem("shitbox4colorTheme", this._themeSelect.value);
                 this._doc.prompt = null;
                 this._doc.prefs.shitbox4colorTheme = this._themeSelect.value;
                 this._doc.undo();

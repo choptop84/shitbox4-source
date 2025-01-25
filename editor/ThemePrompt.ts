@@ -28,7 +28,7 @@ export class ThemePrompt implements Prompt {
 		),
 		this._cancelButton,
 	);
-	private readonly lastTheme: string | null = window.localStorage.getItem("colorTheme")
+	private readonly lastTheme: string | null = window.localStorage.getItem("shitbox4colorTheme")
 
 	constructor(private _doc: SongDocument) {
 		if (this.lastTheme != null) {
@@ -81,7 +81,7 @@ export class ThemePrompt implements Prompt {
 	}
 
 	private _saveChanges = (): void => {
-		window.localStorage.setItem("colorTheme", this._themeSelect.value);
+		window.localStorage.setItem("shitbox4colorTheme", this._themeSelect.value);
 		this._doc.prompt = null;
 		this._doc.prefs.shitbox4colorTheme = this._themeSelect.value;
 		this._doc.undo();
